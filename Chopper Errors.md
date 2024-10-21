@@ -3,6 +3,11 @@
 
 ---
 
+<p>Problems</p>
+<p>Compute the errors for the below 3 configurations.</p>
+<p>i) Series, shunt and series shunt chopper given that Rg = 1KΩ, RL = 1KΩ, rds (OFF) = 1010Ω, rds (ON)= 25Ω</p>
+<p>ii) Repeat for Rg = 100K, RL = 1K , rds (OFF) = 10 10 , rds (ON) = 25Ω</p>
+<p>iii) Repeat Rg = 100K, RL=100K, rds (OFF) = 10 10 , rds (ON) = 25Ω</p>
 <h2 id="corrected-approach-for-chopper-error-calculation">Corrected Approach for Chopper Error Calculation</h2>
 <h3 id="general-formulas">General Formulas:</h3>
 <ul>
