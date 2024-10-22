@@ -39,13 +39,14 @@ grid on;
 
 % Calculate the impulse response of the analogue filter H0(s)
 impulse_length = 50; % Length of impulse response
-impulse = [1; zeros(impulse_length-1, 1)]; % Create an impulse signal
-impulse_response_H0 = lsim(num, impulse, t1); % Impulse response for H0(s)
+t = 0:1/fs:(impulse_length-1)/fs; % Time vector
+sys = tf(num, den); % Create transfer function object
+impulse_response_H0 = impulse(sys, t); % Impulse response for H0(s)
 
 subplot(3, 1, 3);
-stem(0:impulse_length-1, impulse_response_H0(1:impulse_length), 'filled');
+stem(t, impulse_response_H0, 'filled');
 title('Impulse Response of H0(s)');
-xlabel('Samples');
+xlabel('Time (s)');
 ylabel('Amplitude');
 grid on;
 
@@ -56,5 +57,4 @@ disp(impulse_response_H1);
 disp('H2(z) Impulse Response:');
 disp(impulse_response_H2);
 disp('H0(s) Impulse Response:');
-disp(impulse_response_H0(1:impulse_length));
-
+disp(impulse_response_H0);

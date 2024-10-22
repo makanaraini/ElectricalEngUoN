@@ -1,7 +1,7 @@
 % Specifications
 fs = 30000; % Sampling frequency (30 kHz)
 fp = 5000;  % Pass-band frequency (5 kHz)
-fs_stop = 15000; % Stop-band frequency (15 kHz)
+fs_stop = 14000; % Adjusted stop-band frequency (14 kHz)
 Ap = 3;     % Pass-band ripple (3 dB)
 As = 40;    % Stop-band attenuation (40 dB)
 
@@ -64,4 +64,3 @@ hold off;
 
 % Zoom in on the relevant frequency range
 xlim([0 15000]);
-
