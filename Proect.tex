@@ -1,0 +1,18 @@
+
+\begin{tikzpicture}[auto, node distance=2.5cm, thick, >=latex]
+
+    % Input node
+    \node (input) [left] {$V_1$};
+
+    % Block for pre-distortion circuit
+    \node (block) [draw, rectangle, right, minimum width=3cm, minimum height=1.5cm] 
+    {Pre-Conditioning Circuit};
+
+    % Output node
+    \node (output) [right] {Output: $2V_T \tanh^{-1} \left(\frac{K V_1}{I_0}\right)$};
+
+    % Arrows between nodes
+    \draw[->] (input) -- (block);
+    \draw[->] (block) -- (output);
+
+\end{tikzpicture}

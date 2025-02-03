@@ -1,0 +1,193 @@
+\documentclass[baaa]{baaa}
+
+\usepackage[pdftex]{hyperref}
+\usepackage{subfigure}
+\usepackage{natbib}
+\usepackage{helvet,soul}
+\usepackage[font=small]{caption}
+
+\contriblanguage{1}
+
+\contribtype{1}
+
+\thematicarea{99}
+
+\received{\ldots}
+\accepted{\ldots}
+
+\title{Example article for publications in BAAA Vol. 66}
+
+\titlerunning{BAAA66 macro with style instructions}
+
+\author{
+J.V. González\inst{1},
+A. Otro\inst{2,3},
+M.V. Tercero\inst{4,5}
+\&
+R.E. Cuarto\inst{5,6}
+}
+
+\authorrunning{González et al.}
+
+\contact{editor.baaa@gmail.com}
+
+\institute{
+Faculty of Astronomical and Geophysical Sciences, UNLP, Argentina\and   
+Argentine Institute of Radio Astronomy, CONICET--CICPBA--UNLP, Argentina
+\and
+Institute of Astronomy and Space Physics, CONICET--UBA, Argentina
+\and
+Astronomical Observatory of Córdoba, UNC, Argentina
+\and
+Institute of Theoretical and Experimental Astronomy, CONICET--UNC, Argentina
+\and
+National Scientific and Technical Research Council, Argentina
+}
+
+\resumen{This is a guide for preparing articles for the \textit{Boletín de la Asociación Argentina de Astronomía} (BAAA), which also serves as a macro for Volume 66. Please read its content carefully to prevent the most frequent style errors. Also read carefully the comments preceded by the symbol `\%" in the \LaTeX{} source file of this document. This is the only format accepted for articles received by the editors. Submissions must be made exclusively through the BAAA Manuscript Management System (SiGMa).}
+
+\abstract{This is a guide for preparing articles for the \textit{Boletín de la Asociación Argentina de Astronomía} (BAAA), which also serves as a macro for Volume 66. Please read its content carefully to prevent the most frequent style errors. Also read carefully the comments preceded by the symbol `\%" in the \LaTeX{} source file of this document. This is the only format accepted for articles received by the editors. Submissions must be made exclusively through the BAAA Manuscript Management System (SiGMa).}
+
+\keywords{ Sun: abundances --- stars: early-type --- Galaxy: structure --- galaxies: individual (M31)}
+
+\begin{document}
+
+\maketitle
+\section{Introduction}\label{S_intro}
+
+The 66th annual meeting of the Argentine Astronomical Association (AAA) was held from September 16 to 20, 2024 in the city of La Plata. During the meeting, 81 works were presented as oral presentations and 109 works as poster presentations, including 12 invited talks (one corresponding to the Varsavsky prize). We cordially invite the presenters from this meeting to submit their contributions in written form, so they can be considered for publication in {Vol. 66 of BAAA.}
+
+The Editorial Committee for this volume consists of Cristina H. Mandrini as Editor-in-Chief, Claudia E. Boeris as Editorial Secretary and Mariano Poisson as Technical Editor. The Associate Editors are: Andrea P. Buccino, Gabriela Castelletti, Sofía A. Cora, Héctor J. Martínez and Mariela C. Vieytes. The Guest Editor is Paula Benaglia, who served as Chair of the Scientific Organizing Committee for the meeting.
+
+When considering submitting your contribution, please keep in mind the following points:
+\begin{itemize}
+    \item The submission of contributions and their follow-up during the review stage is done exclusively using the AAA Manuscript Management System (SiGMa)\footnote{\url{http://sigma.fcaglp.unlp.edu.ar/}}. 
+    \item Contributions will be reviewed by external referees assigned by the editors (except for invited reports, prizes and round tables). The referees will verify, among other aspects, the originality of your contribution. Contributions already published or submitted for publication to another journal will not be accepted.
+    \item Accepted manuscripts will become part of the ADS publication database.    
+    \item The BAAA is regulated by the AAA Publications Regulations\footnote{\url{http://astronomiaargentina.org.ar/uploads/docs/reglamento_publicaciones_2024.pdf}}, articles 2 to 6.
+\end{itemize}
+                                                                   
+We thank you in advance for submitting contributions in a timely manner, helping to ensure that the next edition of Argentina's only professional astronomy publication is published as soon as possible.
+
+\section{Instructions}
+
+The BAAA accepts two categories of contribution:
+\begin{itemize}
+    \item Brief (4 pages), corresponding to oral or poster communication.
+    \item Extended (8 pages), corresponding to invited report, round table or prize.
+\end{itemize}
+The page limit specified for each category applies even after introducing referee and editorial corrections. Authors are responsible for making any necessary length adjustments. {The use of commands that modify text spacing and size properties} is not allowed, such as $\backslash${\tt small}, $\backslash${\tt scriptsize}, $\backslash${\tt vskip}, etc.
+
+Please consider the following points for the correct preparation of your manuscript:
+\begin{itemize}
+    \item Use exclusively this macro ({\tt articulo-baaa66.tex}), not those from previous editions. It can be downloaded from SiGMa or from the online editing system \href{https://www.overleaf.com/}{\emph{Overleaf}}, as the template titled \emph{Boletín Asociación Argentina de Astronomía}.
+   \item Prepare the source file (*.tex) of your contribution respecting the format specified in Sec.~\ref{sec:guia}      
+   \item The use of custom definitions or commands in \LaTeX{} is not allowed.
+\end{itemize}
+
+\subsection{Manuscript submission deadlines}
+
+The reception of papers corresponding to oral or poster communications extends from {\bf November 4, 2024} until {\bf December 13, 2024} inclusive. Contributions of the invited report, round table or prize type will be received until {\bf February 7, 2024} inclusive. Reception will automatically end on the indicated dates, so contributions sent after these dates will not be accepted.
+
+\section{Style guide for BAAA}\label{sec:guia}
+
+When preparing your manuscript, strictly follow the style defined in this section. This list is not exhaustive; the complete style manual is available in the \href{http://sigma.fcaglp.unlp.edu.ar/docs/SGM_docs_v01/Surf/index.html}{Instructions} section of SiGMa. If any case is not included in the BAAA style manual, please follow the style of Astronomy \& Astrophysics\footnote{\url{{https://www.aanda.org/for-authors/latex-issues/typography}}}.
+
+\subsection{Language of text, abstract and figures}
+
+The article can be written in Spanish or English at the author's discretion. The abstract must always be written in both languages. All parts of the document (title, text, figures, tables, etc.) must be in the language of the main text. When using words from a different language than the text (only if unavoidable) include them in {\em italics}.
+
+\subsection{Title}
+
+Capitalize only the first word, proper names or acronyms. Try to be brief; if necessary divide the title into multiple lines using the line break (\verb|\\|). Do not add a final period to the title.
+
+\subsection{Authors}
+
+Authors must be separated by commas, except the last one which is separated with `\verb|\&|'. The format is: S.W. Hawking (initials followed by surnames, without commas or spaces between initials). If submitting several articles, please check that the name appears the same in all of them, especially in double surnames and those with hyphens.
+
+\subsection{Affiliations}
+
+The ({\sc ASCII}) file {\tt BAAA\_afiliaciones.txt} included in this package lists all author affiliations for this edition in the format adopted by BAAA. If you cannot find your institution, respect the format: Institute (Observatory or Faculty), Institutional Dependency (for institutions in Argentina only indicate the acronyms), Country (in Spanish). Do not include a final period in affiliations, except if it is part of the country name, such as `U.S.A.".
+
+\subsection{Abstract}
+
+Must consist of a single paragraph with a maximum of 1,500 (one thousand five hundred) characters, including spaces. Must be written in Spanish and English. Bibliographic references or images are not allowed. Avoid using acronyms in the abstract.
+
+\subsection{Keywords}
+
+Keywords must be written in English and selected exclusively from the American Astronomical Society (AAS) list\footnote{\url{https://journals.aas.org/keywords-2013/}}. Any part indicated in parentheses should not be included. For example, `(stars:) binaries (including multiple): close" should be given as `binaries: close". Words that include individual object names do so in parentheses, such as: galaxies: individual (M31)". Respect the use of lowercase and uppercase letters in the AAS listing. Note that the delimiter between keywords is the triple hyphen. The {\em keywords} in this article exemplify all these details.
+
+Finally, in addition to the keywords listed by the AAS, the BAAA incorporates from Vol. 61B the following options: {citizen science --- education --- outreach --- science journalism --- women in science}.
+
+\subsection{Main text}
+
+We highlight some points from the style manual.
+
+\begin{itemize}
+ \item The first unit is separated from the magnitude by an unbreakable space (\verb|~|). Subsequent units are separated from each other by semi-spaces (\verb|\,|). Magnitudes must be written in roman (\verb|\mathrm{km}|), be abbreviated, not contain a final period, and use negative powers for units that divide. As an example of applying all these rules consider: $c \approx 3 \times 10^8~\mathrm{m\,s}^{-1}$ (\verb|$c \approx 3\times 10^8~\mathrm{m\,s}^{-1}$|). If you need to use the unit mega years, note that in English it is Myr and in Spanish Ma.
+ \item To include a mathematical expression or equation in the text, regardless of its length, only two \verb|$| signs are required, one at the beginning and one at the end. This generates the appropriate spacing and typography for each detail of the phrase.
+  \item To separate integer from decimal in numbers use a period (not comma).
+  \item For large numbers, separate thousands using reduced space; e.g.: $1\,000\,000$ (\verb+$1\,000\,000$+).
+  \item Abbreviations go in uppercase; e.g.: UV, IR.
+  \item To abbreviate `versus" use vs." and not Vs.".
+  \item Quotation marks are double not single; e.g.: `word", not word'.
+  \item References to figures and tables begin with a capital letter if followed by the corresponding number. If the word `Figure" is at the beginning of a sentence, it should be written in full. Otherwise, write Fig." (or Eq. or Table in the case of equations and tables).
+  \item Atomic species; e.g.: \verb|He {\sc ii}| (He {\sc ii}).
+  \item Names of {\sc packages} and {\sc routines} of {\em software} with {\em small caps} typography (\verb|\sc|).
+  \item When including a link in your text body or footer. Do not use the \verb|\href{}| command, always use \verb|\url{}|. The \verb|\href{}| command will not link to the implicit address when compiling the final version of the Bulletin and the corresponding link will be lost.
+\end{itemize}
+
+\subsection{Equations and mathematical symbols}
+
+Equations must be numbered using the \verb|\begin{equation} ... \end{equation}| environment, or similar (\verb|{align}, {eqnarray}|, etc.). Equations must have the corresponding grammatical punctuation at the end, as part of the phrase they form. As detailed above, for mathematical expressions or equations inserted in the text, enclose them only between two \verb|$| symbols, using \verb|\mathrm{}| for units. Vectors must be in `bold" using \verb|\mathbf{}|.
+
+\subsection{Tables}
+
+Tables must not exceed the margins established for the text (see Table \ref{tabla1}), and {text size modifiers cannot be used}.
+Tables must include four lines: two upper, one lower and one separating the header. Tables can be made with one column (\verb|\begin{table}|) or the full width of the page (\verb|\begin{table*}|).
+
+\begin{table}[!t]
+\centering
+\caption{Example table. Note in the source file the handling of spaces to ensure the table does not exceed the text column margin.}
+\begin{tabular}{lccc}
+\hline\hline\noalign{\smallskip}
+\!\!Date & \!\!\!\!Coronal $H_r$ & \!\!\!\!Diff. rot. $H_r$& \!\!\!\!Mag. clouds $H_r$\!\!\!\!\\
+& \!\!\!\!10$^{42}$ Mx$^{2}$& \!\!\!\!10$^{42}$ Mx$^{2}$ & \!\!\!\!10$^{42}$ Mx$^{2}$ \\
+\hline\noalign{\smallskip}
+\!\!07 July  &  -- & (2) & [16,64]\\
+\!\!03 August& [5,11]& 3 & [10,40]\\
+\!\!30 August & [17,23] & 3& [4,16]\\
+\!\!25 September & [9,12] & 1 & [10,40]\\
+\hline
+\end{tabular}
+\label{tabla1}
+\end{table}
+
+\subsection{Figures}
+
+Figures should be prepared in `jpg", png" or pdf" formats, with the latter being preferred. They must include all elements that enable their correct reading, such as scales and names of coordinate axes, line codes, symbols, etc. Verify that the image resolution is adequate. The font size of the figure texts must be equal to or larger than in the caption text (see e.g. Fig.~\ref{Figura}). When creating color figures, ensure that information is not lost when viewed in grayscale (in case it is decided to print the BAAA). For example, in Fig.~\ref{Figura}, the solid curves could be differentiated with different symbols (circle in one and square in another), and one of the dotted curves could be dashed. For figures taken from other publications, send the corresponding permission to the BAAA editors and cite it as required by the original publication.
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\columnwidth]{ejemplo_figura_Hough_etal.pdf}
+\caption{The font size in the text and numerical values of the axes is similar to the font size of this caption. If using more than one panel, explain each one; e.g.: Upper panel: explanation of upper panel. You can also refer to panels as a), b), etc.; in this case, use a): explanation of that panel and so on. Figure reproduced with permission from \cite{Hough_etal_BAAA_2020}.}
+\label{Figura}
+\end{figure}
+
+\subsection{Cross references}\label{ref}
+
+Your article must use cross references using the {\sc bibtex} tool. To do this, create a file (like the included example: {\tt bibliografia.bib}) containing the {\sc bibtex} references used in the text. Include the name of this file in the \LaTeX{} bibliography inclusion command (\verb|\bibliography{bibliografia}|).
+
+Remember that the ADS database contains {\sc bibtex} entries for all articles. They can be accessed through the `{\em Export Citation}" link.
+
+The reference style is automatically applied through the included style file (baaa.bst). This way, the generated references will have the correct form for one author \citep{hubble_expansion_1929}, two authors \citep{penzias_cmb_1965,penzias_cmb_II_1965}, three authors \citep{navarro_NFW_1997} and many authors \citep{riess_SN1a_1998}, \citep{Planck_2016}.
+
+\begin{acknowledgement}
+Acknowledgments should be added using the corresponding environment (\texttt{acknowledgement}).
+\end{acknowledgement}
+
+\bibliographystyle{baaa}
+\small
+\bibliography{bibliografia}
+ 
+\end{document}

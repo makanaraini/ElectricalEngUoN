@@ -1,0 +1,71 @@
+\begin{enumerate}
+    \item Convolve the following sequences using the overlap-save method:
+    \[
+    x[n] = \{1.0, 1, -1.0, -3.0, 1.2\}, \quad h[n] = \{1, -1, -2, -1\}
+    \]
+
+    \item Describe three different digital bandpass modulation schemes and compare their performance in the presence of noise.
+    Explain how the message signals used to modulate orthogonal basis functions at the transmitter are recovered from the received signals at the QPSK receiver.
+
+    \item Given two sequences:
+    \[
+    x[n] = \delta[n] + 2\delta[n-2] + \delta[n-3], \quad h[n] = \delta[n] + \delta[n-1] + 2\delta[n-3]
+    \]
+    Compute the 4-point circular convolution of \(x[n]\) and \(h[n]\).
+
+    \item What would be desirable properties of a line coding?
+    Show how a stream of 10 bits \(1\ 1\ 0\ 1\ 1\ 0\ 1\ 1\ 0\ 1\) would be encoded using Manchester encoding and differential Manchester coding. What is the advantage of differential Manchester coding as compared to Manchester?
+
+    \item Discuss the significance of autocorrelation and cross-correlation functions.  
+    Given two sequences:  
+    \[
+    x[n] = \{2, 1, 3, 4, 2, 1\}, \quad y[n] = \{2, -1, 2, 3, 0, 5\}
+    \]
+    Compute the cross-correlation \(R_{xy}\) and \(R_{yx}\) and the correlation coefficient \(C_{xy}\).  
+    Explain the significance of your answer.
+
+    \item Describe the concept of I and Q modulation.  
+    Draw and explain a block diagram of the 16QAM demodulator.
+
+    \item Show that Decimation in Time FFT algorithm has less computational complexity than the direct method of computing DFT.
+
+    \item Given the 6x6 image and 3x3 mask with pixels as shown below, determine pixels (1,1) and (2,3) of the output image assuming replicate padding is applied.
+
+    Image:
+    \begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+1 & 1 & 1 & 1 & 2 \\
+\hline
+3 & 1 & 2 & 0 & 0 \\
+\hline
+2 & 4 & 1 & 2 & 1 \\
+\hline
+3 & 2 & 5 & 0 & 4 \\
+\hline
+1 & 2 & 3 & 1 & 0 \\
+\hline
+1 & 2 & 1 & 1 & 0 \\
+\hline
+\end{tabular}
+\caption{Image}
+\end{table}
+
+  
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+1 & 0 & -1 \\
+\hline
+0 & 0 & 0 \\
+\hline
+-1 & 0 & 1 \\
+\hline
+\end{tabular}
+\caption{Mask}
+\end{table}
+\end{enumerate}
+
+\end{document}

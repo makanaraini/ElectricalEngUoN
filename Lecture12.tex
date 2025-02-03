@@ -1,0 +1,183 @@
+\section*{Lecture 12: 31/10/2024}
+
+\subsection*{Determining \( V_{\text{not}} \)}
+
+Using Equation 1, we can rearrange and solve for \( V \) to determine \( V_{\text{not}} \). This implies that if we know \( V \), then we can express \( V_{\text{not}} \) as:
+
+\[
+V_{\text{not}} = V \cdot \frac{R_T + R_3}{R_T}
+\]
+
+Remember, \( R_T \) is a temperature-dependent parameter. This relationship will be used to design the circuit so that the output does not vary as a function of \( V_T \), which is temperature dependent. However, for simplicity, I'll be using Equation 1 and Equation 2. Now, let's determine \( V \) as a function of the base-source voltage (\( V_{BS} \)) of the transistor.
+
+\subsection*{Analyzing the Transistor Circuit}
+
+I'll start at Point A, the base of Q2. If it's not very clear, Point A is here, Point B is here, and Point C is the base of Q1. Starting at Point A, we traverse against the potential \( V_{BE2} \). Applying Kirchhoff's Voltage Law (KVL) to loop ABC implies:
+
+\[
+-V + V_{BE1} = V
+\]
+
+But what is \( V_{BE2} \) in terms of the known voltage-current relations for the transistor? We've already derived it, so I'll just present the result:
+
+\[
+-n V \ln\left(\frac{I_{C2}}{I_2}\right) + \ln\left(\frac{I_{C1}}{I_{\text{not1}}}\right) = V
+\]
+
+Next, let's simplify Equation 4:
+
+\[
+V = n V \ln\left(\frac{I_{C1}}{I_{\text{not1}}}\right) \cdot I_{\text{not2}} I_2
+\]
+
+We can state that for my transistors, the saturation currents are equal. Therefore, Equation 5 can be written as:
+
+\[
+n E \ln\left(\frac{I_{C1}}{I_2}\right) = V
+\]
+
+Now, we need to find \( I_{C1} \) and \( I_{C2} \) in terms of the circuit parameters.
+
+\subsection*{Determining Collector Currents}
+
+Returning to the circuit, let's start with finding \( I_{C1} \). \( I_{C1} \) is the collector current of the first transistor. In this circuit, this is your \( I_{C1} \), and the current over here is \( I_2 \).
+
+Since the positive input of A1 is grounded, it means the negative input of A1 is a virtual earth. Therefore, the current that flows through resistor \( R1 \) is:
+
+\[
+I_1 = \frac{V_{S1}}{R1}
+\]
+
+Similarly, for the second transistor, if you look at the input of amplifier A2, the positive side is grounded, and therefore the negative input of A2 is also a virtual earth. So, the collector of Q2 is also at virtual earth, and therefore the current \( I_{C2} \) is the current that flows through resistor \( R2 \), which is:
+
+\[
+I_2 = \frac{V_{S2}}{R2}
+\]
+
+We can substitute these values:
+
+\[
+I_{C1} = \frac{V_{S1}}{R1}, \quad I_{C2} = \frac{V_{S2}}{R2}
+\]
+
+Let us denote these results as Equation 7.
+
+\subsection*{Substituting into Equations}
+
+From Equation 5 and Equation 6, we substitute the results of Equation 7 into Equation 6:
+
+\[
+V = n V \ln\left(\frac{I_{C1}}{I_2}\right) = n V \ln\left(\frac{\frac{V_{S1}}{R1}}{\frac{V_{S2}}{R2}}\right) = n V \ln\left(\frac{V_{S1} \cdot R2}{V_{S2} \cdot R1}\right)
+\]
+
+Thus, we have determined \( V \). Now, knowing \( V \), we can determine the output voltage \( V_{\text{not}} \) from Equation 2:
+
+\[
+V_{\text{not}} = V \cdot \frac{R_T + R3}{R_T}
+\]
+
+Expanding this, we obtain:
+
+\[
+V_{\text{not}} = \left(1 + \frac{R3}{R_T}\right) V
+\]
+
+Substituting the expression for \( V \):
+
+\[
+V_{\text{not}} = \left(1 + \frac{R3}{R_T}\right) \cdot n V_T \ln\left(\frac{R2}{R1} \cdot \frac{V_{S1}}{V_{S2}}\right)
+\]
+
+This demonstrates that the circuit performs logarithmic computation—a log amplifier. The scaling factor \( K \) can be adjusted via the second voltage \( V_{S2} \):
+
+\[
+K = \frac{R2}{R1} \cdot V_{S2}
+\]
+
+For example, in a circuit that performs compression, you can vary the compression rate \( K \), which can be very useful in various circuit applications.
+
+\subsection*{Conclusion}
+
+I hope everyone has understood how we derived these relationships. If there are no questions, we can proceed to the next topic.
+
+\subsection*{Analog Multipliers and Dividers}
+
+The next topic is analog multipliers and dividers. However, we'll focus on analog multipliers because dividers can be derived from multipliers. Apart from microprocessors and microcontrollers, analog multipliers are among the other very useful electronic circuits. Without them, there would be no long-distance communication because modern modulation techniques rely heavily on multipliers. For instance, FM, AM, FSK, QPSK, SSB, DSB—all these circuits require an analog multiplier. Similarly, computer modems also require analog multipliers.
+
+\subsection*{Definition of an Analog Multiplier}
+
+An ideal analog multiplier is a circuit whose output is a function of two input voltages \( V_X \) and \( V_Y \), such that:
+
+\[
+V_{\text{out}} = K \cdot V_X \cdot V_Y
+\]
+
+where \( K \) is a constant scaling factor. The symbol of a multiplier is typically represented as a rectangle with a triangle on top and an output.
+
+\subsection*{Characteristics of an Ideal Multiplier}
+
+1. **Infinite Input Impedance:** The input signals \( V_X \) and \( V_Y \) should have infinite input impedance, meaning the multiplier does not load the inputs.
+2. **Zero Output Impedance:** The output impedance should be zero so that all the generated voltage appears at the load.
+3. **Infinite Bandwidth:** It should be able to multiply signals from very low frequencies (DC) to infinitely high frequencies.
+4. **Linearity:** The output should be linear for all ranges of the input. For example, if \( V_X \) is fixed at 1V and \( V_Y \) changes from 1V to 10V, the output should change linearly without distortion.
+
+\subsection*{Practical Limitations of Real Multipliers}
+
+1. **Limited Voltage Swing:** Typically restricted to ±10V for normal operations, despite the power supply being ±15V.
+2. **Limited Input Signals:** \( V_X \) and \( V_Y \) are usually limited to ±10V.
+3. **Limited Output Current:** Real multipliers cannot provide infinite current; they have limited output current capabilities due to transistor limitations.
+4. **Non-Zero Output Impedance:** Real multipliers have an output impedance that is not zero, requiring a large load resistance to ensure maximum voltage transfer.
+5. **Offset Errors:** Due to the use of differential amplifiers, real multipliers suffer from offset errors.
+6. **Finite Bandwidth:** Depends on the transistors used; high-frequency transistors can multiply signals up to GHz ranges.
+
+\subsection*{Implementing Multipliers}
+
+There are several practical schemes to implement analog multipliers:
+
+1. **Log-Anti-Log Method:** Utilizes logarithmic and anti-logarithmic circuits to perform multiplication based on the identity \( XY = \text{antilog}(\log X + \log Y) \).
+2. **Quarter Square Technique:** Uses the identity \( XY = \frac{1}{4}[(X + Y)^2 - (X - Y)^2] \) to implement multiplication through adders, subtractors, and squaring functions.
+3. **Transconductance Multiplier:** The most widely used method in the industry, involving variable transconductance elements.
+
+\subsubsection*{Log-Anti-Log Method}
+
+In the Log-Anti-Log method, the relationship \( XY = \text{antilog}(\log X + \log Y) \) is used. To implement this multiplier:
+
+\begin{enumerate}
+    \item Start with two log amplifiers that compute \( \log X \) and \( \log Y \).
+    \item Sum the outputs of the log amplifiers.
+    \item Pass the sum through an anti-log amplifier to obtain \( XY \).
+\end{enumerate}
+
+However, designing effective log amplifiers requires many operational amplifiers (Op-Amps), which introduces significant offset errors and increases the cost due to the large number of components. Additionally, log and anti-log circuits are typically unidirectional and have limited dynamic range and bandwidth.
+
+\subsubsection*{Quarter Square Technique}
+
+The Quarter Square Technique employs the identity:
+
+\[
+XY = \frac{1}{4} \left[(X + Y)^2 - (X - Y)^2\right]
+\]
+
+Implementation involves:
+
+\begin{enumerate}
+    \item Adding and subtracting the input voltages \( X \) and \( Y \).
+    \item Squaring the results using diode-based squaring circuits.
+    \item Subtracting the squared terms.
+    \item Multiplying the result by a quarter to obtain \( XY \).
+\end{enumerate}
+
+While this method is simpler than the Log-Anti-Log method, it still requires precise squaring circuits and suffers from limitations related to the speed and offset errors of Op-Amps.
+
+\subsubsection*{Transconductance Multiplier}
+
+The Transconductance Multiplier is the most commonly used method in the industry. It leverages variable transconductance elements to achieve multiplication with higher accuracy and better performance compared to other methods. This technique is preferred due to its scalability and efficiency in various applications, including modulation and signal processing.
+
+\subsection*{Conclusion}
+
+These are the primary methods used to implement analog multipliers. While each method has its advantages and limitations, the choice of technique depends on the specific requirements of the application, such as cost, accuracy, speed, and frequency response.
+
+\subsection*{Questions and Next Steps}
+
+I hope everyone has understood how we derived the logarithmic computations and the various methods to implement analog multipliers. Are there any questions? If not, we can proceed to the next topic.
+

@@ -1,0 +1,55 @@
+\subsubsection{Choice of Hardware}
+\begin{itemize}
+    \item \textbf{The Platform}
+    Given the goal of designing and implementing a long range and endurance drone capable of carrying substantial weight, in this case one kilogram, we decided to opt for a quad-rotor configuration. This decision was to take full advantage of the control and maneuverability of the drone once loaded. This would do away with the need of a launch rail or runway as is for fixed wing configurations. The number of rotors was decided to save on cost and power usage. Due to the spacing of a quad-rotor configuration the size of the propellers could be picked with less restrictions. It is less congested than other higher order multi-rotor configurations. The space is necessary for placing solar panels. This would hence increase overall efficiency compared to other configurations. It also calls for a simplified build. Although hex copters excel in speed and stability, our main objective was endurance and efficiency provided by the quad-rotor configuration.\cite{caceres2024developing}
+
+    \item \textbf{The Flight Controller}
+    The drone control unit is based on the Arduino Giga R1 WiFi board. This is a powerful board offering a generous number of input and output pins. Listing some of its features:
+    \begin{itemize}
+        \item an STM32H747XIH6 dual core microcontroller
+        \item 76 Digital I/O pins
+        \item 12 analog input pins
+        \item 13 PWM pins
+        \item 2 analog output pins
+    \end{itemize}
+    These features are to be leveraged in the design of the Electronic Speed Controller (ESC) units, Battery Management System (BMS) and Power Delivery Board (PDB). The controller performance will be crucial for handling and processing sensor data for state observation and state estimation. This eliminates the use of individual microprocessors for the above stated use cases, a reduction in cost and power consumption. The Giga R1 will be programmed in C. The choice of language was to enhance processing speed and to address the mission critical agenda. This combination produces a powerful, cost effective, secure yet fast platform that addresses the cost effectiveness of the drone.
+
+    \item \textbf{The Motors}
+    Given a payload of one kilogram and the weight of the entire drone as two kilograms, the following estimations were made. Using a 2:1 thrust-to-weight ratio, the motors can lift the drone at half throttle, the total thrust required from the motor would be that of six kilograms.
+    
+    \[
+    \text{Thrust per motor} = \frac{\text{Total Thrust Required}}{\text{Number of Motors}}
+    \]
+    
+    Substituting the values:
+    
+    \[
+    \text{Thrust per motor} = \frac{6 \, \text{kg}}{4} = 1.5 \, \text{kg/motor}
+    \]
+    
+    We therefore recommend the BLCD motors with a thrust of 1.5 kg to 2 kg thrust. BLCD motors are three phase motors that are quite efficient compared with brushed motors and can reliably provide their rated thrust once coupled up with their recommended propellers. They however draw a lot of current and have high voltage ratings. Selecting a good battery and ESC is therefore crucial in order to get the desired performance.
+
+    \item \textbf{The Electronic Speed Controller (ESC)}
+    Using BLCD motors creates a requirement of designing ESC for each motor. This unit controls the switching of the power in the coils of the motor. This is done sequentially enabling the motor to start and run uninterrupted. The motors draw a lot of current and high voltages. The rating of these voltages should be considered. A margin of the ratings is added to account for over current due to heating as the ESC mainly comprises of fast switching MOSFETs.
+    
+    In this paper, we will design an ESC with a 50A current rating and a 45V voltage rating. The processing power for controlling the switching will be tapped from the Giga R1, utilizing one of its cores.
+
+    \item \textbf{The Battery}
+    The specifications for motor clearly give a range of batteries to be incorporated in this build. Given a limit of not less than 4S battery for the operation of the motor and observing the weight limit for this design to hold, two Lipo batteries are chosen one to service the motors and another the electronics on board. They will averagely weigh 900g leaving a 1.1Kg for the electronics and chassis. The battery voltage and current ratings will be in line with the motor chosen. Lipo Batteries were chosen because of their high charge and discharge cycles and efficiency.
+
+    \item \textbf{The Battery Management System (BMS)}
+    The battery management system is necessary in this build to manage the amount of power entering the battery pack. We are proposing a three port system, one that charges the battery from the solar panels. The BMS monitors this operation such that when the battery is full, power from the solar is diverted to the Power Delivery Board. This power is then fed to the electronics to drive operations directly. The BMS offers protection to the battery from surges in power from the solar panels ensuring long battery life. Any processing power will utilize the Arduino GIGA R1.
+
+    \item \textbf{The Power Distribution Board (PDU)}
+    This unit is proposed to handle power from the battery and solar panels to the electronics on board. This is to provide step up or step down where necessary as well as offering protection to the electronics on board. This unit is proposed to provide steady currents and voltages, clean power, at all times.
+    
+    A KILL SWITCH is to be incorporated. This isolates all electronics on board from the power providing a safety feature in case of any inconvenience.
+
+    \item \textbf{Inertial Measurement Unit (IMU)}
+    A variety of sensors will be incorporated in for flight control. Data from these sensors will be used for state observation and state estimation. These will form the Inertial Measurement unit also referred to as the Attitude and Heading Reference System. Once data is collected from the sensors the Giga R1 processes this data giving corrections for noise and vibrations. This processed data will be used for controlling the drone instead of using raw data. Among these sensors includes an accelerometer, gyroscope, magnetometer and a barometer. The accelerometer measures the change in velocity in time. It will be useful for telling the speed of the cargo drone. The gyroscope and magnetometer will provide data useful for the cargo drone positioning and orientation. The Barometer will be crucial for determining the height of the drone. We propose installation of a camera module for ground monitoring for user interface. It will not make up the IMU.
+
+    \item \textbf{Radio Receiver and Transmitter}
+    We propose using the LoRa interface for communication with the drone. This is to take full advantage of the long range of about 10Km in LoRa Ra-02 module and low signal-to-noise ratio. This set up offers reliability, range and ensures smooth flight data transmission at low power.
+
+    \item \textbf{Solar Panels}
+\end{itemize}

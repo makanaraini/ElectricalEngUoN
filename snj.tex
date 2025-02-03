@@ -1,0 +1,85 @@
+\documentclass[a4paper,9pt,twoside,openany,twocolumn]{memoir}
+
+% Essential packages
+\usepackage{amsmath,amssymb,graphicx,xcolor,tikz}
+\usepackage[
+    top=0.5cm,    % Even smaller top margin
+    bottom=0.6cm, % Even smaller bottom margin
+    left=0.8cm,   % Reduced left margin
+    right=0.8cm   % Reduced right margin
+]{geometry}
+\usepackage{microtype}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage[T1]{fontenc}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem} % For compact list control
+\usepackage[most]{tcolorbox} % For tcolorbox
+\usepackage{ulem}
+\usepackage{silence}
+\WarningFilter{latex}{Label `.*' multiply defined}
+
+% Colors
+\definecolor{chaptercolor}{RGB}{0,75,150}
+
+% Chapter Title Style
+\chapterstyle{section} % Predefined style in memoir
+
+% Headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\nouppercase{\leftmark}}
+\fancyhead[LO]{\nouppercase{\rightmark}}
+\renewcommand{\headrulewidth}{0.1pt} % Thinner header rule
+% Reduced header/footer space
+\setlength{\headheight}{10pt}
+\setlength{\headsep}{8pt}
+\setlength{\footskip}{8pt}
+
+% Spacing Optimizations
+\linespread{0.92} % More compact line spacing (9pt font size)
+
+% Math Spacing Optimization
+\setlength{\abovedisplayskip}{1.5pt}    % Reduced math spacing
+\setlength{\belowdisplayskip}{1.5pt}    % Reduced math spacing
+\setlength{\abovedisplayshortskip}{1pt} % Reduced math spacing
+\setlength{\belowdisplayshortskip}{1pt} % Reduced math spacing
+\setlength{\jot}{1pt}                  % Even smaller spacing between math lines
+\setlength{\mathsurround}{0.5pt}       % Tightened math symbols
+
+% Section and subsection spacing
+\setlength{\beforechapskip}{2pt} % Reduced space before chapter title
+\setlength{\afterchapskip}{2pt}  % Reduced space after chapter title
+\setlength{\beforesecskip}{2pt}  % Reduced space before section title
+\setlength{\aftersecskip}{1pt}   % Reduced space after section title
+
+% Tighter lists
+\setlist[itemize]{leftmargin=4mm, itemsep=0pt, topsep=1pt, parsep=0pt}
+\setlist[enumerate]{leftmargin=4mm, itemsep=0pt, topsep=1pt, parsep=0pt}
+
+% Tighten table spacing
+\renewcommand{\arraystretch}{0.9}  % Reduced table row height
+
+% Tcolorbox settings for compactness
+\newtcolorbox[auto counter, number within=section]{compactbox}[2][]{
+    colframe=blue!40!black,
+    colback=blue!5!white,
+    coltitle=black,
+    boxrule=0.5pt,
+    arc=2mm,
+    outer arc=2mm,
+    top=3pt,
+    bottom=3pt,
+    left=4pt,
+    right=4pt,
+    fonttitle=\bfseries\small,
+    font=\small,
+    #1
+}
+
+% Document
+\begin{document}

@@ -1,0 +1,38 @@
+\section{System Software}
+
+The system software forms an integral layer that allows easy communication between the drone and its controller. It aims to provide the best performance while maintaining simplicity in user interaction. It includes flight control, telemetry processing, and communication protocols for both autonomous and manual operating modes. This section will provide a detailed analysis of the system software architecture, communication modules, and control algorithms that can be utilized in the system.
+
+\subsection{Software Architecture}
+
+This allows for a structured organization of the software architecture to bring about scalability and ease in maintenance. Its major parts can include the Flight Control Module, which is responsible for real-time stabilization and drone navigation. This module can communicate with many other sensors, such as the Inertial Measurement Unit (IMU) and Global Positioning System (GPS) to deduce the necessary changes that should be effected on the motors of the drone.
+
+The Communication Module can be in charge of establishing and maintaining the data link between the ground station, usually a mobile app, and the drone. It can make use of communication technologies such as Wi-Fi and Bluetooth for short-range communication, while Long-Range technology can be used for longer-distance communication. The Power Management Module can be responsible for monitoring the solar panel and battery energy levels so that the system can be operated effectively using the available energy and also to alert the system in case of low power. The Data Logging Module can log telemetry data, such as altitude, velocity, and battery levels, for later event analysis and diagnostics. Finally, the User Interface Module can handle communication with the mobile application by sending commands to the drone and displaying real-time telemetry data.
+
+\subsection{Communication Protocols} 
+The system can utilize a proprietary communication protocol with low latency and high data integrity, ensuring efficient and reliable communication. This protocol can include not only the transmission of commands that encapsulate instructions coming from the mobile application, like take-off, landing, and waypoint navigation, but also telemetry supporting the streaming of real-time data to the control interface. It can also have error handling in the form of checksums and acknowledgment packets, which can be used to detect and correct transmission errors.
+
+\subsection{Selection of Communication Protocol}
+
+The selection of the proper communication protocol can be critical for efficient and reliable data transfer between the drone and its control interface. According to operational requirements, three different communication technologies can be evaluated. With low power consumption, Bluetooth can perform more appropriately in indoor or constrained operating scenarios. Wi-Fi can provide high data rates suitable for medium- to long-range data transmissions and can find the perfect balance between range and throughput. The GSM/GPRS can enable good global coverage to be used in the most remote area operations when the other conventional short-range communication protocols are ineffective or even impracticable.
+
+Ultimately, Wi-Fi can be selected for the drone application because it represents the best trade-off between range and throughput, enabling communication at intermediate distances.
+
+\subsection{Telemetry Data Processing}
+
+The drone telemetry system can be designed to transmit critical flight information to the control interface for monitoring and analysis purposes.
+
+This can include the transmission of telemetry information where the drone sends real-time metrics, such as altitude, speed, and battery status, to the mobile application. The received telemetry data can be parsed and processed for presentation in a user-friendly format on the control interface. The modular design of the software architecture can ensure flexibility in adding new telemetry parameters without affecting the core system.
+
+\subsection{Information Transmission and Directives Implementation}
+The communication flow in the system can depict the different stages that take place from user input to the execution of commands on the drone. First, commands can be initiated through the mobile application interface, which includes instructions for flight control or navigation. These commands can then be encoded into a suitable format for transmission. The encoded commands can then be transmitted wirelessly to the drone using the designated communication protocol.
+
+The Arduino-based control system of the drone can interpret these commands and take the necessary actions, such as changes in motor speeds or moving to a given waypoint. This efficient process can ensure the lowest latency possible and that the commands are executed effectively to enhance the overall reliability of the system.
+
+\subsection{Control Algorithms} 
+Advanced algorithms, part of the software of the drone, can be developed to increase flight stability and accuracy. The PID control algorithm can be applied to stabilize the attitude of the drone and maintain its altitude. The waypoint navigation algorithm can implement autonomous navigation, which directs the drone from one waypoint to another based on GPS coordinates. Lastly, power optimization algorithms can help regulate power consumption based on available solar energy and battery levels to maximize flying times. 
+
+\subsection{Integration with Mobile Application} 
+The Kotlin-developed mobile application can serve as an interface through which the user operates the drone. The application can offer a real-time controller displaying buttons and sliders for manual movement control. Further, the application can support mission planning, allowing users to set waypoints and plan delivery routes. The application can also be designed with telemetry monitoring, showing in real time the status of the battery, speed, and GPS location. 
+
+\subsection{Testing and Validation} 
+This can ensure that the system software itself undergoes thorough testing for reliability and efficiency. Validation of control algorithms can be performed through simulation, while field tests can be conducted to validate the robustness of the communication systems and overall performance under real conditions.

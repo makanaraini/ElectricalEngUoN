@@ -1,0 +1,139 @@
+
+\section{Lecture 10: 24/10/2024}
+
+Welcome back to Lecture 10. It looks like our class size has slightly increased from 39 to 43 students. I hope everyone can see the presentation on the screen. If you're having any issues, please let me know.
+
+\section{Review of Log Amplifiers}
+
+In our last class, we discussed the log amplifier, a specialized type of amplifier whose output is the logarithm of its input voltage. We explored various applications of log amplifiers in analog systems.
+
+\subsection{Applications of Log Amplifiers}
+
+Log amplifiers are commonly used in:
+\begin{itemize}
+    \item **Recording Studios**: For signal compression, ensuring that signals fit within the dynamic range of a channel. This compression allows signals to be later expanded.
+    \item **Dynamic Range Management**: Matching the input signals to the dynamic range limitations of recording media.
+\end{itemize}
+
+\section{Historical Context of Audio Recording}
+
+\subsection{Transition from Cassette to CD}
+
+Most of you may not have been born during the era when cassette tapes were prevalent. Before CDs became mainstream, music was primarily recorded on vinyl plates or cassette tapes. CDs offered several advantages:
+\begin{itemize}
+    \item **Cost-Effective and Portable**: CDs were cheaper and easier to transport due to their compact size.
+    \item **Higher Signal Quality**: CDs provided a higher signal-to-noise ratio (approximately 70 dB) compared to tapes.
+\end{itemize}
+
+\subsection{Tape Recording in Television}
+
+During the early days of television, both audio and video were recorded on tapes. However, tapes have a limited dynamic range, necessitating the use of noise reduction techniques.
+
+\section{Noise Reduction Techniques}
+
+\subsection{Dolby Noise Reduction}
+
+Dolby, named after the engineer who developed it, introduced several noise reduction systems:
+\begin{itemize}
+    \item **Dolby A, B, C**: Different levels of noise reduction, with Dolby C being the highest performer.
+    \item **Compression and Expansion**: High-quality cassette decks use Dolby B compression for home use, while studios and cinemas use Dolby C. These systems compress the audio signal during recording and expand it during playback to reduce noise.
+\end{itemize}
+
+\subsection{Types of Recording Tapes}
+
+There are three main types of tapes with varying dynamic ranges:
+\begin{itemize}
+    \item **Ferric Oxide Tape**: Also known as brown tape, with a dynamic range of about 55 dB.
+    \item **Chromium Tape**: Offers a slightly higher dynamic range of approximately 60-62 dB.
+    \item **Metal Tape**: More expensive, providing a dynamic range of around 65 dB.
+\end{itemize}
+
+\section{Practical Log Amplifier Circuit}
+
+In the last class, we covered a practical log amplifier circuit. Unlike theoretical circuits that assume ideal components, the practical log amplifier accounts for non-idealities such as offset voltages in operational amplifiers (op-amps).
+
+\subsection{Circuit Overview}
+
+The practical log amplifier includes null offsetting circuits to cancel out offset voltages. Key components include:
+\begin{itemize}
+    \item **Op-Amp A1**: Can be offset using potentiometer P1. If P1 is set halfway, the voltage across the 10 MΩ resistor is zero.
+    \item **Balancing Current**: The circuit provides a small current to balance the differential inputs of the op-amp, accommodating variations in current gain and transistor characteristics.
+\end{itemize}
+
+\section{Offset Nulling in Op-Amps}
+
+Even when the inputs of an op-amp are grounded, an output offset voltage may appear. The null offsetting circuit allows adjustment of this offset:
+\begin{equation}
+    V_{\text{out}} = 0 \text{ V}
+\end{equation}
+If the output is not zero, adjust potentiometer P1 until it is.
+
+\section{Circuit Analysis}
+
+\subsection{Analyzing the Output of Amplifier A2}
+
+Consider amplifier A2 with the following components:
+\begin{itemize}
+    \item **Resistor R4 (29.5 kΩ)**: Feedback resistor.
+    \item **Resistor R3 (0.5 kΩ)**: Connected to ground.
+\end{itemize}
+The gain of the op-amp is approximately:
+\[
+\text{Gain} = 1 + \frac{R4}{R3} = 1 + \frac{29.5 \text{ kΩ}}{0.5 \text{ kΩ}} = 60
+\]
+Given a supply voltage of ±15 V, the maximum output voltage is ±15 V, limiting the input voltage to:
+\[
+V_{\text{in}} = \frac{15 \text{ V}}{60} = 0.25 \text{ V}
+\]
+For safer operation, using a maximum input of 5 V results in:
+\[
+V_{\text{in}} = \frac{5 \text{ V}}{60} \approx 0.083 \text{ V}
+\]
+
+\subsection{Determining Voltages and Currents}
+
+Using Kirchhoff's Voltage Law (KVL) and transistor equations:
+\begin{align}
+    I_C &= I_S e^{\frac{V_{BE}}{n V_T}} \\
+    \ln\left(\frac{I_C}{I_S}\right) &= \frac{V_{BE}}{n V_T}
+\end{align}
+Where:
+\begin{itemize}
+    \item \( I_C \) is the collector current.
+    \item \( I_S \) is the saturation current.
+    \item \( V_{BE} \) is the base-emitter voltage.
+    \item \( n \) is the ideality factor.
+    \item \( V_T \) is the thermal voltage.
+\end{itemize}
+
+\section{Temperature Dependence and Calibration}
+
+\subsection{Temperature Independence}
+
+To make \( V_{\text{out}} \) independent of temperature, adjust resistor \( R3 \) to decrease as temperature increases. This can be achieved by using a resistor with a positive temperature coefficient:
+\[
+R3(T) = R3 \times (1 + \alpha T)
+\]
+Where \( \alpha \) is the temperature coefficient.
+
+\subsection{Calibration Steps}
+
+To calibrate the practical log amplifier in the lab:
+\begin{enumerate}
+    \item **Set \( V_S = 0 \text{ V} \)**: Short the input to ground. The output \( V_{\text{dash}} \) should be zero. Adjust potentiometer P1 until \( V_{\text{dash}} = 0 \text{ V} \).
+    \item **Set \( V_S = V_R \frac{R1}{R2} \)**: Adjust potentiometer P2 until the output voltage \( V_{\text{not}} = 0 \text{ V} \).
+\end{enumerate}
+Once calibrated, the circuit is ready to compute logarithms.
+
+\section{Conclusion}
+
+By selecting appropriate resistors \( R3 \) and \( R4 \) with temperature coefficients, the output \( V_{\text{not}} \) can be made temperature independent. The final equation for \( V \) in terms of circuit parameters is:
+\[
+V = -n V_T \ln\left(\frac{I1}{I_C2}\right)
+\]
+Where \( I1 \) is related to \( V_S \) and \( I_C2 \) is approximated as \( \frac{V_R}{R2} \).
+
+\section{Final Remarks}
+
+Ensure all variables are correctly set and equations are accurately applied. In future classes, we will explore more refined techniques to eliminate the need for approximations in current calculations. Please prepare for the next exercise, which focuses on designing a temperature-independent log amplifier.
+

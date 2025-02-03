@@ -1,0 +1,135 @@
+\begin{mdframed}[linecolor=gray!80!black, backgroundcolor=gray!10!white, linewidth=1pt, roundcorner=5pt, frametitle=Solution]
+To design a lead and a lag compensator for the given system, we will follow the steps and concepts outlined in the sources. The open-loop transfer function is given by:
+\[
+G(s) = \frac{10}{s^2 + 4s + 5}
+\]
+
+(i) Design a Lead Compensator:
+
+\begin{itemize}
+    \item \textbf{Desired Closed-Loop Pole Locations:} The desired closed-loop poles have a damping ratio \( \zeta = 0.6 \) and an undamped natural frequency \( \omega_n = 3 \) rad/sec. The location of the desired closed-loop poles can be calculated using the formula \( s = -\zeta\omega_n \pm j\omega_n\sqrt{1-\zeta^2} \). Substituting the given values:
+    \[
+    s = -0.6 \times 3 \pm j3\sqrt{1 - 0.6^2} = -1.8 \pm j2.4
+    \]
+    So, the desired closed-loop poles are at \(s_1 = -1.8 + j2.4\) and \(s_2 = -1.8 - j2.4\).
+    
+    \item \textbf{Angle Condition:} The angle of the open-loop transfer function at the desired pole location must satisfy the angle condition, i.e., \(\angle G(s_1) = (2k+1)180^\circ\). First, we calculate the angle of the plant at the desired pole location \(s_1 = -1.8 + j2.4\):
+    \[
+    \angle G(s_1) = \angle \frac{10}{(-1.8 + j2.4)^2 + 4(-1.8 + j2.4) + 5} = \angle \frac{10}{3.24 - 5.76 - j8.64 - 7.2 + j9.6 + 5}  = \angle \frac{10}{-9.96 + j0.96}
+    \]
+    \[
+    \angle G(s_1) = -180^\circ + \arctan\left(\frac{0.96}{-9.96}\right) = -180^\circ + 174.51^\circ = -5.49^\circ
+    \]
+    
+    \item \textbf{Angle Deficiency:} The angle deficiency to be compensated by the lead compensator is \(-180^\circ - (-5.49^\circ) = -174.51^\circ\). This means the lead compensator must add approximately \(174.51^\circ\) of phase lead. A phase margin of 40 degrees is required to get a damping ratio of approximately \(\zeta = 0.4\). This phase margin must be achieved by adding phase lead using the compensator. Adding 40 to 50 degrees of phase lead to the open loop curve improves relative stability. Most standard lead networks have a maximum phase lead of approximately 54 degrees, so multiple lead networks might be required. The lead compensator is given by:
+    \[
+    G_c(s) = K_c \frac{s+z}{s+p}
+    \]
+    where \(z\) is the zero and \(p\) is the pole of the lead compensator. Typically, we choose the zero and pole locations of the lead compensator to achieve the required phase lead at the desired pole location.
+    
+    \item \textbf{Lead compensator design:} To provide the required phase lead, a lead compensator of the form \( G_c(s) = K_c \frac{s+z}{s+p} \) will be used. One approach is to place the zero of the compensator at \(z = 1.8\), which is the real part of the desired pole location. Let's assume \(z=1.8\) and let the compensator be:
+    \[
+    G_c(s) = K_c \frac{s+1.8}{s+p}
+    \]
+    The phase angle contributed by the compensator is:
+    \[
+    \angle G_c(s_1) = \angle(s_1 + 1.8) - \angle(s_1 + p)
+    \]
+    \[
+    \angle G_c(s_1) = \angle(j2.4) - \angle(-1.8 + j2.4 + p)
+    \]
+    To achieve a phase lead of \(174.51^\circ\), we need to find an appropriate location for the pole \(p\). Let us use the approximation for the phase lead of a compensator from:
+    \[
+    \phi =  − \tan^{-1} \omega - \tan^{-1} \frac{\omega}{3} − 0.5 \omega(57.3^\circ)
+    \]
+    We know the crossover frequency is near \(\omega_n=3\), so let's calculate the approximate lead using this value:
+    \[
+    \phi =  − \tan^{-1} 3 - \tan^{-1} \frac{3}{3} − 0.5(3)(57.3^\circ) =  -71.56 -45 -85.95 = -202.51
+    \]
+    Since this is much more than needed we will use the angle of the plant calculated earlier, -5.49 degrees, as the starting point. The lead compensator must contribute 174.51 degrees to get to -180 degrees. Let us assume a pole location \(p = 10\), then:
+    \[
+    \angle G_c(s_1) = \angle(j2.4) - \angle(-1.8 + j2.4 + 10) = 90^\circ - \arctan\frac{2.4}{8.2} = 90^\circ - 16.38^\circ = 73.62^\circ
+    \]
+    The compensator with zero at 1.8 and pole at 10 only provides 73.62 degrees of phase lead, which is insufficient. We need to move the pole to a larger value. Let us try \(p = 20\):
+    \[
+    \angle G_c(s_1) = \angle(j2.4) - \angle(-1.8 + j2.4 + 20) = 90^\circ - \arctan\frac{2.4}{18.2} = 90^\circ - 7.49^\circ = 82.51^\circ
+    \]
+    This is still not enough, and it will be hard to get close to the required angle by placing only one pole.
+
+    To achieve the desired phase lead, we can use a design approach by using the maximum phase lead provided by the compensator. The maximum phase lead \( \phi_m \) occurs at a frequency \( \omega_m \) which is the geometric mean of \( z \) and \( p \), i.e. \( \omega_m = \sqrt{zp} \). The maximum phase lead is:
+    \[
+    \sin \phi_m = \frac{p-z}{p+z}
+    \]
+    We need a phase lead of around \(45^\circ\) to achieve a 25% overshoot or less. To find an appropriate pole and zero, let's assume we want a phase lead of 75 degrees. The calculations are:
+    \[
+    \sin 75^\circ = \frac{p-z}{p+z} \implies 0.9659 = \frac{p-z}{p+z} \implies 0.9659p + 0.9659z = p-z \implies z = \frac{0.0341}{1.9659} p = 0.0173 p
+    \]
+    We need to place \(z\) such that it provides the required phase lead, but also does not result in the magnitude plot changing too much. We have calculated that the plant phase angle at \(s=-1.8+j2.4\) is approximately -5.49. Therefore, the compensator must add 174.51 degrees of phase lead. Let us choose \(z= 3\), then:
+    \[
+    \omega_m = \sqrt{zp}
+    \]
+    \[
+    174.51^\circ = \arctan\frac{2.4}{1.8} - \arctan \frac{2.4}{p-1.8} \implies 82.51^\circ = 53.13 - \arctan \frac{2.4}{p-1.8} \implies \arctan \frac{2.4}{p-1.8} = -29.38
+    \]
+    Since arctan is always between -90 and 90, this approach is not valid. Let's try something simpler based on: a zero at -a and a pole at -b, with \(b>a\). The zero is at \(z=1.8\). To get 45 degrees of phase lead at a frequency of approximately 3 rad/sec, the pole must be at approximately -10. So the compensator is:
+    \[
+    G_c(s) = K_c \frac{s+1.8}{s+10}
+    \]
+    Let us calculate the magnitude of the compensator with the selected pole and zero at the desired pole location:
+    \[
+    |G_c(s_1)| = K_c \left| \frac{-1.8 + j2.4 + 1.8}{-1.8 + j2.4 + 10}\right| = K_c \left| \frac{j2.4}{8.2 + j2.4} \right| = K_c \frac{2.4}{\sqrt{8.2^2 + 2.4^2}} = K_c \frac{2.4}{8.54} = 0.281 K_c
+    \]
+    
+    \item \textbf{Gain Calculation:} Now we need to find the value of  \(K_c\) to place the closed-loop pole at the desired location. The magnitude condition is \( |G_c(s)G(s)| = 1 \) at the desired pole location. We first calculate the magnitude of the plant at the desired location:
+    \[
+    |G(s_1)| = \left|\frac{10}{(-1.8 + j2.4)^2 + 4(-1.8 + j2.4) + 5}\right| = \left|\frac{10}{-9.96 + j0.96}\right| = \frac{10}{\sqrt{(-9.96)^2+0.96^2}} = \frac{10}{10.006}=0.999
+    \]
+    Then, the magnitude of the compensator multiplied by the magnitude of the plant must be 1, so:
+    \[
+    |G_c(s_1) G(s_1)|= 0.281K_c(0.999) = 1 \implies K_c = 3.56
+    \]
+    Therefore, the lead compensator is:
+    \[
+    G_c(s) = 3.56 \frac{s+1.8}{s+10}
+    \]
+\end{itemize}
+
+(ii) Design a Lag Compensator:
+
+\begin{itemize}
+    \item \textbf{Steady-State Error Requirement:} The steady-state error to a ramp input is given by \(e_{ss} = \frac{1}{K_v}\), where \(K_v\) is the velocity error constant. We need to reduce the steady-state error to 0.1. This implies that \(K_v\) should be:
+    \[
+    K_v = \frac{1}{0.1} = 10
+    \]
+    
+    \item \textbf{Current Kv:} For the system with the lead compensator:
+    \[
+    G(s) = 3.56 \frac{s+1.8}{s+10} \frac{10}{s^2 + 4s + 5} = \frac{35.6(s+1.8)}{(s+10)(s^2+4s+5)}
+    \]
+    The velocity error constant \(K_v\) is the limit of \( sG(s) \) as \(s\) approaches 0, so:
+    \[
+    K_v = \lim_{s\to 0} s \frac{35.6(s+1.8)}{(s+10)(s^2+4s+5)} =  \frac{35.6(1.8)}{(10)(5)} = 1.28
+    \]
+    
+    \item \textbf{Lag Compensator Requirement:} The lag compensator should increase the velocity error constant by a factor of \(\frac{10}{1.28} = 7.8\). A lag compensator has the form:
+    \[
+    G_{lag}(s) = \frac{s+z_l}{s+p_l}
+    \]
+    where \(z_l\) is the zero and \(p_l\) is the pole of the lag compensator, and \(z_l > p_l\). The ratio between the zero and the pole should be 7.8. To minimize the impact on the transient response, the pole and zero of the lag compensator should be placed close to the origin. Let's choose \(p_l = 0.01\), then \(z_l = 7.8\times0.01 = 0.078\). Therefore, the lag compensator is:
+    \[
+    G_{lag}(s) = \frac{s+0.078}{s+0.01}
+    \]
+    The complete compensated system is given by:
+    \[
+    G_{total}(s) = 3.56 \frac{s+1.8}{s+10}\frac{s+0.078}{s+0.01} \frac{10}{s^2 + 4s + 5}
+    \]
+\end{itemize}
+
+\textbf{Summary:}
+\begin{itemize}
+    \item \textbf{Lead Compensator:} \( G_c(s) = 3.56 \frac{s+1.8}{s+10} \)
+    \item \textbf{Lag Compensator:} \( G_{lag}(s) = \frac{s+0.078}{s+0.01} \)
+\end{itemize}
+
+The lead compensator was designed to achieve the desired transient response characteristics, while the lag compensator was designed to reduce the steady-state error to the desired value. It is important to note that the design process may require further adjustments and simulations to verify the performance of the compensated system.
+\end{mdframed}

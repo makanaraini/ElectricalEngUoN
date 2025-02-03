@@ -1,0 +1,130 @@
+\section{Lecture 14: 07/11/2024}
+
+\subsection{Introduction}
+Welcome everyone. It looks like a few of you are still joining the session. We'll wait for a few more students to join before we begin. Today, we'll cover the Gilbert's Multiplier Cell, its design, analysis, and practical implementation.
+
+\subsection{Gilbert's Multiplier Cell Overview}
+In our last class, we introduced the Gilbert's Multiplier Cell, which is capable of performing multiplication operations. The cell comprises:
+\begin{itemize}
+    \item Two differential amplifiers in parallel forming the output.
+    \item Another differential amplifier comprising of transistors $Q_5$ and $Q_6$ to vary the transconductance.
+\end{itemize}
+
+\subsection{Current Analysis}
+Let’s define the collector currents as follows:
+\begin{align*}
+    &I_1 = \text{Collector current of } Q_1, \\
+    &I_2 = \text{Collector current of } Q_2, \\
+    &I_3 = \text{Collector current of } Q_3, \\
+    &I_4 = \text{Collector current of } Q_4, \\
+    &I_5 = \text{Collector current of } Q_5, \\
+    &I_6 = \text{Collector current of } Q_6.
+\end{align*}
+These are the signal currents, not the bias currents.
+
+\subsubsection{Basic Equations}
+Based on the assumption that the emitter current is approximately equal to the collector current due to the high gain of the transistors, we derive:
+\[
+I_1 + I_2 = I_5,
+\]
+\[
+I_3 + I_4 = I_6.
+\]
+For a general differential amplifier, the relationship is given by:
+\[
+i_1 - i_2 = g_{m12} \cdot V_1 R_L,
+\]
+where $g_{m12}$ is the transconductance of transistors $Q_1$ and $Q_2$, and $V_1$ is the input voltage.
+
+\subsection{Output Voltage Analysis}
+The output voltage $V_{\text{out}}$ can be expressed as the difference in voltage drops across the load resistors:
+\[
+V_{\text{out}} = V_{CC} - I_2 R_L - I_4 R_L.
+\]
+Simplifying, we obtain:
+\[
+V_{\text{out}} = V_{CC} - R_L (I_2 + I_4).
+\]
+Substituting the current relationships, we derive:
+\[
+V_{\text{out}} = V_1 R_L \left( \frac{I_6}{V_T} - \frac{I_5}{V_T} \right),
+\]
+where $V_T$ is the thermal voltage.
+
+\subsection{Relationship Between $V_1$, $V_2$, $I_5$, and $I_6$}
+To establish how $V_{\text{out}}$ varies as a function of $V_1$ and $V_2$, consider the collector currents of $Q_5$ and $Q_6$. The equations are derived based on the differential pair configurations and the presence of emitter degeneration resistances.
+
+\subsection{Case Analysis}
+\subsubsection{Case 1: $R_E = 0$}
+When the emitter resistance $R_E$ is zero, the differential amplifier comprising $Q_5$ and $Q_6$ behaves identically to the general differential amplifier. The relationship simplifies to:
+\[
+I_6 - I_5 = g_{m56} \cdot V_2.
+\]
+Substituting into the output voltage equation:
+\[
+V_{\text{out}} = \frac{V_1 R_L}{V_T} (I_6 - I_5).
+\]
+Since $g_{m56} = \frac{I_6}{V_T}$ and $g_{m12} = \frac{I_5}{V_T}$, we can further express:
+\[
+V_{\text{out}} = V_1 V_2 \cdot \frac{R_L}{V_T}.
+\]
+This represents the standard form of the multiplier with a scalar gain.
+
+\subsubsection{Case 2: $R_E \neq 0$}
+When emitter resistance $R_E$ is present, the relationship between $V_2$, $I_5$, and $I_6$ changes. The analysis involves applying Kirchhoff's Voltage Law (KVL) to the loop involving $Q_5$ and $Q_6$:
+\[
+V_2 = V_{BE5} - V_{BE6}.
+\]
+Taking the natural logarithm and linearizing for small signal variations, we arrive at:
+\[
+V_2 = (I_5 - I_6) R_E.
+\]
+Substituting back into the output voltage equation:
+\[
+V_{\text{out}} = -\frac{V_1 R_L}{V_T} \cdot \frac{V_2}{R_E}.
+\]
+Thus, the gain is now inversely proportional to $R_E$, improving linearity at the expense of reduced gain:
+\[
+V_{\text{out}} = -\frac{V_1 V_2 R_L}{V_T R_E}.
+\]
+
+\subsection{Advantages of the Gilbert's Multiplier Cell}
+\begin{itemize}
+    \item \textbf{Four-Quadrant Operation}: Capable of handling both positive and negative input voltages, allowing multiplication in all four quadrants.
+    \item \textbf{Monolithic Fabrication}: Easily fabricated on a single silicon wafer, enabling mass production and integration into ICs.
+    \item \textbf{Large Bandwidth}: Supports high-frequency operations, suitable for applications in communication circuits.
+    \item \textbf{Low-Cost Production}: Economies of scale in production reduce the cost per unit significantly.
+\end{itemize}
+
+\subsection{Limitations of the Gilbert's Multiplier Cell}
+\begin{itemize}
+    \item \textbf{Limited Input Range}: The differential input voltage is restricted to approximately $\pm 4V_T$ to prevent clipping.
+    \item \textbf{Floating Output}: The output does not have a common reference to ground, necessitating additional circuitry for proper interfacing.
+    \item \textbf{Differential Resistor Mismatch}: Discrepancies in input resistances seen by $V_1$ and $V_2$ can affect the performance and linearity.
+\end{itemize}
+
+\subsection{Practical Implementation of the Multiplier}
+A practical multiplier circuit incorporates additional components to enhance performance:
+\begin{itemize}
+    \item \textbf{Preconditioning Circuit}: Comprising transistors $Q_7$ and $Q_8$, this stage distorts the input signal using a hyperbolic tangent inverse function, significantly extending the dynamic range to approximately $\pm 10$ volts.
+    \item \textbf{Constant Current Sources}: Transistors $Q_{15}$ and $Q_{16}$ form the current sources required for biasing the differential pairs.
+\end{itemize}
+
+\subsubsection{Dynamic Range Extension}
+By applying the preconditioning circuit, the input signals $V_Z$ and $V_Y$ are referenced to ground, allowing for a larger and more linear dynamic range in the multiplication operation. The extended range improves the multiplier's usability in various applications without distortion.
+
+\subsection{Conclusion}
+Today, we've delved into the design and analysis of the Gilbert's Multiplier Cell, exploring both theoretical and practical aspects. We discussed the critical role of emitter resistances, the impact on gain and linearity, and the advantages that make the Gilbert's multiplier a staple in analog circuit design. In the next class, we'll further analyze the multiplier cell's performance with different emitter resistances and explore additional configuration nuances to enhance its functionality.
+
+If there are any questions or if you need clarification on today's topics, feel free to reach out or bring them to the next class session. Please ensure to bring your lab circuits on time to avoid delays in our schedule.
+
+\section*{Questions and Answers}
+\begin{itemize}
+    \item \textbf{Q:} Why is the output of the multiplier floating?
+    
+    \textbf{A:} The output is floating because it does not have a common reference to ground. This requires an additional amplifier to establish a proper reference point for the output signal.
+    
+    \item \textbf{Q:} How does the emitter resistance affect the multiplier's performance?
+    
+    \textbf{A:} Increasing the emitter resistance improves the linearity of the multiplier by expanding the dynamic range but reduces the overall gain of the circuit.
+\end{itemize}

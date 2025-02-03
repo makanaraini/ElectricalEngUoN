@@ -1,0 +1,2103 @@
+\chapter{Lectures}
+\section{Lecture 1: Introduction to Power Electronics}
+
+\subsection{Course Introduction}
+
+Mr. Ombura welcomed Moses, our class representative, together with Sephine, and all students enrolled in FEE 501: Applied Electronics. He hoped that everyone could see everything loud and clear. He requested that they ensure their microphones were turned on. He emphasized that it was crucial for interactive participation, especially since some students were attempting to log in. He typically used a full-screen presentation to maximize screen space, allowing him to hear any connection issues.
+
+He asked to inform the students that if they joined the class late, he might not be able to admit them, as it disrupted the flow of the lecture.
+
+\subsection{Course Overview}
+
+Mr. Ombura stated that the course covered the following topics:
+
+\begin{enumerate}
+    \item Nonlinear Analog Systems
+    \item Chopper Techniques
+    \item Locking and Amplifiers
+    \item Logarithmic and Anti-Log Amplifiers
+    \item Multipliers and Dividers
+    \item Function Generators
+    \item Oscillators and Ramp Oscillators
+    \item Relaxation Oscillators
+    \item DC Power Supplies
+    \item Capacitor Filters
+    \item Rectifiers
+    \item Voltage Regulators: Zener, Linear, and Switching Regulators
+    \item Protection Circuits and Short Circuit Limits
+\end{enumerate}
+
+He noted that due to the extensive nature of these topics, assignments would be provided to ensure a solid understanding. While the course covered the basics, Power Electronics was a specialized field, and those pursuing it would gain a significant advantage.
+
+\subsection{Basic Principles of Power Electronics}
+
+\subsubsection{Diode Configurations}
+
+Mr. Ombura explained that when connecting diodes:
+
+\begin{itemize}
+    \item \textbf{Series Connection}: Increases the blocking voltage. For instance, two diodes rated at 100V each could block up to 200V.
+    \item \textbf{Parallel Connection}: Increases the current capacity. For example, two transistors each handling 10A in parallel could handle up to 20A.
+\end{itemize}
+
+\subsubsection{Inverters and Converters}
+
+He further elaborated:
+
+\begin{itemize}
+    \item \textbf{Inverters}: Convert DC to AC. They are essential in solar energy systems where solar panels produce DC, but most household appliances require AC.
+    \item \textbf{DC-DC Converters}: Convert DC voltage from one level to another. Examples include laptop power supplies that convert 240V AC to 19V DC using a full bridge rectifier, resulting in approximately 340V DC, which is then stepped down.
+\end{itemize}
+
+\subsubsection{Types of DC-DC Converters}
+
+Mr. Ombura categorized DC-DC converters as follows:
+
+\begin{enumerate}
+    \item \textbf{Step-Down (Buck) Converters}: Reduce voltage from a higher to a lower level.
+    \item \textbf{Step-Up (Boost) Converters}: Increase voltage from a lower to a higher level.
+\end{enumerate}
+
+\subsection{Applications of DC-DC Converters}
+
+He identified several applications:
+
+\begin{itemize}
+    \item \textbf{Computers}: Desktop power supplies provide multiple DC voltages (e.g., +12V, -12V, +3.3V) from a higher input voltage.
+    \item \textbf{Electric Vehicles}: Convert household voltage (e.g., 240V AC) to higher DC voltages (e.g., 400V DC) required for battery charging.
+    \item \textbf{Televisions}: Modern TVs use DC-DC converters to power internal circuits, similar to computers.
+\end{itemize}
+
+\subsection{Variable Frequency Drives (VFD)}
+
+Mr. Ombura discussed the evolution from cycloconverters to Variable Frequency Drives due to their higher efficiency. VFDs are widely used in:
+
+\begin{itemize}
+    \item Electric bikes and motorcycles
+    \item Electric cars
+    \item Controlling motor speeds by adjusting the AC output frequency
+\end{itemize}
+
+\subsection{Chopper Stabilized Amplifiers}
+
+He explained that chopper stabilized amplifiers are designed to amplify very slowly varying, low-amplitude signals, which can be considered as DC signals. These are critical in applications such as:
+
+\begin{itemize}
+    \item \textbf{Transducers}: Measuring stress and deformation in structures using strain gauges.
+    \item \textbf{Temperature Monitoring}: In closed-loop control systems using thermocouples.
+    \item \textbf{Geological Measurements}: Monitoring ground movements, falls, and earthquakes.
+\end{itemize}
+
+\subsection{Operational Amplifiers (Op-Amps)}
+
+Mr. Ombura highlighted that operational amplifiers are fundamental components in many electronic circuits, including chopper stabilized amplifiers. Key points include:
+
+\begin{itemize}
+    \item \textbf{Differential Input Stage}: Compares two input signals.
+    \item \textbf{Voltage Gain Stage}: Provides the necessary amplification.
+    \item \textbf{Buffer Stage}: Ensures stability and protection with Class B outputs.
+\end{itemize}
+
+\subsubsection{Challenges with Op-Amps}
+
+He noted several challenges:
+
+\begin{itemize}
+    \item \textbf{Temperature Dependency}: Collector current and gain vary with temperature, leading to offset voltages.
+    \item \textbf{Noise}: Includes Johnson (thermal) noise and flicker noise, which can affect signal integrity.
+    \item \textbf{Offset Voltages}: Result from mismatched transistors and can lead to inaccuracies in low-level signal amplification.
+\end{itemize}
+
+\subsection{Instrumentation Amplifiers}
+
+Mr. Ombura explained that to address the limitations of basic op-amp configurations in amplifying low-level, slowly varying signals, instrumentation amplifiers are used. They provide high input impedance and superior offset voltage and current characteristics, making them suitable for precise measurements in various applications.
+
+\subsection{Practical Considerations}
+
+He advised that when designing amplifiers for low-frequency signals:
+
+\begin{itemize}
+    \item Ensure the amplifier can handle very low-frequency (approaching DC) signals without introducing significant offset or noise.
+    \item Use matched transistor pairs and temperature-controlled substrates to minimize drift.
+    \item Consider using chopper stabilized amplifiers for superior performance in temperature and drift management.
+\end{itemize}
+
+\subsection{Conclusion}
+
+Mr. Ombura concluded that today's focus was on enhancing the practical implementation of the Gilbert multiplier by incorporating output referencing and improving dynamic range through resistor $R_1$. He emphasized that balancing linearity and gain is crucial for real-world applications. He announced that in the next class, they would analyze the predistortion circuit in detail.
+
+\subsection{Questions and Troubleshooting}
+
+Several students raised questions regarding signal transmission and amplifier functionality. Issues such as network connectivity were addressed, and the necessity of recording lectures was mentioned to accommodate technical difficulties. 
+
+\subsection{Future Topics}
+
+In the next class, we will focus on the internal construction of chopper stabilized amplifiers, including modulators, AC amplifiers, and demodulators. We will also explore practical circuit designs and address common challenges faced in amplifier configurations.
+
+\newpage
+
+\section{Lecture 2: 19/09/2024}
+Low-level signals that vary very slowly with respect to time can be considered DC signals or very slowly varying DC signals. These signals operate within the DC frequency range, necessitating the use of amplifiers capable of functioning up to DC frequencies. As discussed in the third-year amplifier course, only an emitter-coupled amplifier, also known as a differential amplifier, can amplify signals all the way down to DC. In the previous class, it was demonstrated that the best example of a good DC amplifier is the operational amplifier.
+
+\section{Operational and Instrumentation Amplifiers}
+Operational amplifiers are so named because they are used to perform mathematical operations and are integral components in computers. A modified version, known as the instrumentation amplifier, is optimized for very low noise. This optimization is achieved by minimizing the noise generated by the transistors, especially those in the differential pair.
+
+\subsection{Noise in Amplifiers}
+In these types of amplifiers, various components contribute to noise generation:
+\begin{itemize}
+    \item \textbf{Resistors:} The resistors used to bias and couple the transistors generate noise. The type of resistor affects the noise characteristics:
+    \begin{itemize}
+        \item \textit{Metal Oxide Resistors:} High-quality resistors made from metal oxide generate minimal noise.
+        \item \textit{Carbon Resistors:} Commonly found in shops and laboratories, these resistors generate significant noise.
+    \end{itemize}
+\end{itemize}
+Even with the best instrumentation amplifiers, noise in a much higher frequency band than the input signal can still pose challenges.
+
+\section{Drift in Instrumentation Amplifiers}
+Instrumentation amplifiers suffer from \textit{V\textsubscript{IO}} (input offset voltage) and \textit{I\textsubscript{IO}} (input offset current) drift. These drifts are on the same order of magnitude as the signal to be amplified and are temperature-dependent. For example, in Nairobi, laboratory temperatures can range from 15°C in the morning to 22–25°C in the afternoon, affecting the output of transistors and the overall amplifier. This drift complicates the differentiation between the useful signal and noise, as the drift voltages and currents are comparable to the amplified signal.
+
+\section{Chopper-Stabilized Amplifiers}
+To address the drift issues in DC amplifiers, chopper-stabilized amplifiers offer superior temperature and drift performance. These amplifiers consist of three main modules:
+\begin{enumerate}
+    \item \textbf{Modulator:} Converts the slowly varying DC signal into a higher frequency amplitude-modulated signal by chopping the input signal using a switch controlled by a square or rectangular wave.
+    \item \textbf{AC Amplifier (Demodulator):} Similar to a high-quality operational amplifier with capacitors that block DC, ensuring only the AC component is amplified.
+    \item \textbf{Demodulator:} Converts the amplified AC signal back into a DC signal.
+\end{enumerate}
+
+\subsection{Modulation Techniques}
+Common modulation techniques include:
+\begin{itemize}
+    \item \textit{Pulse Amplitude Modulation (PAM)}
+    \item \textit{Double-Sideband (DSB) Modulation}
+    \item \textit{Frequency Shift Keying (FSK)}
+    \item \textit{Quadrature Phase Shift Keying (QPSK)}
+\end{itemize}
+For chopper amplifiers, pulse amplitude modulation is primarily used.
+
+\subsection{Chopper Switches}
+The chopper switch is critical in converting the DC signal to a modulated signal. Ideally, a chopper switch should have:
+\begin{itemize}
+    \item \textbf{Zero On Resistance:} To prevent loss of input voltage.
+    \item \textbf{Infinite Off Resistance:} To ensure no signal passes when the switch is open.
+    \item \textbf{High-Speed Switching:} To handle rapid modulation requirements.
+    \item \textbf{Good Isolation:} Prevents control voltage from appearing at the output.
+    \item \textbf{No Offset Voltage:} To avoid introducing errors into the output signal.
+    \item \textbf{Zero Control Power:} Ideally, no power is required to activate the switch.
+    \item \textbf{Infinite Current and Voltage Handling:} Can pass infinite current when on and block infinite voltage when off.
+\end{itemize}
+In practice, achieving these ideal characteristics is challenging, leading to the use of different types of switches.
+
+\subsection{Types of Chopper Switches}
+\subsubsection{Electromechanical Relays}
+Used primarily in the early 1960s, electromechanical relays come in two types:
+\begin{itemize}
+    \item \textbf{Normal Relays:} Larger size, require more power, slower switching speeds (typically below 60 Hz), and prone to contact bounce, causing signal distortion.
+    \item \textbf{R Relays:} Smaller, faster, require less power, but were rarely used beyond the mid-1960s due to their diminishing advantages over time.
+\end{itemize}
+Advantages of electromechanical relays include:
+\begin{itemize}
+    \item On/off characteristics close to ideal switches.
+    \item No drift in output terminals.
+    \item Good isolation between control voltage and output.
+\end{itemize}
+Disadvantages:
+\begin{itemize}
+    \item Low switching speeds.
+    \item Contact bounce leading to signal distortion.
+    \item Bulky construction and high power consumption.
+    \item Not suitable for remote applications due to high energy requirements.
+\end{itemize}
+
+\subsubsection{Semiconductor Switches}
+In modern applications, semiconductor switches have largely replaced electromechanical relays. Types include:
+\begin{itemize}
+    \item \textbf{BJT Transistors:} High switching speeds but suffer from large offset voltages (approximately 0.1 V for germanium and 0.2 V for silicon transistors), which can negate the amplified signal.
+    \item \textbf{Field Effect Transistors (FETs):} Provide better control and lower noise compared to BJTs.
+    \item \textbf{Metal Oxide FETs:} Offer enhanced performance characteristics.
+\end{itemize}
+\subsection{Challenges with BJT Switches}
+Although BJTs have high switching speeds, their large offset voltages can severely impact signal integrity. For example, a 0.2 V drop across a BJT switch can nullify a 50 mV signal. Additionally, BJTs are unidirectional; they cannot effectively switch signals when polarity reverses, limiting their applicability in bidirectional signal processing.
+
+\section{Conclusion}
+Chopper-stabilized amplifiers provide a robust solution to drift and noise issues in DC amplifiers. However, selecting the appropriate switching mechanism is crucial to maintain signal integrity and performance. While electromechanical relays offered a near-ideal switching characteristic in the past, semiconductor switches have become the preferred choice despite their inherent challenges, such as offset voltages and unidirectional switching limitations.
+
+\newpage
+\section{Lecture 3: Chopper Stabilized Amplifiers}
+
+\subsection{Introduction}
+Our topic today is the chopper stabilized amplifier. It is called a "chopper" because the input signal is chopped before being fed into an AC amplifier. Chopping performs what is known as frequency translation. Frequency translation is necessary because we want the signal to be modulated with the voltages of the AC amplifier. This process is referred to as amplitude modulation (AM), specifically pulse amplitude modulation.
+
+\subsection{Frequency Translation}
+Frequency translation involves shifting the frequency of the input signal. For example, if chopping is performed at 10 kHz and the information signal is a slowly varying DC signal (less than 1 Hz), the signal will be translated from a baseband with a slow-varying DC signal to around 10 kHz. The student who emailed me was not on the list, but let's continue.
+
+Frequency translation is necessary because we want the information signal to be well above the drift voltage frequencies, which are very low. This ensures that when we recover the signal at the end of the chopper stabilized amplifier, we can discriminate between the drift voltages and our information signal.
+
+\subsection{Chopping Mechanism}
+To perform chopping, we require switches. We use semiconductor switches, which consist of BJTs (Bipolar Junction Transistors), FETs (Field Effect Transistors), and MOSFETs (Metal-Oxide-Semiconductor Field-Effect Transistors). BJTs are rarely used because the offset voltage of the BJT is quite large.
+
+In the last class, I presented a diagram where an NPN transistor acts as a switch for chopping. For a silicon BJT, the offset voltage is about 0.2 volts for small signal transistors, while germanium transistors have about 0.1 volts. With a 50 kHz chopping frequency, the voltage drop across the transistor switch (collector-emitter junction) prevents the signal from appearing at the output.
+
+Another disadvantage of BJTs is that for an NPN transistor to chop, the collector must remain positive relative to the emitter. If the input signal polarity changes, making the collector negative, the transistor cannot operate in that region because the collector-emitter junction becomes reverse-biased. Therefore, BJTs are never used for chopping because of the large voltage drop across the collector and emitter when used as a switch, and they can only chop in one direction.
+
+\subsection{Field Effect Transistors (FETs)}
+The next commonly used switch is the Field Effect Transistor (FET). FETs are preferred because they offer several advantages:
+\begin{enumerate}
+    \item \textbf{No Offset Voltage:} FETs pass through the origin, meaning there is no offset voltage between the drain and the source.
+    \item \textbf{High Switching Speed:} FETs have a very high switching speed, making them suitable for applications like satellite LNBs (Low-Noise Block converters) that operate at very high frequencies.
+    \item \textbf{Bidirectional Switching:} FETs can chop both positive and negative voltages due to their ability to conduct in both directions.
+    \item \textbf{Low On-Resistance:} Although not ideal, the on-resistance of FETs is approximately 25 ohms for small signal devices. There are specialized FETs manufactured specifically for use in choppers.
+\end{enumerate}
+
+\subsection{Advantages of FETs}
+FETs offer several benefits over BJTs, including no offset voltage between drain and source, high switching speeds, bidirectional operation, and low on-resistance. Even though the on-resistance is not ideal (practically, we aim for zero when closed and infinity when open), FETs provide some of the best characteristics achievable with practical devices. Additionally, they are small in size and have low power requirements for switching, which refers to the control voltage needed to operate the switch.
+
+\subsection{Disadvantages of FETs}
+Despite their advantages, FETs have non-ideal on and off characteristics. The on-resistance is about 25 ohms, and the off-resistance is around $10^{10}$ ohms. Other disadvantages include:
+\begin{itemize}
+    \item \textbf{Switching Spikes:} Due to incomplete isolation between the output terminal and the control voltage, switching spikes may appear at the output. This is caused by internal capacitances, such as $C_{GD}$ (Gate-Drain Capacitance) and $C_{GS}$ (Gate-Source Capacitance), which can generate spikes when driven by rectangular pulses.
+\end{itemize}
+These switching spikes add errors to the chopped signal. However, there are methods to mitigate these issues, which we will explore later.
+
+\subsection{MOSFETs as Switches}
+The MOSFET (Metal-Oxide-Semiconductor Field-Effect Transistor) is a modification of the FET, featuring a metal-oxide-silicon layer between the gate and the channel, which significantly increases input impedance (typically around $10^{12}$ ohms). This insulation layer ensures that the power required to drive the MOSFET on or off is almost zero, as the gate current is negligible.
+
+The drain-source characteristics of MOSFETs are identical to those of FETs, but the insulated gate allows for lower power consumption, making MOSFETs the preferred choice in most modern chopper stabilized amplifiers. MOSFETs are mass-produced and cost-effective compared to other FETs, further enhancing their suitability.
+
+\subsection{Electromechanical Switches}
+Electromechanical switches, such as relays, are not commonly used in modern applications due to their bulkiness, high power consumption, and expense. They are typically replaced by semiconductor switches like MOSFETs. However, for educational purposes, it's useful to understand the differences:
+\begin{itemize}
+    \item \textbf{Series Switches:} Utilize relays to switch in series.
+    \item \textbf{Shunt Switches:} Incorporate relays for shunting current.
+\end{itemize}
+Given their disadvantages, electromechanical switches are largely obsolete in favor of semiconductor alternatives.
+
+\subsection{AC Amplifier in Chopper Stabilized Systems}
+The next component in our chopper stabilized amplifier is the AC amplifier. It is designed to amplify only AC signals and is constructed by placing a capacitor in series with a low-noise instrumentation amplifier. Typically, this amplifier is originally a DC amplifier (operational amplifier) modified with DC blocking capacitors to prevent DC drift from passing through to the signal.
+
+The AC amplifier must have adequate bandwidth to pass all sidebands. The function of the AC amplifier is to amplify signals whose frequencies are well above the drift voltages of both the chopper switch at its input and the amplifier itself. The capacitors at the input and output act as high-pass filters, allowing only high-frequency signals to propagate to the next stage.
+
+\subsection{Operational Amplifier Characteristics}
+Operational amplifiers (op-amps) used in these systems, such as the widely-known LM741, have specific electrical characteristics that are crucial for their performance:
+\begin{itemize}
+    \item \textbf{Input Offset Voltage:} The voltage difference required at the input terminals to make the output zero, typically ranging from 1 mV to 5 mV.
+    \item \textbf{Input Resistance:} At 25°C, the input resistance ranges from 3 MΩ to about 2 MΩ, facilitating efficient voltage transfer from the source to the amplifier.
+    \item \textbf{Slew Rate:} Approximately 0.5 V/μs, indicating the maximum rate at which the output voltage can change. Signals faster than this rate will not be accurately followed by the op-amp.
+    \item \textbf{Input Offset Current:} Ranges from 3 to 30 nA, with a maximum of 170 nA. This current contributes to the voltage at the input and can affect the accuracy of the amplification.
+    \item \textbf{Temperature Drift:} The input offset current drifts by about 0.5 nA/°C, affecting the stability of the amplifier with temperature changes.
+\end{itemize}
+
+\subsection{Design Considerations}
+As engineers, designing a chopper stabilized amplifier involves simulating the circuit, often using software like Proteus. Students are encouraged to simulate these circuits to understand the interaction between different components:
+
+\begin{itemize}
+    \item \textbf{Modulator:} The first part consists of the chopper switch.
+    \item \textbf{AC Amplifier:} Uses blocking capacitors and a low-noise instrumentation amplifier to amplify the chopped signal.
+\end{itemize}
+
+\subsection{Example Circuit Analysis}
+Consider a typical chopper stabilized amplifier circuit using an LM741 op-amp:
+
+\begin{itemize}
+    \item \textbf{Power Supply:} Typically $\pm15$ V, verified against the manufacturer's recommended operating conditions.
+    \item \textbf{Biasing:} Utilizes a VBE multiplier to provide the necessary bias voltage and prevent thermal runaway in the output transistors.
+    \item \textbf{Protection:} Includes short-circuit protection mechanisms using transistors and resistors to safeguard against excessive current.
+\end{itemize}
+
+\subsection{VB Multiplier Function}
+The VB multiplier circuit ensures proper biasing of the output stage to eliminate crossover distortion and compensate for temperature variations. It adjusts the voltage between points A and B to maintain a stable operating point despite temperature changes, thus preventing thermal runaway in the output transistors.
+
+\subsection{Protection Mechanisms}
+Short-circuit protection is implemented by monitoring the voltage across specific resistors and transistors. If the voltage exceeds a threshold (e.g., 0.5 V across a 25 Ω resistor), the protection circuit limits the current to prevent damage to the amplifier components.
+
+\subsection{Conclusion}
+In summary, chopper stabilized amplifiers rely on frequency translation achieved through chopping, high-speed semiconductor switches like FETs and MOSFETs, and carefully designed AC amplifiers to minimize drift and noise. Proper biasing and protection mechanisms are essential to ensure stable and accurate amplification. Understanding these components and their interactions is crucial for designing effective chopper stabilized amplifier systems.
+
+\section{Lecture 4: Chopper-Stabilized Amplifiers and Op-Amp Characteristics}
+
+\section{Introduction}
+
+In this lecture, we delve into chopper-stabilized amplifiers, focusing on their composition and the characteristics of operational amplifiers (op-amps) used within these systems. We will explore the modules that constitute a CH stabilized amplifier, analyze a typical op-amp circuit, and discuss essential parameters that influence amplifier performance.
+
+\section{CH Stabilized Amplifier Modules}
+
+A CH stabilized amplifier comprises three primary modules:
+
+\begin{enumerate}
+    \item \textbf{Modulator}
+    \item \textbf{AC Amplifier}
+    \item \textbf{Demodulator}
+\end{enumerate}
+
+A high-quality AC amplifier within this system is an instrumentation amplifier. Unlike standard op-amps, instrumentation amplifiers utilize high-quality components with very low noise, ensuring minimal noise amplification across stages.
+
+\section{Op-Amp Circuit Design}
+
+\subsection{Circuit Stages}
+
+Examining the second diagram of a typical Texas Instruments op-amp, the circuit can be divided into three distinct blocks:
+
+\begin{enumerate}
+    \item \textbf{First Stage: Inverting and Non-Inverting Circuits}
+    \begin{itemize}
+        \item \textbf{Components}: Q5 and Q6
+        \item \textbf{Function}: Acts as the initial amplification stage with protection provided by Q5 and Q6.
+    \end{itemize}
+
+    \item \textbf{Middle Stage: Biasing through Current Mirrors}
+    \begin{itemize}
+        \item \textbf{Components}: Q8, Q10, and Q11
+        \item \textbf{Function}: Maintains biasing through current mirrors ensuring stable operation.
+    \end{itemize}
+
+    \item \textbf{Second Stage: Active Load and Output Stage}
+    \begin{itemize}
+        \item \textbf{Components}: Q15, Q16, Q13, Q14, and Q20
+        \item \textbf{Function}: Comprises the active load (primarily Q13) and the Class B output stage utilizing emitter followers (Q14 and Q20).
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Noise Considerations}
+
+The gain of the output stage is just below unity due to the presence of emitter followers. It is crucial to use resistors that generate minimal noise to prevent noise from the first stage from being amplified by the second stage. The thermal noise generated by a resistor is given by:
+
+\[
+V_{\text{noise RMS}} = \sqrt{4kTBR}
+\]
+
+where:
+\begin{itemize}
+    \item \( T \) = Temperature in Kelvin
+    \item \( B \) = Bandwidth
+    \item \( R \) = Resistance in ohms
+\end{itemize}
+
+Metal oxide resistors are typically preferred for their low noise characteristics. All components are fabricated into an IC chip to maintain consistency and performance.
+
+\section{Characteristics of the 741 Op-Amp}
+
+\subsection{Grades and Applications}
+
+The 741 op-amp comes in various grades tailored for different markets:
+\begin{itemize}
+    \item \textbf{Defense Market}
+    \item \textbf{Commercial/Industrial Markets}
+    \item \textbf{Military Applications}
+\end{itemize}
+
+These grades vary in quality and price, designed to operate in environments ranging from extreme cold regions like Greenland and Antarctica to deserts.
+
+\subsection{Input Offset and Bias Currents}
+
+\begin{itemize}
+    \item \textbf{Input Offset Voltage}: Typically around 5 mV.
+    \item \textbf{Input Offset Current}: The current required to balance the op-amp when pin 3 (inverting input) and pin 2 are grounded. This current is essential for achieving zero output voltage.
+    \item \textbf{Bias Currents}: Approximately 100 nanoamperes, ensuring proper operation by maintaining around 0.1 milliamps through the inputs.
+\end{itemize}
+
+\subsection{Rejection Ratios}
+
+\begin{itemize}
+    \item \textbf{Common Mode Rejection Ratio (CMRR)}: Ideally infinite, but practically around 100 dB.
+    \item \textbf{Power Supply Rejection Ratio (PSRR)}: Typically around 20 microvolts per volt, indicating the ability to minimize power supply variations from affecting the output.
+\end{itemize}
+
+\section{Slew Rate and Capacitor \( C_1 \)}
+
+\subsection{Definition and Importance}
+
+The slew rate defines the maximum rate at which the output voltage can change and is determined by the capacitor \( C_1 \).
+
+\subsection{Calculation of Slew Rate}
+
+If \( V_{\text{not}}(t) = A \cos(\Omega t) \), then:
+
+\[
+\frac{dV_{\text{not}}(t)}{dt} = -A \Omega \sin(\Omega t)
+\]
+
+Taking the magnitude:
+
+\[
+C A \Omega = I_{\text{in}}
+\]
+
+At maximum \( \Omega t \):
+
+\[
+\frac{V_{\text{not}} \cdot \Delta t}{C} = I_{\text{in}}
+\]
+
+Thus, the slow rate is:
+
+\[
+\Delta t = \frac{I_{\text{in}}}{C}
+\]
+
+To increase the slew rate, \( C \) should be minimized. However, \( C \) also provides feedback between the output and input, requiring careful adjustment to maintain amplifier stability.
+
+\subsection{Impact on Amplifier Performance}
+
+A slow rate of one volt per microsecond implies:
+
+\[
+\Delta V \cdot \Delta t = 1 \, \mu\text{s}
+\]
+
+This parameter, along with the unity gain frequency (frequency at which gain is one) and the full power bandwidth (e.g., 50 kHz), determines the amplifier's performance in amplifying signals without distortion.
+
+\section{Block Diagram of a CH Stabilized Amplifier}
+
+The complete CH DC amplifier system includes:
+\begin{itemize}
+    \item \textbf{Modulator}
+    \item \textbf{AC Amplifier}
+    \item \textbf{Demodulator}
+    \item \textbf{Oscillator} (drives square waves)
+\end{itemize}
+
+These components work synchronously, ensuring that any changes in one part of the system are reflected across all modules. The CH DC amplifier is termed so because it amplifies slowly varying DC voltages, analogous to a carrier system in telecommunications.
+
+\section{Carrier-Based Implementation}
+
+\subsection{Modulator as a Double-Sideband (DSB) Multiplier}
+
+The modulator multiplies the information signal \( M(t) \) with a carrier signal \( \cos(\Omega_c t) \). In the frequency domain, this results in a spectrum containing the original signal and sidebands at \( \Omega_c \).
+
+\subsection{Trigonometric Identities and Signal Spectrum}
+
+Using the identity:
+
+\[
+\cos(A) \cos(B) = \frac{1}{2} \left[ \cos(A+B) + \cos(A-B) \right],
+\]
+
+we can simplify the modulation process, separating the signal into components at baseband and twice the carrier frequency.
+
+\subsection{Signal Recovery with Low-Pass Filter}
+
+To extract the original signal from the modulated output, a low-pass filter with a cutoff frequency slightly higher than the highest frequency component of \( M(t) \) is employed. The overall gain of the system is:
+
+\[
+\frac{A^2 K}{2}
+\]
+
+resulting in the recovered signal:
+
+\[
+\frac{A^2 K}{2} M(t)
+\]
+
+Proper design of the modulator and demodulator is essential to minimize drift voltages and prevent errors in signal amplification.
+
+\section{Alternative Implementation: Positive Gain-Negative Gain Amplifier}
+
+\subsection{Modulator and Demodulator Design}
+
+This implementation utilizes:
+\begin{itemize}
+    \item \textbf{Positive Gain Modulator}
+    \item \textbf{Negative Gain Demodulator}
+\end{itemize}
+
+Represented typically with op-amps, these configurations require precise control of gain to maintain signal integrity.
+
+\subsection{Switch Operation and F Switch Characteristics}
+
+An F switch, incorporating a diode, ensures that the voltage does not exceed certain thresholds:
+\begin{itemize}
+    \item \textbf{Positive Voltage}: Clamped at approximately 0.1 volts.
+    \item \textbf{Negative Voltage}: Requires sufficient bias (e.g., -0.3 to -4 volts) to turn off the MOSFET completely.
+\end{itemize}
+
+\subsection{Circuit Configuration with Switch States}
+
+\begin{enumerate}
+    \item \textbf{Switch Closed}: Connects \( R_6 \) and \( R_7 \) to Earth, configuring the circuit as a simple inverting amplifier with feedback resistance \( R_F \) and input resistance \( R \).
+    
+    \[
+    V_{\text{out}} = -\frac{R_F}{R} V_I
+    \]
+    
+    If \( R_F = R \):
+    
+    \[
+    V_{\text{out}} = -V_{MT}
+    \]
+    
+    \item \textbf{Switch Open}: Alters the circuit configuration, effectively splitting the supply and treating it as an amplifier with two inputs (inverting and non-inverting), resulting in an overall output:
+    
+    \[
+    V_{\text{out}} = V_{\text{out1}} + V_{\text{out2}}
+    \]
+    
+    where:
+    \begin{itemize}
+        \item \( V_{\text{out1}} \) corresponds to the inverting input (\( U1 \))
+        \item \( V_{\text{out2}} \) corresponds to the non-inverting input (\( U2 \))
+    \end{itemize}
+\end{enumerate}
+
+\section{Conclusion}
+
+Understanding the sectional components of chopper-stabilized amplifiers and the nuanced characteristics of op-amps like the 741 is crucial for designing high-performance amplification systems. Proper configuration of circuit stages, noise minimization, and precise control of parameters such as slew rate and gain ensure the stability and accuracy of the amplifier. Future lectures will build upon these foundations, exploring advanced implementations and optimizations.
+
+If there are any questions, feel free to ask. We will continue this discussion in the next session.
+\newpage
+\section{Lecture 5}
+
+\subsection*{Introduction}
+In this lecture, we will discuss the behavior of switches within circuit configurations, specifically focusing on their operation in open and closed states. We will analyze the equivalent circuits, explore the characteristics of FETs (Field-Effect Transistors), and conduct an error analysis when using FETs as switches in chopper amplifiers.
+
+\subsection*{Case 1: Switch Closed}
+When the switch \( S \) is closed, the control voltage to the FET is approximately zero. Under this condition, we can draw an equivalent circuit where the input \( V_{\text{MT}} \) is connected to the ground through the input resistance \( R_{\text{in}} \) and feedback resistance \( R_8 \). Assuming that \( V_{\text{MT}} \) is an ideal voltage source with an internal resistance much less than \( R_7 \), the resistor \( R_S \) does not significantly affect the circuit's behavior.
+
+This configuration resembles a standard inverting amplifier. Therefore, the output voltage \( V_{\text{out}_1} \) can be expressed as:
+\[
+V_{\text{out}_1} = -\frac{R_{\text{feedback}}}{R_{\text{in}}} V_{\text{MT}}
+\]
+Given that \( R_{\text{feedback}} = R_S \) and \( R_{\text{in}} = R \cdot V_{\text{MT}} \), the output simplifies to:
+\[
+V_{\text{out}_1} = -V_{\text{MT}}
+\]
+This is the first result obtained: when the switch is closed, the output is the input multiplied by \(-1\).
+
+\subsection*{Case 2: Switch Open}
+Next, we consider the scenario where the switch \( S \) is open, meaning the FET is off. In this case, the equivalent circuit changes, and the input voltage \( V_{\text{MT}} \) is connected through \( R_7 \) and \( R_8 \) to produce the output voltage \( V_{\text{out}_2} \).
+
+Assuming the op-amp operates in its linear region and employing the principle of superposition, the total output \( V_{\text{op}} \) is the sum of the responses due to the sources connected to the inverting and non-inverting inputs. Specifically:
+\[
+V_{\text{out}_2} = V_{\text{not Dash}} + V_{\text{not Double Dash}} = -V_{\text{MT}} + 2V_{\text{MT}} = V_{\text{MT}}
+\]
+Thus, when the switch is open, the output is the input multiplied by \( +1 \). Combining both cases, we conclude that the amplifier behaves as a positive-negative amplifier:
+\[
+\begin{cases}
+S \text{ closed} & \Rightarrow V_{\text{out}} = -V_{\text{MT}} \\
+S \text{ open}   & \Rightarrow V_{\text{out}} = +V_{\text{MT}}
+\end{cases}
+\]
+
+\subsection*{Characteristics of FETs}
+We examine the general characteristics of an N-channel FET. The drain current versus drain-source voltage (\( I_D \) vs. \( V_{DS} \)) curves vary with different gate-source voltages (\( V_{GS} \)). Key regions of operation include:
+\begin{itemize}
+    \item \textbf{Linear (Ohmic) Region:} \( V_{DS} \) is low, and \( I_D \) increases linearly with \( V_{DS} \).
+    \item \textbf{Pre-Pinch-Off Region:} Occurs between \( V_{GS} = 0 \) and \( V_{GS} = V_P \), where the current begins to saturate.
+    \item \textbf{Pinch-Off Region:} At higher \( V_{DS} \), the channel pinches off, and the current levels off before breakdown.
+\end{itemize}
+Operating the FET in the pinch-off region can lead to breakdown, which is undesirable for stable amplifier operation.
+
+\subsection*{Error Analysis in Switch Configurations}
+When using FETs as switches in chopper amplifiers, errors can arise from both the on and off states due to the non-ideal characteristics of the FETs.
+
+\subsubsection*{On-State Error}
+In the on-state, the FET has a finite \( R_{DS(on)} \), typically around 25 ohms. Ideally, the closed switch should present zero resistance, making the output voltage \( V_L = 0 \). However, due to the finite \( R_{DS(on)} \), an error is introduced:
+\[
+\text{Error}_{\text{on}} = V_L - V_{\text{ideal}} = \frac{R_{DS(on)} \cdot V_G}{R_1 + R_G + R_{DS(on)}}
+\]
+To minimize this error, large values of \( R_G \) and \( R_1 \) are preferred. However, this requirement contradicts the need to minimize the off-state error, necessitating a compromise in practical designs.
+
+\subsubsection*{Off-State Error}
+In the off-state, the FET has a high \( R_{DS(off)} \), around \( 10^{10} \) ohms. Ideally, the open switch should allow the output voltage to equal the input voltage \( V_L = V_G \). However, due to the series resistance \( R_G \) and \( R_1 \), not all the input voltage appears at the output:
+\[
+\text{Error}_{\text{off}} = V_L - V_{\text{ideal}} = -\frac{V_G}{1 + \frac{R_L}{R_G + R_1}}
+\]
+Minimizing this error involves maximizing \( R_L \) and minimizing \( R_1 \), which again conflicts with the on-state error requirements.
+
+\subsection*{Non-Quantifiable Errors}
+Apart from the quantifiable errors in the on and off states, there are non-quantifiable errors caused by switching spikes. These spikes occur due to the dynamic nature of capacitances \( C_{GS} \) and \( C_{GD} \) in the FETs. Switching spikes can introduce offset voltages, which add to the output signal, resulting in errors that are difficult to model mathematically. To mitigate these spikes:
+\begin{enumerate}
+    \item \textbf{Reduce the Rate of Change of Control Voltage:} Instead of using rectangular waveforms, ramp waveforms can slow the transition rates, decreasing the amplitude of switching spikes.
+    \item \textbf{Decrease Load and Generator Resistance:} Lowering these resistances reduces the voltage fed through the capacitive reactance, thereby minimizing spike amplitudes.
+\end{enumerate}
+
+\subsection*{Modulation and Demodulation}
+The positive-negative amplifier configurations can be used as modulators and demodulators. Pulse Amplitude Modulation (PAM) is achieved by multiplying the input signal with the switching signal. The original input can be recovered by passing the modulated signal through another similar amplifier configured as a demodulator. This process is illustrated in the graphical solution section, where the synchronization of the switching signals ensures accurate modulation and demodulation.
+
+\subsection*{Drain-Source Characteristics}
+An experimental setup was discussed to obtain the drain-source voltage (\( V_{DS} \)) versus drain current (\( I_D \)) characteristics of FETs. Key observations include:
+\begin{itemize}
+    \item In the \textbf{Pinch-Off Region}, the drain current remains constant despite increases in \( V_{DS} \).
+    \item In the \textbf{Linear Region}, \( I_D \) increases linearly with \( V_{DS} \).
+\end{itemize}
+For chopper applications, operating the FET near the origin ensures low \( V_{DS} \) and minimal current, preventing breakdown and maintaining linear operation.
+
+\subsection*{Conclusion}
+The use of FETs as switches in chopper amplifiers introduces both quantifiable and non-quantifiable errors. Balancing the requirements for minimal on-state and off-state errors is crucial for optimal amplifier performance. Additionally, addressing switching spikes through waveform shaping and resistance adjustments is essential for reducing offset voltages and ensuring signal integrity.
+
+\subsection*{Assignments}
+\begin{enumerate}
+    \item \textbf{Graphical Solution:} 
+        \begin{itemize}
+            \item Implement the modulation and demodulation process using the positive-negative amplifier configuration
+            \item Verify the recovery of the original input signal
+        \end{itemize}
+    
+    \item \textbf{Error Minimization:}
+        \begin{itemize} 
+            \item Analyze practical values for \( R_G \), \( R_1 \), and \( R_L \)
+            \item Determine optimal balance between on-state and off-state errors
+        \end{itemize}
+        
+    \item \textbf{Switching Spikes Analysis:}
+        \begin{itemize}
+            \item Use an oscilloscope to observe switching spikes in a prototype circuit
+            \item Propose methods to further minimize these spikes
+        \end{itemize}
+\end{enumerate}
+\subsection*{References}
+- Data sheets from manufacturers such as Hoffi50 and Texas Instruments provide specific \( R_{DS(on)} \) and \( R_{DS(off)} \) values essential for accurate error analysis.
+- Foundational concepts in first-year circuit analysis and differential calculus are applied to derive optimal resistance values for error minimization.
+
+\subsection*{Next Class}
+In the upcoming class, we will delve deeper into the operational dynamics of FET switches, explore additional error sources, and review student assignments. Please ensure you have completed the assigned tasks and are prepared to discuss your findings.
+
+\newpage
+\section{Lecture 6}
+
+In the previous class, we studied the FET as a switch and investigated how using the FET to produce Pulse Amplitude Modulation (PAM) generates errors. We began by examining the FET in the SH configuration, deriving the relevant equations. We identified that, apart from the non-ideal behavior of the switch—which introduces \textit{off} and \textit{on} errors—additional errors arise due to the internal gate capacitances.
+
+\subsection{Equivalent Circuit of the FET in Chanten Configuration}
+
+Consider a slowly varying voltage \( V_G \) and a switching voltage \( V_C \). Due to the internal capacitances \( C_{GD} \), \( C_{GS} \), and \( C_{DS} \), switching spikes are generated at the output of the system. This phenomenon occurs because a pulse drive causes the voltage to rise suddenly, introducing high-frequency components from the rectangular waveform. The same effect applies when the voltage falls rapidly.
+
+\subsection{Timing Diagram and Control Voltage}
+
+Refer to the timing diagram where the control voltage \( V_C(t) \) transitions between approximately 0 volts and -5 volts, while \( V_L \) represents the load voltage. During the intervals when the control voltage rises from -5 volts to 0 volts, part of the signal flows to the output, and part flows to the ground, depending on the values of \( R_1 \) and the generator resistance \( R_G \). This results in pulses at the output, known as feed-through spikes. The magnitude of these spikes depends on the internal capacitances \( C_{GD} \), \( C_{GS} \), \( C_{DS} \), as well as the resistances \( R_1 \), \( R_G \), and \( R_L \).
+
+\subsection{Reducing Feed-Through Spikes}
+
+To mitigate feed-through spikes caused by internal capacitances, we can implement the following strategies:
+
+\begin{enumerate}
+    \item \textbf{Reduce the Rate of Change of the Control Voltage:} Instead of using a sharp, rising rectangular waveform, employ a more gradually varying waveform. This approach minimizes high-frequency components, thereby reducing the influence of \( C_{GD} \) and decreasing the amplitude of feed-through spikes.
+    
+    \item \textbf{Decrease Load and Generator Resistance:} Lowering \( R_L \) and \( R_G \) can help reduce the magnitude of the spikes. 
+\end{enumerate}
+
+In the last class, we demonstrated how to resolve switching waveforms into their harmonics. By selecting a specific harmonic and applying linear equations, we can determine the amplitude of that frequency component. For instance, considering the drain-to-source path with \( R_{DS} \) varying between \( 10^{10} \) ohms and \( R_L \), we can simplify the equivalent circuit to:
+
+\[
+V_{\text{out}} = V_C(t) \times \frac{R_L \parallel X_{DS} \parallel (R_1 + R_G)}{X_{GD} + R}
+\]
+
+where \( R = R_1 + R_G \parallel R_L \parallel X_{DS} \).
+
+\subsection{Impact of Transducer Resistance}
+
+If the transducer has a high internal resistance \( R_G \), the output of the feed-through signal will be minimized. For example, if \( R_L = 0 \), the output will theoretically be zero, though \( R_L \) should not be zero in practical applications as it serves as the input resistance to the AC amplifier.
+
+\subsection{Drive Voltage Optimization}
+
+To minimize switching spikes, consider the following:
+
+\begin{itemize}
+    \item \textbf{Reduce the Drive Frequency:} Lowering the drive frequency decreases the reactance of the capacitances, reducing the amplitude of the spikes.
+    
+    \item \textbf{Use Minimal Control Voltage:} Utilize the smallest control voltage necessary to turn the device on and off, which diminishes the magnitude of \( V_C(t) \) and thereby reduces spike amplitudes.
+    
+    \item \textbf{Waveform Shaping:} Employ ramp or sinusoidal waveforms instead of pure rectangular pulses to limit high-frequency components.
+\end{itemize}
+
+\subsection{Experimental Validation}
+
+These theoretical results are typically validated experimentally using a sensitive oscilloscope. Manufacturers' datasheets provide the minimum voltage required to switch the device on and off. In the lab, you can adjust the signal generator's input and monitor the output spikes, reducing the voltage until the spikes become acceptable.
+
+\subsection{Series Switch Configuration}
+
+Transitioning from the SH switch, we now analyze the series switch configuration. In this setup, the FET is connected in series with the load and generator. The practical circuit for driving the FET using a small-signal transistor is straightforward. The gate drive switches the gate from ground to a negative potential, greater than the pinch-off voltage specified in the FET's datasheet (typically between -3V and -5V for an inter-channel FET).
+
+\subsection{Off-State Error Analysis}
+
+When the switch is in the off state, the error is defined as:
+
+\[
+\text{Error}_{\text{off}} = V_L - 0 = V_L
+\]
+
+Here, \( V_L \) is the voltage drop across \( R_L \), calculated as:
+
+\[
+V_L = V_G \times \frac{R_L}{R_G + R_{DS,\text{off}} + R_L}
+\]
+
+Given that \( R_{DS,\text{off}} \) is typically \( 10^{10} \) ohms, which is much greater than \( R_L \) (typically ranging from 10K to 100K ohms), we can approximate:
+
+\[
+\text{Error}_{\text{off}} \approx V_G \times \frac{R_L}{R_G + R_{DS,\text{off}}} \approx \frac{R_L}{R_G + R_{DS,\text{off}}} \times V_G
+\]
+
+For high-impedance transducers, such as condenser microphones with capacitive transducers, \( R_G \) is very large, making the error negligible at low frequencies.
+
+\subsection{On-State Error Analysis}
+
+When the switch is in the on state, the error is defined as:
+
+\[
+\text{Error}_{\text{on}} = V_L - V_G
+\]
+
+Calculating \( V_L \):
+
+\[
+V_L = V_G \times \frac{R_L}{R_G + R_{DS,\text{on}} + R_L}
+\]
+
+Given that \( R_{DS,\text{on}} \) is low (typically 25-30 ohms), and \( R_L \) is large, we approximate:
+
+\[
+\text{Error}_{\text{on}} \approx V_G \times \frac{R_L}{R_G + R_{DS,\text{on}} + R_L} \approx V_G \times \frac{R_L}{R_G + R_L}
+\]
+
+To minimize on-state error, \( R_L \) should be large relative to \( R_G \). However, this requirement conflicts with the need to minimize off-state error, where \( R_L \) should be small. Thus, a compromise must be reached to optimize the total error, potentially by minimizing the partial differential of the total error with respect to \( R_L \).
+
+\subsection{Feed-Through Spikes in Series Choppers}
+
+In series chopper configurations, feed-through spikes are influenced by the control signal and the switching action of the FET. The control voltage typically ranges between -5V and 0V. When the device switches on and off, the current paths through \( C_{GS} \), \( C_{GD} \), and \( R_G \) determine the magnitude of the spikes.
+
+Key points include:
+
+\begin{itemize}
+    \item During switching, the predominant current flows through \( C_{GS} \), generating positive and negative spikes at the output.
+    
+    \item The time constant of the spikes is mainly governed by \( C_{GS} \) and \( R_L \).
+    
+    \item Reducing \( R_L \) or \( C_{GS} \) can help minimize spike amplitude.
+\end{itemize}
+
+\subsection{Minimizing Switching Spikes}
+
+To effectively minimize switching spikes:
+
+\begin{enumerate}
+    \item \textbf{Decrease the Drive Frequency:} Lowering the frequency reduces the capacitive reactance, thereby decreasing the spike voltage.
+    
+    \item \textbf{Lower \( R_L \):} Reducing the load resistance can help minimize spike amplitudes, though it must be balanced against other design requirements.
+    
+    \item \textbf{Optimize \( R_{DS,\text{on}} \):} Ensuring \( R_{DS,\text{on}} \) is as low as possible minimizes on-state errors.
+    
+    \item \textbf{Use Minimal Control Voltage:} Applying just enough voltage to switch the device on and off reduces the magnitude of the feed-through voltage.
+    
+    \item \textbf{Waveform Shaping:} Implementing ramp or sinusoidal waveforms instead of sharp pulses can lower high-frequency components and reduce spike amplitudes.
+\end{enumerate}
+
+\subsection{Conclusion}
+
+To summarize, minimizing switching spikes involves a combination of reducing the drive frequency, optimizing load and generator resistances, utilizing minimal control voltages, and shaping the control waveform. Balancing these factors is essential to achieve optimal performance with minimal errors in both the on and off states.
+
+\subsection{Questions and Further Discussion}
+
+If there are any questions regarding this material, feel free to ask. Otherwise, we will conclude today's lecture here.
+\newpage
+\section{Lecture 7: 7/10/2024}
+
+\subsection{Introduction}
+In the last class, we analyzed the performance of various chopper switches. We began with the \textbf{Shunt Chopper I}, where the switch is connected in parallel with the supply, the generator (or signal source), and the load. Subsequently, we examined the \textbf{Series Chopper}, where the switch is placed in series with the signal to be chopped. Our analysis included both the \textit{on-state} and the \textit{off-state} errors that the switch generates.
+
+\subsection{Off-State Error Analysis}
+Ideally, when the switch is off, no signal should pass from the generator to the load. However, due to the non-ideal nature of the switch, specifically when the switch is off, the resistance (\( R_{DS_{\text{off}}} \)) is not infinite as required. Typically, \( R_{DS_{\text{off}}} \) is around \(10^{10}\) ohms. This non-ideality causes a small voltage to appear at the output, referred to as the \textbf{error voltage} (\( E_{\text{off}} \)).
+
+The error voltage can be expressed as:
+\begin{equation}
+E_{\text{off}} = V_G \frac{R_L}{R_G + R_{DS_{\text{off}}}}
+\end{equation}
+
+Since \( R_{DS_{\text{off}}} \) is significantly larger than \( R_L \), the equation simplifies to:
+\begin{equation}
+E_{\text{off}} \approx \frac{V_G R_L}{R_G + R_{DS_{\text{off}}}} \approx \frac{V_G R_L}{R_G}
+\end{equation}
+
+From this, we conclude that \( E_{\text{off}} \) becomes predominant only when \( R_L \) is large.
+
+\subsection{On-State Error Analysis}
+When the switch is on, ideally, the entire generator voltage (\( V_G \)) should appear across the load (\( R_L \)). However, due to the non-ideal switch, some voltage is lost within the circuit. The output voltage (\( V_{\text{out}} \)) is thus slightly less than \( V_G \), resulting in an \textbf{on-state error} (\( E_{\text{on}} \)) defined as:
+\begin{equation}
+E_{\text{on}} = V_L - V_G
+\end{equation}
+where
+\begin{equation}
+V_L = V_G \frac{R_L}{R_G + R_{DS_{\text{on}}} + R_L}
+\end{equation}
+
+Rearranging the equation for \( E_{\text{on}} \):
+\begin{equation}
+E_{\text{on}} = V_G \left( \frac{R_L}{R_G + R_{DS_{\text{on}}} + R_L} - 1 \right )
+\end{equation}
+
+Simplifying further:
+\begin{equation}
+E_{\text{on}} = V_G \frac{1 - \frac{R_L}{R_G + R_{DS_{\text{on}}} + R_L}}{R_G + R_{DS_{\text{on}}} + R_L} = -V_G \frac{R_G + R_{DS_{\text{on}}}}{R_G + R_{DS_{\text{on}}} + R_L}
+\end{equation}
+
+\subsection{Minimizing Errors}
+To minimize both \( E_{\text{on}} \) and \( E_{\text{off}} \), we derive the following requirements:
+\begin{itemize}
+    \item \( R_{DS_{\text{on}}} \) should be as small as possible.
+    \item \( R_L \) should be large to minimize \( E_{\text{off}} \), but small to minimize \( E_{\text{on}} \).
+\end{itemize}
+
+This presents a contradiction, as increasing \( R_L \) reduces \( E_{\text{off}} \) but increases \( E_{\text{on}} \). To resolve this, calculus can be employed to find optimal values for \( R_L \) and \( R_{DS_{\text{on}}} \) that minimize the overall error.
+
+\subsection{Error Due to Switching Spikes}
+Switching spikes introduce additional errors in the series chopper. These errors originate from internal capacitive effects due to the reverse-biased junctions of the n-type and p-type materials within the switch. These junction capacitances vary with the applied voltage, leading to transient spikes during switching.
+
+\subsubsection{Control Voltage and Capacitances}
+The control voltage (\( V_C(t) \)) is typically a rectangular waveform varying from \(-V_P\) to approximately zero volts. To analyze the effect of switching spikes, we consider only the fundamental frequency component of the square wave control voltage, neglecting higher harmonics due to their diminishing amplitudes.
+
+Each switching switch has different capacitances:
+\begin{itemize}
+    \item \( C_{DS} \): Between drain and source.
+    \item \( C_{GS} \): Between gate and source.
+    \item \( C_{DG} \): Between drain and gate.
+\end{itemize}
+
+Assuming \( V_G = 0 \) and focusing on the fundamental component, the equivalent circuit can be analyzed using linear circuit analysis methods.
+
+\subsubsection{Superposition Theorem Application}
+Using the superposition theorem, the output voltage \( V_{\text{out}}(t) \) can be expressed as the sum of responses due to each independent source:
+\begin{equation}
+V_{\text{out}}(t) = V_{\text{out}_1}(t) + V_{\text{out}_2}(t)
+\end{equation}
+
+Where:
+\begin{align}
+V_{\text{out}_1}(t) &= V_{C1}(t) \cdot \frac{R_L \parallel X_{GS}}{X_{DS} + (R_G \parallel X_{DG}) + (R_L \parallel X_{GS})} \\
+V_{\text{out}_2}(t) &= V_{C2}(t) \cdot \frac{R_L \parallel X_{GS}}{X_{DS} + (R_G \parallel X_{DG}) + (R_L \parallel X_{GS})}
+\end{align}
+
+
+\subsection{Practical Considerations and Assignments}
+To minimize the effects of internal capacitances:
+\begin{itemize}
+    \item Decrease the frequency of the drive signal.
+    \item Decrease the value of \( R_L \).
+    \item Decrease the gate drive voltage, ensuring it does not exceed the pinch-off voltage.
+    \item Use a ramp or alternative voltage waveform instead of sharp rising square waves to reduce harmonic content.
+\end{itemize}
+
+\subsubsection{Assignment}
+Please work on the following examples by substituting the derived equations:
+\begin{enumerate}
+    \item Calculate the on-state and off-state errors when \( R_G = 0 \), \( R_L = 2\text{k}\Omega \), \( R_{DS_{\text{off}}} = 10^{10}\Omega \), and \( R_{DS_{\text{on}}} = 25\Omega \).
+    \item Plot a table showing how the on-state and off-state errors vary with \( R_L \) values of 2kΩ, 10kΩ, 50kΩ, and 100kΩ.
+\end{enumerate}
+
+Compare the performance of shunt and series chopper configurations under varying load resistances and generator resistances. Analyze which configuration provides minimal error under different operating conditions.
+
+\subsection{Conclusion}
+In this lecture, we derived the on-state and off-state errors for series chopper configurations and discussed methods to minimize these errors. Understanding the interplay between \( R_L \), \( R_G \), and \( R_{DS} \) is crucial for designing efficient chopper circuits with minimal signal distortion.
+
+\subsection{Additional Resources}
+Refer to the Google Classroom for circuit diagrams, additional data, and assignments. Ensure to review the provided documents in Word format to avoid equation distortions present in PDFs.
+\newpage
+\section{Lecture 8: 14/10/2024}
+
+\subsection{Introduction}
+In the previous table, we included rows for Shant Chopper and Series Chopper, detailing their on and off errors under the condition where the generator resistance (\( R_G \)) is zero for various load resistances (\( R_L \)). Typically, \( R_L \) serves as the input to the AC amplifier. We computed the on and off errors for both Series and Shant Choppers across different load resistances and confirmed their performance metrics. This analysis helps determine the most suitable switching configuration based on the error rates.
+
+\subsection{Performance Comparison of Series and Shant Choppers}
+Our findings indicate that, in general, the Series Chopper outperforms the Shant Chopper in terms of minimizing errors. 
+
+\subsection{Introduction to Series-Shant Chopper Configuration}
+We now introduce another switching configuration known as the Series-Shant Chopper. In this setup, transistors are connected in a specific manner:
+\begin{itemize}
+    \item The generator is connected with a resistance \( R_G \).
+    \item The first transistor \( F_1 \) is in series with the load.
+    \item The second transistor \( F_2 \) is in shant configuration with the load.
+\end{itemize}
+This configuration is referred to as the Series-Shant Chopper. We will analyze the switching errors—both on and off—and incorporate them into the original table that previously included only Series and Shant configurations. This consolidation allows for a comprehensive comparison using a consistent set of parameters, primarily the signal level \( V_G \), to determine the configuration that yields the least error.
+
+\subsection{Error Analysis of Series-Shant Chopper}
+The Series-Shant Chopper employs two transistors: one in series and one in shant configuration. We will analyze the errors when:
+\begin{enumerate}
+    \item The series transistor is on, and the shant transistor is off (Case 1).
+    \item The series transistor is off, and the shant transistor is on (Case 2).
+\end{enumerate}
+
+\subsubsection{Case 1: Series On, Shant Off}
+When the series transistor is on and the shant transistor is off, the expected behavior is that the switch transmits all input signal (\( V_G \)) to the output. However, due to non-ideal switching devices, some error is introduced.
+
+\paragraph{Error Calculation}
+Let:
+\begin{align*}
+V_{\text{indicated}} &= V_L \quad \text{(Voltage across load)} \\
+V_{\text{true}} &= V_G \quad \text{(Generator voltage)} \\
+R_{\text{equiv}} &= R_{DS\_off} \parallel R_L
+\end{align*}
+The error is given by:
+\[
+\text{Error} = V_{\text{indicated}} - V_{\text{true}} = V_L - V_G
+\]
+Since \( R_{\text{equiv}} = \frac{R_{DS\_off} \cdot R_L}{R_{DS\_off} + R_L} \), the voltage across the load is:
+\[
+V_L = V_G \times \frac{R_{\text{equiv}}}{R_G + R_{DS\_on} + R_{\text{equiv}}}
+\]
+Simplifying:
+\[
+V_L = V_G \times \frac{1 - R_{\text{equiv}}}{R_G + R_{DS\_on} + R_{\text{equiv}}}
+\]
+Upon further simplification, assuming \( R_{\text{equiv}} \approx R_L \) (since \( R_{DS\_off} \) is large and \( R_L \) is typically between 10kΩ and 100kΩ), the error expression becomes:
+\[
+\text{Error} = V_G \left(1 - \frac{R_L}{R_G + R_{DS\_on} + R_L}\right)
+\]
+To minimize this error:
+\begin{itemize}
+    \item \( R_G \) should be minimized.
+    \item \( R_{DS\_on} \) should be minimized.
+    \item \( R_L \) should be maximized.
+\end{itemize}
+
+\subsubsection{Case 2: Series Off, Shant On}
+In this scenario, the series transistor is off, and the shant transistor is on. Ideally, the output voltage should be zero. However, due to non-ideal switching, a small voltage \( V_L \) appears at the output, resulting in an error.
+
+\paragraph{Error Calculation}
+\[
+\text{Error} = V_L - 0 = V_L
+\]
+Since:
+\[
+V_L = V_G \times \frac{R_{\text{equiv}}}{R_G + R_{DS\_off} + R_{\text{equiv}}}
+\]
+And \( R_{\text{equiv}} \approx R_{DS\_on} \) (given \( R_L \) is large),
+\[
+\text{Error} = V_G \times \frac{R_{DS\_on}}{R_G + R_{DS\_off} + R_{DS\_on}}
+\]
+To minimize this error:
+\begin{itemize}
+    \item \( R_{DS\_off} \) should be maximized.
+    \item \( R_{\text{equiv}} \) (i.e., \( R_{DS\_on} \)) should be minimized.
+\end{itemize}
+
+\subsection{Optimization Conditions}
+For both cases to have minimal errors simultaneously:
+\begin{itemize}
+    \item \( R_{DS\_on} \) should be as small as possible.
+    \item \( R_L \) should be as large as possible.
+    \item \( R_{DS\_off} \) should be as large as possible.
+\end{itemize}
+These conditions ensure that the numerator in the error expressions remains small while the denominator remains large, thereby minimizing the overall error.
+
+\subsection{Error Computation for Different Configurations}
+We are tasked with computing the errors for three configurations under varying conditions:
+\begin{enumerate}
+    \item \( R_G = 1\,k\Omega \), \( R_L = 1\,k\Omega \), \( R_{DS\_off} = 10\,\Omega \), \( R_{DS\_on} = 25\,\Omega \).
+    \item \( R_G = 100\,k\Omega \), \( R_L = 1\,k\Omega \), \( R_{DS\_off} = 10\,\Omega \), \( R_{DS\_on} = 25\,\Omega \).
+    \item \( R_G = 100\,k\Omega \), \( R_L = 100\,k\Omega \), \( R_{DS\_off} = 10\,\Omega \), \( R_{DS\_on} = 25\,\Omega \).
+\end{enumerate}
+A table should be created to summarize the on and off errors for each configuration:
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        \textbf{Configuration} & \( R_G \) & \( R_L \) & \textbf{Errors} \\
+        \hline
+        Shunt Chopper & 1\,k\Omega & 1\,k\Omega & On: ... \ Off: ... \\
+        \hline
+        Series Chopper & 1\,k\Omega & 1\,k\Omega & On: ... \ Off: ... \\
+        \hline
+        Series-Shunt Chopper & 1\,k\Omega & 1\,k\Omega & On: ... \ Off: ... \\
+        \hline
+        Shunt Chopper & 100\,k\Omega & 1\,k\Omega & On: ... \ Off: ... \\
+        \hline
+        Series Chopper & 100\,k\Omega & 1\,k\Omega & On: ... \ Off: ... \\
+        \hline
+        Series-Shunt Chopper & 100\,k\Omega & 1\,k\Omega & On: ... \ Off: ... \\
+        \hline
+        Series-Shunt Chopper & 100\,k\Omega & 100\,k\Omega & On: ... \ Off: ... \\
+        \hline
+    \end{tabular}
+    \caption{Error Analysis for Different Chopper Configurations}
+\end{table}
+
+\noindent By substituting the given values into the derived equations, we can determine which configuration offers the best performance in each scenario.
+
+\subsection{Error Due to Switching Spikes}
+Apart from the on and off errors, switching spikes introduce additional errors not covered in the previous analysis. These spikes result from the internal capacitive elements of the switching devices.
+
+\subsubsection{Series-Shant Configuration and Switching Spikes}
+In the Series-Shant configuration, the switching spikes generated by the series and shant devices tend to cancel each other out due to their opposite polarities. This results in superior spike performance compared to other configurations. The minimal spike errors contribute to the overall reduced error in this configuration.
+
+\subsection{Practical Circuit Considerations}
+In laboratory settings, transistors such as the \texttt{2N4856A} are utilized for Chopper amplifiers due to their low \( R_{DS\_on} \) of 25Ω and minimal internal capacitances. These transistors are designed for applications including analog switches, sample-and-hold circuits, and chopper amplifiers. The common-source capacitance typically averages around 10 pF, which ensures that switching spikes are negligible.
+
+\subsubsection{Dynamic Capacitance}
+The capacitance in these devices is dynamic and varies with the gate-source voltage (\( V_{GS} \)). For instance, when \( V_{DS} = 0 \),
+\[
+C_{\text{gate-source}} \approx 9\,\text{pF at } V_{GS} = 0\,V \quad \text{and} \quad 5\,\text{pF at } V_{GS} = -4\,V
+\]
+This dynamic behavior justifies the assumption of stationary capacitances in our theoretical analysis.
+
+\subsection{Transistor Switching Circuit Design}
+The Series-Shant Chopper employs two transistors, \( Q_1 \) and \( Q_2 \), configured to provide two voltages that are 180° out of phase. This ensures that when one transistor is on, the other is off, and vice versa.
+
+\subsubsection{Base Current Calculation}
+To drive \( Q_1 \) into saturation, the base current (\( I_B \)) must satisfy:
+\[
+I_B = \frac{V_C - 0.7}{1.2\,k\Omega}
+\]
+Where \( V_C \) is the control voltage. The collector current (\( I_C \)) is then:
+\[
+I_C = \beta_1 I_B \geq I_{C_{\text{max}}}
+\]
+Ensuring:
+\[
+\beta_1 I_B \geq I_{C_{\text{max}}}
+\]
+This condition guarantees that \( Q_1 \) operates in saturation, enabling reliable switching between on and off states.
+
+\subsubsection{Switching Operation}
+When \( Q_1 \) is on, the voltage at the collector of \( Q_1 \) drops to approximately 0.2 V, turning \( Q_2 \) off. Conversely, when \( Q_2 \) is on, the voltage at its collector drops to 0 V, turning \( Q_1 \) off. This alternating behavior ensures precise switching control.
+
+\paragraph{Voltage Levels}
+- When \( Q_2 \) is off:
+    \[
+    V_{G1} \approx 0\,V \quad \Rightarrow \quad Q_1 \text{ is on}
+    \]
+    \[
+    V_{G2} = \frac{22k}{100k + 22k} \times -10\,V \approx -1.8\,V \quad \Rightarrow \quad Q_2 \text{ is off}
+    \]
+- When \( Q_2 \) is on:
+    \[
+    V_{G1} = \frac{25\,\Omega}{100k + 25\,\Omega} \times -10\,V \approx 0\,V \quad \Rightarrow \quad Q_1 \text{ is off}
+    \]
+    \[
+    V_{G2} = \frac{22k}{100k + 22k} \times -10\,V \approx -1.8\,V \quad \Rightarrow \quad Q_2 \text{ is on}
+    \]
+
+\subsection{Transistor Selection and Design Considerations}
+Selecting appropriate transistors is crucial for minimizing switching errors:
+\begin{itemize}
+    \item **Low \( R_{DS\_on} \):** Reduces on-state error.
+    \item **High \( R_{DS\_off} \):** Minimizes off-state error.
+    \item **Low Capacitance:** Reduces switching spikes.
+\end{itemize}
+For instance, the \texttt{2N4856A} transistor offers \( R_{DS\_on} = 25\,\Omega \) and low gate-source capacitance, making it suitable for high-performance chopper applications.
+
+\subsection{Conclusions}
+Based on our analysis and the exercise results:
+\begin{enumerate}
+    \item **Series Chopper:** Best suited for scenarios with low load resistance and where switching speed is not critical. It offers low net error and cost-effective implementation using a single transistor.
+    \item **Series-Shant Chopper:** Optimal for high load resistance and applications requiring high switching speeds with minimal switching spikes. The cancellation of switching spikes in this configuration results in superior error performance.
+    \item **Shant Chopper:** Although it has better spike performance than the Series Chopper, it introduces relatively large errors, making it less favorable for most applications.
+\end{enumerate}
+Overall, the Series-Shant Chopper is recommended for high-performance requirements due to its balanced error minimization and efficient spike cancellation.
+
+\subsection{Exam Questions}
+\begin{enumerate}
+    \item **Define a Chopper-Stabilized Amplifier:** Describe its method of operation and state the applications to which it is well-suited, providing examples. Explain the principle of operation.
+    \item **Compare Chopper Configurations:** Distinguish between Series, Shant, and Series-Shant Choppers. Discuss the criteria used to select a particular configuration for specific operations.
+    \item **Drift Voltage Calculation:** Given an input of 20 mV DC and a maximum drift voltage of \( 0.1 \cos(2\pi f t) \) at point Y, determine the drift voltage magnitude if the input to the AC amplifier is shorted.
+    \item **Total Error in Chopper-Stabilized System:** Calculate the overall error considering modulators, AC amplifiers, and demodulators. Discuss how to mitigate these errors to improve system performance.
+\end{enumerate}
+
+\subsection{Final Remarks}
+Students are encouraged to perform the outlined exercises to reinforce their understanding of chopper configurations and error analysis. Practical implementation in the lab using appropriate transistors and resistor values will provide hands-on experience in minimizing errors and optimizing circuit performance.
+\newpage
+\section{Lecture 9: 21/10/2024}
+
+\subsection{Introduction}
+Today, we are starting a new topic: log amplifiers. Please ensure you have completed the simple exercises from the previous topic. The principle behind a log amplifier is straightforward. We convert a low-variant DC voltage to a high frequency using pulse modulation. This high-frequency signal is then amplified using an amplifier, followed by demodulation to recover the baseband signal. This process helps eliminate noise due to voltage (\(V_{IO}\)) and current (\(I_{O}\)), which is the principle behind the CH stabilizing amplifier.
+
+\subsection{Definition and Basic Operation}
+A log amplifier is an amplifier whose output is described by the following equation:
+\begin{equation}
+V_{\text{out}} = K \cdot \log(V_{IN})
+\label{eq:log_amp}
+\end{equation}
+where \(K\) is a constant. Alternatively, this can be expressed as:
+\begin{equation}
+e^{V_{\text{out}}/K} = V_{IN}
+\label{eq:log_amp_rearranged}
+\end{equation}
+This is simply a rearrangement of Equation \ref{eq:log_amp}.
+
+\subsection{Practical Applications}
+Log amplifiers have several practical applications:
+\begin{enumerate}
+    \item \textbf{Analog Computation:} Before the advent of digital computers, analog amplifiers like operational amplifiers were used to perform complex operations such as differentiation, summation, and division. Although digital supercomputers are now prevalent, analog amplifiers remain faster for certain applications because they provide almost instantaneous output when a signal is input, unlike digital computers that require program execution through clock cycles.
+    
+    \item \textbf{Compressors in Signal Processing:} In recording studios and public address systems, log amplifiers are used in compressors to reduce the dynamic range of signals. This allows the signal to fit within the transmission medium's dynamic range, such as recording tape or communication channels. When the signal needs to be recovered, an exponential amplifier (expander) is used to restore the original dynamic range.
+    
+    \item \textbf{Driving Display Devices:} Log amplifiers drive display devices with logarithmic indications, such as sound level meters, where calibration is typically in logarithmic scale.
+    
+    \item \textbf{Log Display Indicators:} They are also used for log display indicators in various applications.
+\end{enumerate}
+
+\subsection{Basic Log Amplifier Circuit}
+The most basic log amplifier circuit is depicted in Figure \ref{fig:basic_log_amp}. In this circuit, the input voltage \(V_S\) is connected through a resistor \(R\) to the inverting input of an operational amplifier (op-amp). A diode is connected across the op-amp, with the voltage across the diode denoted as \(V_F\). The output voltage is \(V_{\text{out}}\).
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{basic_log_amp.png}
+    \caption{Basic Log Amplifier Circuit}
+    \label{fig:basic_log_amp}
+\end{figure}
+
+\subsubsection{Diode Equation}
+The diode equation is given by:
+\begin{equation}
+I_F = I_S \cdot e^{V_F/(nV_T)}
+\label{eq:diode}
+\end{equation}
+where:
+\begin{itemize}
+    \item \(I_F\) is the forward current through the diode.
+    \item \(I_S\) is the saturation current.
+    \item \(V_F\) is the forward voltage across the diode.
+    \item \(n\) is the ideality factor (\(n=1\) for germanium and \(n=2\) for silicon).
+    \item \(V_T\) is the thermal voltage.
+\end{itemize}
+When the diode starts to conduct, \(V_F/(nV_T) \gg 1\), allowing us to approximate Equation \ref{eq:diode} as:
+\begin{equation}
+I_F \approx I_S \cdot e^{V_F/(nV_T)}
+\label{eq:diode_approx}
+\end{equation}
+
+\subsubsection{Current Through the Circuit}
+Assuming an ideal op-amp, the current \(I_F\) flows through the diode and does not enter the op-amp. Therefore, we can write:
+\begin{equation}
+I_F = \frac{V_S}{R}
+\label{eq:current}
+\end{equation}
+
+\subsubsection{Relating \(V_F\) to \(V_{\text{out}}\)}
+In the circuit, the op-amp maintains a virtual earth at the inverting input. This implies that:
+\begin{equation}
+V_F = -V_{\text{out}}
+\label{eq:vf_vout}
+\end{equation}
+Substituting Equation \ref{eq:vf_vout} into Equation \ref{eq:current}, we get:
+\begin{equation}
+\frac{V_S}{R} = I_S \cdot e^{-V_{\text{out}}/(nV_T)}
+\label{eq:final}
+\end{equation}
+Taking the natural logarithm of both sides:
+\begin{equation}
+\ln\left(\frac{V_S}{I_S R}\right) = -\frac{V_{\text{out}}}{nV_T}
+\label{eq:log_relation}
+\end{equation}
+Rearranging for \(V_{\text{out}}\):
+\begin{equation}
+V_{\text{out}} = -nV_T \ln\left(\frac{V_S}{I_S R}\right)
+\label{eq:vout_final}
+\end{equation}
+This can be expressed in the form of Equation \ref{eq:log_amp} by defining the constants:
+\begin{equation}
+K_1 = -nV_T \quad \text{and} \quad K_2 = \frac{1}{I_S R}
+\end{equation}
+Thus,
+\begin{equation}
+V_{\text{out}} = K_1 \ln(K_2 V_S)
+\label{eq:general_log_amp}
+\end{equation}
+
+\subsection{Improving Accuracy}
+The accuracy of the basic log amplifier depends on the relationship between \(V_F\) and \(I_F\). To achieve more accurate computations, \(I_F\) must be minimized. This leads to the development of the basic transistor log amplifier, which uses the base-emitter junction of a transistor to ensure a smaller current passes through the diode.
+
+\subsection{Basic Transistor Log Amplifier}
+The basic transistor log amplifier circuit is shown in Figure \ref{fig:transistor_log_amp}. In this configuration, the diode is replaced with the base-emitter junction of a transistor, reducing the current through the diode and improving accuracy.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{transistor_log_amp.png}
+    \caption{Basic Transistor Log Amplifier Circuit}
+    \label{fig:transistor_log_amp}
+\end{figure}
+
+Using the transistor's properties, the output voltage \(V_{\text{out}}\) can be expressed as:
+\begin{equation}
+V_{\text{out}} = -nV_T \ln\left(\frac{V_{S1}}{V_{S2}}\right)
+\label{eq:transistor_log_amp}
+\end{equation}
+where \(V_{S1}\) and \(V_{S2}\) are the input voltages to the two transistors in the matched pair configuration.
+
+\subsection{Practical Log Amplifier using Matched Transistors}
+To eliminate the dependency on the reverse saturation current \(I_S\) and improve temperature stability, a matched transistor log amplifier is used. This configuration uses two matched transistors to cancel out the effects of temperature variations on \(I_S\).
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{matched_transistor_log_amp.png}
+    \caption{Matched Transistor Log Amplifier Circuit}
+    \label{fig:matched_transistor_log_amp}
+\end{figure}
+
+In this circuit, transistors \(Q_1\) and \(Q_2\) are fabricated on the same silicon substrate to ensure they have identical characteristics. The output voltage is given by:
+\begin{equation}
+V_{\text{out}} = a \ln\left(\frac{V_{S1}}{V_{S2}}\right)
+\label{eq:matched_log_amp}
+\end{equation}
+where \(a\) is a constant determined by the circuit parameters.
+
+\subsection{Practical Considerations}
+In practical implementations, offset voltages can introduce errors. To address this, null offsetting circuits are incorporated using potentiometers \(P_1\) and \(P_2\). These adjustments ensure that the output voltage is zero when there is no input signal.
+
+\subsection{Conclusion}
+Log amplifiers are essential components in analog computation, signal processing, and various display applications. By utilizing transistor-based configurations and matched transistor pairs, the accuracy and stability of log amplifiers can be significantly enhanced, making them suitable for practical laboratory implementations.
+
+\newpage
+
+\section{Lecture 10: 24/10/2024}
+
+Welcome back to Lecture 10. It looks like our class size has slightly increased from 39 to 43 students. I hope everyone can see the presentation on the screen. If you're having any issues, please let me know.
+
+\section{Review of Log Amplifiers}
+
+In our last class, we discussed the log amplifier, a specialized type of amplifier whose output is the logarithm of its input voltage. We explored various applications of log amplifiers in analog systems.
+
+\subsection{Applications of Log Amplifiers}
+
+Log amplifiers are commonly used in:
+\begin{itemize}
+    \item **Recording Studios**: For signal compression, ensuring that signals fit within the dynamic range of a channel. This compression allows signals to be later expanded.
+    \item **Dynamic Range Management**: Matching the input signals to the dynamic range limitations of recording media.
+\end{itemize}
+
+\section{Historical Context of Audio Recording}
+
+\subsection{Transition from Cassette to CD}
+
+Most of you may not have been born during the era when cassette tapes were prevalent. Before CDs became mainstream, music was primarily recorded on vinyl plates or cassette tapes. CDs offered several advantages:
+\begin{itemize}
+    \item **Cost-Effective and Portable**: CDs were cheaper and easier to transport due to their compact size.
+    \item **Higher Signal Quality**: CDs provided a higher signal-to-noise ratio (approximately 70 dB) compared to tapes.
+\end{itemize}
+
+\subsection{Tape Recording in Television}
+
+During the early days of television, both audio and video were recorded on tapes. However, tapes have a limited dynamic range, necessitating the use of noise reduction techniques.
+
+\section{Noise Reduction Techniques}
+
+\subsection{Dolby Noise Reduction}
+
+Dolby, named after the engineer who developed it, introduced several noise reduction systems:
+\begin{itemize}
+    \item **Dolby A, B, C**: Different levels of noise reduction, with Dolby C being the highest performer.
+    \item **Compression and Expansion**: High-quality cassette decks use Dolby B compression for home use, while studios and cinemas use Dolby C. These systems compress the audio signal during recording and expand it during playback to reduce noise.
+\end{itemize}
+
+\subsection{Types of Recording Tapes}
+
+There are three main types of tapes with varying dynamic ranges:
+\begin{itemize}
+    \item **Ferric Oxide Tape**: Also known as brown tape, with a dynamic range of about 55 dB.
+    \item **Chromium Tape**: Offers a slightly higher dynamic range of approximately 60-62 dB.
+    \item **Metal Tape**: More expensive, providing a dynamic range of around 65 dB.
+\end{itemize}
+
+\section{Practical Log Amplifier Circuit}
+
+In the last class, we covered a practical log amplifier circuit. Unlike theoretical circuits that assume ideal components, the practical log amplifier accounts for non-idealities such as offset voltages in operational amplifiers (op-amps).
+
+\subsection{Circuit Overview}
+
+The practical log amplifier includes null offsetting circuits to cancel out offset voltages. Key components include:
+\begin{itemize}
+    \item **Op-Amp A1**: Can be offset using potentiometer P1. If P1 is set halfway, the voltage across the 10 MΩ resistor is zero.
+    \item **Balancing Current**: The circuit provides a small current to balance the differential inputs of the op-amp, accommodating variations in current gain and transistor characteristics.
+\end{itemize}
+
+\section{Offset Nulling in Op-Amps}
+
+Even when the inputs of an op-amp are grounded, an output offset voltage may appear. The null offsetting circuit allows adjustment of this offset:
+\begin{equation}
+    V_{\text{out}} = 0 \text{ V}
+\end{equation}
+If the output is not zero, adjust potentiometer P1 until it is.
+
+\section{Circuit Analysis}
+
+\subsection{Analyzing the Output of Amplifier A2}
+
+Consider amplifier A2 with the following components:
+\begin{itemize}
+    \item **Resistor R4 (29.5 kΩ)**: Feedback resistor.
+    \item **Resistor R3 (0.5 kΩ)**: Connected to ground.
+\end{itemize}
+The gain of the op-amp is approximately:
+\[
+\text{Gain} = 1 + \frac{R4}{R3} = 1 + \frac{29.5 \text{ kΩ}}{0.5 \text{ kΩ}} = 60
+\]
+Given a supply voltage of ±15 V, the maximum output voltage is ±15 V, limiting the input voltage to:
+\[
+V_{\text{in}} = \frac{15 \text{ V}}{60} = 0.25 \text{ V}
+\]
+For safer operation, using a maximum input of 5 V results in:
+\[
+V_{\text{in}} = \frac{5 \text{ V}}{60} \approx 0.083 \text{ V}
+\]
+
+\subsection{Determining Voltages and Currents}
+
+Using Kirchhoff's Voltage Law (KVL) and transistor equations:
+\begin{align}
+    I_C &= I_S e^{\frac{V_{BE}}{n V_T}} \\
+    \ln\left(\frac{I_C}{I_S}\right) &= \frac{V_{BE}}{n V_T}
+\end{align}
+Where:
+\begin{itemize}
+    \item \( I_C \) is the collector current.
+    \item \( I_S \) is the saturation current.
+    \item \( V_{BE} \) is the base-emitter voltage.
+    \item \( n \) is the ideality factor.
+    \item \( V_T \) is the thermal voltage.
+\end{itemize}
+
+\section{Temperature Dependence and Calibration}
+
+\subsection{Temperature Independence}
+
+To make \( V_{\text{out}} \) independent of temperature, adjust resistor \( R3 \) to decrease as temperature increases. This can be achieved by using a resistor with a positive temperature coefficient:
+\[
+R3(T) = R3 \times (1 + \alpha T)
+\]
+Where \( \alpha \) is the temperature coefficient.
+
+\subsection{Calibration Steps}
+
+To calibrate the practical log amplifier in the lab:
+\begin{enumerate}
+    \item **Set \( V_S = 0 \text{ V} \)**: Short the input to ground. The output \( V_{\text{dash}} \) should be zero. Adjust potentiometer P1 until \( V_{\text{dash}} = 0 \text{ V} \).
+    \item **Set \( V_S = V_R \frac{R1}{R2} \)**: Adjust potentiometer P2 until the output voltage \( V_{\text{not}} = 0 \text{ V} \).
+\end{enumerate}
+Once calibrated, the circuit is ready to compute logarithms.
+
+\section{Conclusion}
+
+By selecting appropriate resistors \( R3 \) and \( R4 \) with temperature coefficients, the output \( V_{\text{not}} \) can be made temperature independent. The final equation for \( V \) in terms of circuit parameters is:
+\[
+V = -n V_T \ln\left(\frac{I1}{I_C2}\right)
+\]
+Where \( I1 \) is related to \( V_S \) and \( I_C2 \) is approximated as \( \frac{V_R}{R2} \).
+
+\section{Final Remarks}
+
+Ensure all variables are correctly set and equations are accurately applied. In future classes, we will explore more refined techniques to eliminate the need for approximations in current calculations. Please prepare for the next exercise, which focuses on designing a temperature-independent log amplifier.
+
+\newpage
+
+\section{Lecture 11: 28/10/2024}
+
+\subsection{Introduction}
+In this lecture, we are concluding our discussion on logarithmic amplifiers. In the previous class, I demonstrated a practical logarithmic amplifier, often referred to as the Logamp, which you can construct in the lab to obtain tangible results. During the derivation of this practical Logamp, we successfully calibrated the circuit. However, we encountered the necessity to make certain approximations in determining the transistor current.
+
+\subsection{Circuit Modification}
+Initially, we approximated that \( I_{C2} = \frac{V_R}{R} \), where \( R \) is the resistor connected to \( V_{CC} \). This approximation was based on the resistor value and the voltage drop \( V_R \). However, in the modified circuit presented here, we have replaced this resistor with a combination of \( R_5 \) and operational amplifier A3. This change eliminates the need for the previous approximation, leading to a more accurate and reliable circuit. This enhanced design is termed the \textbf{Improved Transistor Logamp}.
+
+\subsection{Circuit Components and Functionality}
+The Improved Transistor Logamp is practical due to the inclusion of several key components:
+\begin{itemize}
+    \item \textbf{Potentiometers}: \( P1 \) with a value of 100kΩ and \( P2 \) with a value of 10kΩ are used to set the potential and offset the output of operational amplifiers A2 and A3, respectively. These ensure that the outputs are zero when the differential input voltage is zero.
+    \item \textbf{Protection Diodes}: Diodes \( D1 \) and \( D2 \) are incorporated to protect the operational amplifiers from excessive voltage that could damage the transistors.
+\end{itemize}
+
+\subsection{Analyzing the Circuit}
+To analyze the logarithmic relationship between voltage and current in this circuit, we begin at Point A. Diodes \( D1 \) and \( D2 \) serve as protective elements, preventing the op-amps from operating beyond their voltage limits. Applying Kirchhoff's Voltage Law (KVL) around Loop ABC, we derive the following equations:
+
+\[
+- V_{BE1} + V_{BE2} = V
+\]
+
+Assuming the arbitrary voltage \( V \) at the inverting input of operational amplifier A2, the voltage drop across resistor \( R3 \) is given by:
+
+\[
+V + \frac{V}{R_T + R_4} R_3 = V_{ref}
+\]
+
+Simplifying, we obtain:
+
+\[
+V_{ref} = V \left(1 + \frac{R_3}{R_T + R_4}\right)
+\]
+
+\subsection{Constant Current Source}
+The circuit includes a constant current source formed by \( R5 \), diode \( D3 \), and operational amplifier A3. The current \( I_5 \) through \( R5 \) is defined as:
+
+\[
+I_5 = \frac{V_Z}{R5}
+\]
+
+Assuming a high current gain (\( \beta \)) for transistor Q3, the collector current \( I_{C3} \) remains approximately equal to \( I5 \), making it a stable reference current independent of supply voltage variations.
+
+\subsection{Calibration Procedure}
+Calibrating the Improved Transistor Logamp involves the following steps:
+
+\begin{enumerate}
+    \item \textbf{Initial Setup}: Short-circuit \( V_S \) to the ground. Ensure that the output voltage \( V1' \) from operational amplifier A1 equals zero by adjusting potentiometer \( P1 \).
+    \item \textbf{Setting Reference Current}: Set \( V_S = \frac{R1 \cdot V_Z}{R5} \). Verify that the logarithmic relationship holds by ensuring \( V_{ref} = 0 \).
+\end{enumerate}
+
+\subsection{Advantages of the Improved Design}
+The Improved Transistor Logamp offers several benefits:
+\begin{itemize}
+    \item \textbf{Elimination of Approximations}: By modifying the resistor configuration, the need for previous approximations is removed, enhancing accuracy.
+    \item \textbf{Stable Reference Current}: The constant current source ensures that \( I_{C2} \) remains unaffected by supply voltage fluctuations.
+    \item \textbf{Protected Operation}: Protection diodes safeguard the operational amplifiers from voltage spikes, preventing potential damage.
+\end{itemize}
+
+\subsection{Applications}
+Logarithmic amplifiers are crucial in various applications such as:
+\begin{itemize}
+    \item \textbf{Analog Computation}: Used in solving differential equations and performing logarithmic transformations.
+    \item \textbf{Compressors}: In audio processing, logamps help in compressing and expanding dynamic ranges.
+    \item \textbf{Instrumentation}: Provide logarithmic indications for measurements and controls.
+\end{itemize}
+
+\subsection{Conclusion}
+The Improved Transistor Logamp presents a refined approach to logarithmic amplification, offering enhanced accuracy and stability. By integrating a constant current source and protective diodes, this design is well-suited for practical laboratory applications and various industrial uses.
+\newpage
+\section*{Lecture 12: 31/10/2024}
+
+\subsection*{Determining \( V_{\text{not}} \)}
+
+Using Equation 1, we can rearrange and solve for \( V \) to determine \( V_{\text{not}} \). This implies that if we know \( V \), then we can express \( V_{\text{not}} \) as:
+
+\[
+V_{\text{not}} = V \cdot \frac{R_T + R_3}{R_T}
+\]
+
+Remember, \( R_T \) is a temperature-dependent parameter. This relationship will be used to design the circuit so that the output does not vary as a function of \( V_T \), which is temperature dependent. However, for simplicity, I'll be using Equation 1 and Equation 2. Now, let's determine \( V \) as a function of the base-source voltage (\( V_{BS} \)) of the transistor.
+
+\subsection*{Analyzing the Transistor Circuit}
+
+I'll start at Point A, the base of Q2. If it's not very clear, Point A is here, Point B is here, and Point C is the base of Q1. Starting at Point A, we traverse against the potential \( V_{BE2} \). Applying Kirchhoff's Voltage Law (KVL) to loop ABC implies:
+
+\[
+-V + V_{BE1} = V
+\]
+
+But what is \( V_{BE2} \) in terms of the known voltage-current relations for the transistor? We've already derived it, so I'll just present the result:
+
+\[
+-n V \ln\left(\frac{I_{C2}}{I_2}\right) + \ln\left(\frac{I_{C1}}{I_{\text{not1}}}\right) = V
+\]
+
+Next, let's simplify Equation 4:
+
+\[
+V = n V \ln\left(\frac{I_{C1}}{I_{\text{not1}}}\right) \cdot I_{\text{not2}} I_2
+\]
+
+We can state that for my transistors, the saturation currents are equal. Therefore, Equation 5 can be written as:
+
+\[
+n E \ln\left(\frac{I_{C1}}{I_2}\right) = V
+\]
+
+Now, we need to find \( I_{C1} \) and \( I_{C2} \) in terms of the circuit parameters.
+
+\subsection*{Determining Collector Currents}
+
+Returning to the circuit, let's start with finding \( I_{C1} \). \( I_{C1} \) is the collector current of the first transistor. In this circuit, this is your \( I_{C1} \), and the current over here is \( I_2 \).
+
+Since the positive input of A1 is grounded, it means the negative input of A1 is a virtual earth. Therefore, the current that flows through resistor \( R1 \) is:
+
+\[
+I_1 = \frac{V_{S1}}{R1}
+\]
+
+Similarly, for the second transistor, if you look at the input of amplifier A2, the positive side is grounded, and therefore the negative input of A2 is also a virtual earth. So, the collector of Q2 is also at virtual earth, and therefore the current \( I_{C2} \) is the current that flows through resistor \( R2 \), which is:
+
+\[
+I_2 = \frac{V_{S2}}{R2}
+\]
+
+We can substitute these values:
+
+\[
+I_{C1} = \frac{V_{S1}}{R1}, \quad I_{C2} = \frac{V_{S2}}{R2}
+\]
+
+Let us denote these results as Equation 7.
+
+\subsection*{Substituting into Equations}
+
+From Equation 5 and Equation 6, we substitute the results of Equation 7 into Equation 6:
+
+\[
+V = n V \ln\left(\frac{I_{C1}}{I_2}\right) = n V \ln\left(\frac{\frac{V_{S1}}{R1}}{\frac{V_{S2}}{R2}}\right) = n V \ln\left(\frac{V_{S1} \cdot R2}{V_{S2} \cdot R1}\right)
+\]
+
+Thus, we have determined \( V \). Now, knowing \( V \), we can determine the output voltage \( V_{\text{not}} \) from Equation 2:
+
+\[
+V_{\text{not}} = V \cdot \frac{R_T + R3}{R_T}
+\]
+
+Expanding this, we obtain:
+
+\[
+V_{\text{not}} = \left(1 + \frac{R3}{R_T}\right) V
+\]
+
+Substituting the expression for \( V \):
+
+\[
+V_{\text{not}} = \left(1 + \frac{R3}{R_T}\right) \cdot n V_T \ln\left(\frac{R2}{R1} \cdot \frac{V_{S1}}{V_{S2}}\right)
+\]
+
+This demonstrates that the circuit performs logarithmic computation—a log amplifier. The scaling factor \( K \) can be adjusted via the second voltage \( V_{S2} \):
+
+\[
+K = \frac{R2}{R1} \cdot V_{S2}
+\]
+
+For example, in a circuit that performs compression, you can vary the compression rate \( K \), which can be very useful in various circuit applications.
+
+\subsection*{Conclusion}
+
+I hope everyone has understood how we derived these relationships. If there are no questions, we can proceed to the next topic.
+
+\subsection*{Analog Multipliers and Dividers}
+
+The next topic is analog multipliers and dividers. However, we'll focus on analog multipliers because dividers can be derived from multipliers. Apart from microprocessors and microcontrollers, analog multipliers are among the other very useful electronic circuits. Without them, there would be no long-distance communication because modern modulation techniques rely heavily on multipliers. For instance, FM, AM, FSK, QPSK, SSB, DSB—all these circuits require an analog multiplier. Similarly, computer modems also require analog multipliers.
+
+\subsection*{Definition of an Analog Multiplier}
+
+An ideal analog multiplier is a circuit whose output is a function of two input voltages \( V_X \) and \( V_Y \), such that:
+
+\[
+V_{\text{out}} = K \cdot V_X \cdot V_Y
+\]
+
+where \( K \) is a constant scaling factor. The symbol of a multiplier is typically represented as a rectangle with a triangle on top and an output.
+
+\subsection*{Characteristics of an Ideal Multiplier}
+
+1. **Infinite Input Impedance:** The input signals \( V_X \) and \( V_Y \) should have infinite input impedance, meaning the multiplier does not load the inputs.
+2. **Zero Output Impedance:** The output impedance should be zero so that all the generated voltage appears at the load.
+3. **Infinite Bandwidth:** It should be able to multiply signals from very low frequencies (DC) to infinitely high frequencies.
+4. **Linearity:** The output should be linear for all ranges of the input. For example, if \( V_X \) is fixed at 1V and \( V_Y \) changes from 1V to 10V, the output should change linearly without distortion.
+
+\subsection*{Practical Limitations of Real Multipliers}
+
+1. **Limited Voltage Swing:** Typically restricted to ±10V for normal operations, despite the power supply being ±15V.
+2. **Limited Input Signals:** \( V_X \) and \( V_Y \) are usually limited to ±10V.
+3. **Limited Output Current:** Real multipliers cannot provide infinite current; they have limited output current capabilities due to transistor limitations.
+4. **Non-Zero Output Impedance:** Real multipliers have an output impedance that is not zero, requiring a large load resistance to ensure maximum voltage transfer.
+5. **Offset Errors:** Due to the use of differential amplifiers, real multipliers suffer from offset errors.
+6. **Finite Bandwidth:** Depends on the transistors used; high-frequency transistors can multiply signals up to GHz ranges.
+
+\subsection*{Implementing Multipliers}
+
+There are several practical schemes to implement analog multipliers:
+
+1. **Log-Anti-Log Method:** Utilizes logarithmic and anti-logarithmic circuits to perform multiplication based on the identity \( XY = \text{antilog}(\log X + \log Y) \).
+2. **Quarter Square Technique:** Uses the identity \( XY = \frac{1}{4}[(X + Y)^2 - (X - Y)^2] \) to implement multiplication through adders, subtractors, and squaring functions.
+3. **Transconductance Multiplier:** The most widely used method in the industry, involving variable transconductance elements.
+
+\subsubsection*{Log-Anti-Log Method}
+
+In the Log-Anti-Log method, the relationship \( XY = \text{antilog}(\log X + \log Y) \) is used. To implement this multiplier:
+
+\begin{enumerate}
+    \item Start with two log amplifiers that compute \( \log X \) and \( \log Y \).
+    \item Sum the outputs of the log amplifiers.
+    \item Pass the sum through an anti-log amplifier to obtain \( XY \).
+\end{enumerate}
+
+However, designing effective log amplifiers requires many operational amplifiers (Op-Amps), which introduces significant offset errors and increases the cost due to the large number of components. Additionally, log and anti-log circuits are typically unidirectional and have limited dynamic range and bandwidth.
+
+\subsubsection*{Quarter Square Technique}
+
+The Quarter Square Technique employs the identity:
+
+\[
+XY = \frac{1}{4} \left[(X + Y)^2 - (X - Y)^2\right]
+\]
+
+Implementation involves:
+
+\begin{enumerate}
+    \item Adding and subtracting the input voltages \( X \) and \( Y \).
+    \item Squaring the results using diode-based squaring circuits.
+    \item Subtracting the squared terms.
+    \item Multiplying the result by a quarter to obtain \( XY \).
+\end{enumerate}
+
+While this method is simpler than the Log-Anti-Log method, it still requires precise squaring circuits and suffers from limitations related to the speed and offset errors of Op-Amps.
+
+\subsubsection*{Transconductance Multiplier}
+
+The Transconductance Multiplier is the most commonly used method in the industry. It leverages variable transconductance elements to achieve multiplication with higher accuracy and better performance compared to other methods. This technique is preferred due to its scalability and efficiency in various applications, including modulation and signal processing.
+
+\subsection*{Conclusion}
+
+These are the primary methods used to implement analog multipliers. While each method has its advantages and limitations, the choice of technique depends on the specific requirements of the application, such as cost, accuracy, speed, and frequency response.
+
+\subsection*{Questions and Next Steps}
+
+I hope everyone has understood how we derived the logarithmic computations and the various methods to implement analog multipliers. Are there any questions? If not, we can proceed to the next topic.
+\newpage
+
+\section{Lecture 13: 04/11/2024}
+
+\subsection{Introduction to Analog Multipliers}
+
+Today, we will continue our discussion on analog multipliers, a topic we began yesterday. In telecommunications, analog multipliers are often represented by a symbol consisting of a square with a triangle on top, typically marked as \( x \) and \( y \). Here, the signal \( V_x \) is connected to one input, \( V_y \) to the other, and the output is \( V_{out} \). All these signals are referenced with respect to the Earth.
+
+In the introduction, we explored the concept of an ID multiplier, its limitations in practical applications, and how we can realize analog multipliers effectively.
+
+\subsection{Log-Antilog Method}
+
+The first scheme we discussed is the \textbf{Log-Antilog} method. This approach utilizes log amplifiers and anti-log amplifiers. The fundamental equation governing this method is:
+
+\[
+XY = \text{antilog}(\log X + \log Y)
+\]
+
+To implement this circuit, two log amplifiers are required, followed by an anti-log amplifier to obtain the product \( XY \). However, upon studying high-quality log and anti-log amplifiers, we observe that they are highly complicated, containing numerous operational amplifiers (op-amps). These op-amps suffer from offsets, necessitating multiple setting circuits to compensate. Additionally, log and anti-log circuits that handle unipolar signals are not unidirectional, making the design even more complex. Due to these challenges, this implementation is seldom used in practice and is primarily considered academic.
+
+\subsection{Quarter Square Method}
+
+The next implementation technique is the \textbf{Quarter Square} method, which is the focus of today's lecture. If time permits, we will also introduce the \textbf{Transconductance Method}, sometimes referred to as the \textbf{Variable Transconductance Multiplier} circuit.
+
+\subsubsection{Mathematical Basis}
+
+In the Quarter Square method, we use the identity:
+
+\[
+\frac{1}{4}[(x + y)^2 - (x - y)^2] = XY
+\]
+
+Expanding both terms:
+
+\[
+(x + y)^2 = x^2 + 2xy + y^2
+\]
+\[
+(x - y)^2 = x^2 - 2xy + y^2
+\]
+
+Subtracting the two:
+
+\[
+(x + y)^2 - (x - y)^2 = 4xy \implies \frac{1}{4}(x + y)^2 - \frac{1}{4}(x - y)^2 = XY
+\]
+
+\subsubsection{Circuit Implementation}
+
+To implement this identity, the circuit requires:
+
+\begin{itemize}
+    \item Adders for \( x + y \) and \( x - y \)
+    \item Squaring circuits for both \( (x + y) \) and \( (x - y) \)
+    \item A subtractor to compute \( \frac{1}{4}[(x + y)^2 - (x - y)^2] \)
+\end{itemize}
+
+The block diagram of the circuit is as follows:
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{quarter_square_method.png}
+    \caption{Quarter Square Multiplier Circuit}
+    \label{fig:quarter_square}
+\end{figure}
+
+In this circuit:
+
+\begin{itemize}
+    \item \( V_x \) is connected to the inverting input of amplifier \( A_1 \), resulting in an output of \( -x \).
+    \item Similarly, \( V_y \) is connected to the inverting input of amplifier \( A_2 \), resulting in an output of \( -y \).
+    \item These signals pass through diodes \( D_2 \), \( D_3 \), and \( D_4 \) to perform the necessary additions and subtractions.
+\end{itemize}
+
+\subsection{Simplified Analysis}
+
+To simplify the analysis, consider a simplified circuit with four diodes \( D_1, D_2, D_3, D_4 \). The currents through these diodes are denoted as \( I_A \) and \( I_B \).
+
+Let:
+
+\[
+Z = X + Y
+\]
+
+Then:
+
+\[
+I_B = I_{N} \left(e^{KZ} - 1\right)
+\]
+\[
+I_A = I_{N} \left(-KZ + \frac{(KZ)^2}{2}\right)
+\]
+
+Summing the currents:
+
+\[
+I_1 = I_A + I_B = I_{N} \left(2KZ^2\right)
+\]
+
+\subsection{Output Voltage Calculation}
+
+The output voltage \( V_{out} \) can be expressed as:
+
+\[
+V_{out} = -I_3 R_F = -I_{N} K^2 (X^2 + Y^2 - (X - Y)^2)
+\]
+
+To achieve multiplication, we set:
+
+\[
+R_F I_{N} K^2 = \frac{1}{4}
+\]
+
+\subsection{Limitations of the Quarter Square Method}
+
+While the Quarter Square method simplifies the multiplier design, the accuracy is limited due to:
+
+\begin{itemize}
+    \item Approximate squaring using diodes
+    \item Offset errors from operational amplifiers
+    \item Complexity in setting up the necessary resistor and amplifier configurations
+\end{itemize}
+
+Therefore, this implementation is rarely used in practical applications.
+
+\subsection{Variable Transconductance Method}
+
+The next scheme is the \textbf{Variable Transconductance Method}, also known as the \textbf{Transconductance Multiplier}. This method varies the transconductance of a differential amplifier using a second signal to achieve multiplication.
+
+\subsubsection{Basic Two Quadrant Multiplier}
+
+The simplest implementation of this method is the \textbf{Basic Two Quadrant Multiplier}, which provides multiplication results in only two quadrants. Here, one variable can take positive values, while the other can take both positive and negative values.
+
+The output voltage \( V_{out} \) is given by:
+
+\[
+V_{out} = -G_m V_1 R_L
+\]
+
+where \( G_m \) is the transconductance, which varies with input \( V_2 \):
+
+\[
+G_m = K V_2
+\]
+
+Substituting:
+
+\[
+V_{out} = -K V_1 V_2 R_L
+\]
+
+\subsubsection{Circuit Implementation Challenges}
+
+This method faces several challenges:
+
+\begin{itemize}
+    \item Difficulty in measuring inputs and outputs simultaneously due to different ground references
+    \item Limitations in handling DC voltages unless \( V_2 \) overcomes the \( V_{BE} \) threshold
+    \item Floating output requiring additional amplification to reference ground
+\end{itemize}
+
+These limitations make the Basic Two Quadrant Multiplier less practical for certain applications.
+
+\subsection{Gilbert Multiplier Cell}
+
+To overcome the limitations of the Basic Two Quadrant Multiplier, the \textbf{Gilbert Multiplier Cell} was developed. This configuration connects two differential amplifiers in a parallel and specialized manner, enhancing performance and allowing for high-frequency operations.
+
+\subsubsection{Circuit Overview}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{gilbert_multiplier_cell.png}
+    \caption{Gilbert Multiplier Cell}
+    \label{fig:gilbert_multiplier}
+\end{figure}
+
+In this circuit:
+
+\begin{itemize}
+    \item \( Q_1 \) and \( Q_2 \) form the first differential amplifier.
+    \item \( Q_3 \) and \( Q_4 \) form the second differential amplifier.
+    \item \( Q_5 \) and \( Q_6 \) are used to vary the transconductance based on the input \( V_2 \).
+    \item A constant current source \( I_{total} \) ensures stable operation.
+\end{itemize}
+
+\subsubsection{Assumptions for Analysis}
+
+\begin{itemize}
+    \item Transistors \( Q_1, Q_2, Q_3, Q_4, Q_5, Q_6 \) are matched for optimal performance.
+    \item Base currents are negligible due to high-beta transistors.
+    \item The circuit is properly biased, ignoring static currents for dynamic analysis.
+\end{itemize}
+
+\subsubsection{Operation Principle}
+
+The Gilbert Multiplier Cell operates by shifting currents between transistors based on the input voltages \( V_1 \) and \( V_2 \). The dynamic currents, resulting from signal variations, are analyzed to determine the output multiplication.
+
+\subsection{Conclusion}
+
+Analog multiplier circuits, while theoretically sound, present significant practical challenges in terms of complexity, accuracy, and biasing requirements. The Quarter Square method, although simpler, suffers from inaccuracies due to diode approximations and op-amp offsets. The Variable Transconductance method offers better performance but introduces its own set of challenges, particularly regarding ground references and DC operation.
+
+The Gilbert Multiplier Cell emerges as a robust solution, addressing many of these limitations by providing high-frequency operation and better accuracy, making it suitable for applications in communication receivers and signal processing circuits.
+
+\subsection{Applications}
+
+Analog multipliers are essential in various applications, including:
+
+\begin{itemize}
+    \item \textbf{Communication Receivers:} Used in modulators and demodulators for processes like Double Side Band (DSB) modulation, Frequency Modulation (FM), and Phase Modulation (PM).
+    \item \textbf{Frequency Translation:} Multiplying two cosine waves yields sum and difference frequencies, useful for signal processing.
+    \item \textbf{Modulation Techniques:} Employed in both modulation and demodulation processes within modems.
+\end{itemize}
+
+Despite their complexities, analog multipliers remain a cornerstone in high-frequency and signal processing applications, particularly where precision and speed are paramount.
+
+\subsection{Further Improvements}
+
+To enhance the basic differential multiplier:
+
+\begin{itemize}
+    \item Introduce additional amplification stages to reference the output to the ground.
+    \item Employ robust biasing techniques to minimize offset errors.
+    \item Utilize matched transistors to maintain symmetry and improve accuracy.
+\end{itemize}
+
+These improvements pave the way for more reliable and accurate analog multipliers, expanding their applicability in advanced electronic systems.
+\newpage
+\section{Lecture 14: 07/11/2024}
+
+\subsection{Introduction}
+Welcome everyone. It looks like a few of you are still joining the session. We'll wait for a few more students to join before we begin. Today, we'll cover the Gilbert's Multiplier Cell, its design, analysis, and practical implementation.
+
+\subsection{Gilbert's Multiplier Cell Overview}
+In our last class, we introduced the Gilbert's Multiplier Cell, which is capable of performing multiplication operations. The cell comprises:
+\begin{itemize}
+    \item Two differential amplifiers in parallel forming the output.
+    \item Another differential amplifier comprising of transistors $Q_5$ and $Q_6$ to vary the transconductance.
+\end{itemize}
+
+\subsection{Current Analysis}
+Let’s define the collector currents as follows:
+\begin{align*}
+    &I_1 = \text{Collector current of } Q_1, \\
+    &I_2 = \text{Collector current of } Q_2, \\
+    &I_3 = \text{Collector current of } Q_3, \\
+    &I_4 = \text{Collector current of } Q_4, \\
+    &I_5 = \text{Collector current of } Q_5, \\
+    &I_6 = \text{Collector current of } Q_6.
+\end{align*}
+These are the signal currents, not the bias currents.
+
+\subsubsection{Basic Equations}
+Based on the assumption that the emitter current is approximately equal to the collector current due to the high gain of the transistors, we derive:
+\[
+I_1 + I_2 = I_5,
+\]
+\[
+I_3 + I_4 = I_6.
+\]
+For a general differential amplifier, the relationship is given by:
+\[
+i_1 - i_2 = g_{m12} \cdot V_1 R_L,
+\]
+where $g_{m12}$ is the transconductance of transistors $Q_1$ and $Q_2$, and $V_1$ is the input voltage.
+
+\subsection{Output Voltage Analysis}
+The output voltage $V_{\text{out}}$ can be expressed as the difference in voltage drops across the load resistors:
+\[
+V_{\text{out}} = V_{CC} - I_2 R_L - I_4 R_L.
+\]
+Simplifying, we obtain:
+\[
+V_{\text{out}} = V_{CC} - R_L (I_2 + I_4).
+\]
+Substituting the current relationships, we derive:
+\[
+V_{\text{out}} = V_1 R_L \left( \frac{I_6}{V_T} - \frac{I_5}{V_T} \right),
+\]
+where $V_T$ is the thermal voltage.
+
+\subsection{Relationship Between $V_1$, $V_2$, $I_5$, and $I_6$}
+To establish how $V_{\text{out}}$ varies as a function of $V_1$ and $V_2$, consider the collector currents of $Q_5$ and $Q_6$. The equations are derived based on the differential pair configurations and the presence of emitter degeneration resistances.
+
+\subsection{Case Analysis}
+\subsubsection{Case 1: $R_E = 0$}
+When the emitter resistance $R_E$ is zero, the differential amplifier comprising $Q_5$ and $Q_6$ behaves identically to the general differential amplifier. The relationship simplifies to:
+\[
+I_6 - I_5 = g_{m56} \cdot V_2.
+\]
+Substituting into the output voltage equation:
+\[
+V_{\text{out}} = \frac{V_1 R_L}{V_T} (I_6 - I_5).
+\]
+Since $g_{m56} = \frac{I_6}{V_T}$ and $g_{m12} = \frac{I_5}{V_T}$, we can further express:
+\[
+V_{\text{out}} = V_1 V_2 \cdot \frac{R_L}{V_T}.
+\]
+This represents the standard form of the multiplier with a scalar gain.
+
+\subsubsection{Case 2: $R_E \neq 0$}
+When emitter resistance $R_E$ is present, the relationship between $V_2$, $I_5$, and $I_6$ changes. The analysis involves applying Kirchhoff's Voltage Law (KVL) to the loop involving $Q_5$ and $Q_6$:
+\[
+V_2 = V_{BE5} - V_{BE6}.
+\]
+Taking the natural logarithm and linearizing for small signal variations, we arrive at:
+\[
+V_2 = (I_5 - I_6) R_E.
+\]
+Substituting back into the output voltage equation:
+\[
+V_{\text{out}} = -\frac{V_1 R_L}{V_T} \cdot \frac{V_2}{R_E}.
+\]
+Thus, the gain is now inversely proportional to $R_E$, improving linearity at the expense of reduced gain:
+\[
+V_{\text{out}} = -\frac{V_1 V_2 R_L}{V_T R_E}.
+\]
+
+\subsection{Advantages of the Gilbert's Multiplier Cell}
+\begin{itemize}
+    \item \textbf{Four-Quadrant Operation}: Capable of handling both positive and negative input voltages, allowing multiplication in all four quadrants.
+    \item \textbf{Monolithic Fabrication}: Easily fabricated on a single silicon wafer, enabling mass production and integration into ICs.
+    \item \textbf{Large Bandwidth}: Supports high-frequency operations, suitable for applications in communication circuits.
+    \item \textbf{Low-Cost Production}: Economies of scale in production reduce the cost per unit significantly.
+\end{itemize}
+
+\subsection{Limitations of the Gilbert's Multiplier Cell}
+\begin{itemize}
+    \item \textbf{Limited Input Range}: The differential input voltage is restricted to approximately $\pm 4V_T$ to prevent clipping.
+    \item \textbf{Floating Output}: The output does not have a common reference to ground, necessitating additional circuitry for proper interfacing.
+    \item \textbf{Differential Resistor Mismatch}: Discrepancies in input resistances seen by $V_1$ and $V_2$ can affect the performance and linearity.
+\end{itemize}
+
+\subsection{Practical Implementation of the Multiplier}
+A practical multiplier circuit incorporates additional components to enhance performance:
+\begin{itemize}
+    \item \textbf{Preconditioning Circuit}: Comprising transistors $Q_7$ and $Q_8$, this stage distorts the input signal using a hyperbolic tangent inverse function, significantly extending the dynamic range to approximately $\pm 10$ volts.
+    \item \textbf{Constant Current Sources}: Transistors $Q_{15}$ and $Q_{16}$ form the current sources required for biasing the differential pairs.
+\end{itemize}
+
+\subsubsection{Dynamic Range Extension}
+By applying the preconditioning circuit, the input signals $V_Z$ and $V_Y$ are referenced to ground, allowing for a larger and more linear dynamic range in the multiplication operation. The extended range improves the multiplier's usability in various applications without distortion.
+
+\subsection{Conclusion}
+Today, we've delved into the design and analysis of the Gilbert's Multiplier Cell, exploring both theoretical and practical aspects. We discussed the critical role of emitter resistances, the impact on gain and linearity, and the advantages that make the Gilbert's multiplier a staple in analog circuit design. In the next class, we'll further analyze the multiplier cell's performance with different emitter resistances and explore additional configuration nuances to enhance its functionality.
+
+If there are any questions or if you need clarification on today's topics, feel free to reach out or bring them to the next class session. Please ensure to bring your lab circuits on time to avoid delays in our schedule.
+
+\section*{Questions and Answers}
+\begin{itemize}
+    \item \textbf{Q:} Why is the output of the multiplier floating?
+    
+    \textbf{A:} The output is floating because it does not have a common reference to ground. This requires an additional amplifier to establish a proper reference point for the output signal.
+    
+    \item \textbf{Q:} How does the emitter resistance affect the multiplier's performance?
+    
+    \textbf{A:} Increasing the emitter resistance improves the linearity of the multiplier by expanding the dynamic range but reduces the overall gain of the circuit.
+\end{itemize}
+\newpage
+\section{Lecture 15: 11/11/2024}
+
+In the last class, we concluded the analysis of the Gilbert multiplier cell. However, for it to be practically useful, it requires an associated output circuitry. The circuit displayed here is not a practical Gilbert multiplier as the output part is missing. Due to space constraints, I couldn't draw it here. Nevertheless, I'll provide an overview of the complete ON Semiconductor Gilbert multiplier MCU.
+
+\subsection{Overview of MC1495 Linear Gilbert Multiplier}
+
+The MC1495 is a linear Gilbert multiplier that offers excellent linearity and detailed technical information. The schematic showcases its internal structure. On the left side, there is the predistortion circuit comprising transistors Q5, Q6, Q7, Q8, Q3, and Q4. These transistors are equivalent to Q5 and Q6 in our previous design.
+
+\subsection{Integration of the Predistortion Circuit and Gilbert Multiplier Cell}
+
+The Gilbert multiplier cell and the predistortion circuit form the input part of the multiplier. To obtain an output referenced to the ground, differential amplifiers are used. The MC1494 and MC1495 ICs are almost identical internally, with both utilizing differential amplifiers for output ground referencing.
+
+\subsection{Complete Gilbert Multiplier Circuit}
+
+The complete circuit includes the MC1494 within a dashed area, encompassing the Gilbert multiplier cell. The output is routed through differential amplifiers to ensure it is referenced to the ground. This configuration results in a practical multiplier with three main components:
+\begin{enumerate}
+    \item \textbf{Predistortion (Preconditioning) Circuit}: Extends the linear range of the input signal.
+    \item \textbf{Gilbert Multiplier Cell}: Multiplies the input signals.
+    \item \textbf{Output Stage}: References the output to the ground using differential amplifiers.
+\end{enumerate}
+
+\subsection{Dynamic Range and Gain Analysis}
+
+When analyzing the impact of incorporating resistor $R_E$, we observe that:
+\begin{itemize}
+    \item \textbf{Gain}: The inclusion of $R_E$ decreases the system gain.
+    \item \textbf{Dynamic Range}: $R_E$ extends the dynamic range of the signal $V_2$.
+\end{itemize}
+
+For example, if $R_E = 0$, the maximum voltage of $V_2$ is approximately $4V_T$ (where $V_T \approx 26\,\text{mV}$ at room temperature, translating to approximately $100\,\text{mV}$). This is limited for applications requiring a larger dynamic range, such as multiplying $10\,\text{V} \times 10\,\text{V}$ signals.
+
+\subsection{Practical Implementations of the Gilbert Multiplier}
+
+\subsubsection{Circuit Modification with Resistor $R_1$}
+
+In the new arrangement, resistor $R_1$ is introduced between the emitters of Q9 and Q10 (previously Q5 and Q6) along with a bridging resistor of $35\,\text{k}\Omega$. This modifies the constant current source setup, enhancing the practicality of the multiplier.
+
+\subsubsection{DC Biasing and Current Analysis}
+
+To determine the DC bias of the circuit:
+\begin{enumerate}
+    \item The current $I_{BB}$ from the constant current source is split equally between Q15 and Q16, resulting in $I_{BB}/2$ for each.
+    \item The voltage at the base of Q17 ($V_P$) is calculated as:
+    \[
+    V_P = 4K \times I_{BB} + V_{BE17}
+    \]
+    \item The emitter current of Q16 ($I_E16$) is:
+    \[
+    I_{E16} = \frac{V_P - V_{BE16}}{8K}
+    \]
+    \item Since $Q5$ and $Q6$ are matched, the currents at their meters are each $I_{BB}/2$.
+\end{enumerate}
+
+\subsubsection{Signal Analysis}
+
+When analyzing the collector currents $I_5$ and $I_6$ as a function of $V_2$, two cases are considered:
+\begin{enumerate}
+    \item \textbf{Case 1}: $R_1 = 0$
+    \item \textbf{Case 2}: $R_1 \neq 0$
+\end{enumerate}
+
+Applying Kirchhoff's Voltage Law (KVL) and simplifying under the small-signal approximation ($\Delta I = 2I_X$ is small), the relationship between $I_5$, $I_6$, and $V_2$ is derived as:
+\[
+V_2 \approx \frac{I}{2} \times (I_5 - I_6)
+\]
+
+Substituting into the original Gilbert multiplier equation:
+\[
+V_{out} = -\frac{R_L V_1 V_2}{V_T R_E/2} = -\frac{2R_L V_1 V_2}{V_T R_E}
+\]
+This maintains the multiplication functionality while reducing the gain due to the inclusion of $R_E$, thereby improving linearity.
+
+\subsection{Dynamic Range Enhancement}
+
+By introducing $R_1$, the dynamic range is increased as $V_2$ can now accommodate larger voltage values:
+\[
+V_2 = \pm \frac{I_T \times (R_1 + R_E/2)}{2}
+\]
+For instance, with $I_T = 0.3\,\text{mA}$, $R_1 = 25\,\text{k}\Omega$, and $R_E = 35\,\text{k}\Omega$, the maximum dynamic range for $V_2$ is:
+\[
+V_2 = \pm 12.75\,\text{V}
+\]
+This is suitable for typical supply voltages of up to $15\,\text{V}$.
+
+\subsection{Lab Instructions and Oscilloscope Usage}
+
+\subsubsection{Lab Tasks}
+\begin{enumerate}
+    \item Derive the expression for the output.
+    \item Determine the number of quadrants.
+    \item Select appropriate values for resistances and capacitances.
+    \item Connect the circuit and vary $V_1$ and $V_2$.
+    \item Measure and plot $V_{out}$ versus $V_1$ and $V_2$.
+    \item Analyze the results and compare them with theoretical predictions.
+\end{enumerate}
+
+\subsubsection{Oscilloscope Considerations}
+
+When using oscilloscopes with this circuit:
+\begin{itemize}
+    \item Do not directly connect the oscilloscope probes between the collectors of Q1 and Q2 as it may cause grounding issues.
+    \item Use capacitive coupling or isolated oscilloscope channels to avoid short circuits.
+    \item Ensure that the oscilloscope grounds are properly isolated to prevent interference with the circuit operation.
+\end{itemize}
+
+\subsection{Transistor Selection and Biasing}
+
+For small-signal transistors (e.g., BC548), typical collector currents are chosen to be around $1\,\text{mA}$ for optimal gain. The biasing resistors $R_B1$ and $R_B2$ are selected based on the desired input impedance and ensuring sufficient base current for proper transistor operation. Following the THB (Thévenin's) rule, resistances up to $50\,\text{k}\Omega$ are suitable, balancing input impedance and bias current requirements.
+
+\subsection{Conclusion}
+
+Today's focus was on enhancing the practical implementation of the Gilbert multiplier by incorporating output referencing and improving dynamic range through resistor $R_1$. This balance between linearity and gain is crucial for real-world applications. In the next class, we will analyze the predistortion circuit in detail.
+
+Any questions about the biasing or circuit configuration? If not, we will proceed to the lab exercises as outlined.
+
+
+\end{document}

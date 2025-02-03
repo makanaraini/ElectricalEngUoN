@@ -1,0 +1,89 @@
+\section{Lecture 3: Chopper Stabilized Amplifiers}
+
+\subsection{Introduction}
+Our topic today is the chopper stabilized amplifier. It is called a "chopper" because the input signal is chopped before being fed into an AC amplifier. Chopping performs what is known as frequency translation. Frequency translation is necessary because we want the signal to be modulated with the voltages of the AC amplifier. This process is referred to as amplitude modulation (AM), specifically pulse amplitude modulation.
+
+\subsection{Frequency Translation}
+Frequency translation involves shifting the frequency of the input signal. For example, if chopping is performed at 10 kHz and the information signal is a slowly varying DC signal (less than 1 Hz), the signal will be translated from a baseband with a slow-varying DC signal to around 10 kHz. The student who emailed me was not on the list, but let's continue.
+
+Frequency translation is necessary because we want the information signal to be well above the drift voltage frequencies, which are very low. This ensures that when we recover the signal at the end of the chopper stabilized amplifier, we can discriminate between the drift voltages and our information signal.
+
+\subsection{Chopping Mechanism}
+To perform chopping, we require switches. We use semiconductor switches, which consist of BJTs (Bipolar Junction Transistors), FETs (Field Effect Transistors), and MOSFETs (Metal-Oxide-Semiconductor Field-Effect Transistors). BJTs are rarely used because the offset voltage of the BJT is quite large.
+
+In the last class, I presented a diagram where an NPN transistor acts as a switch for chopping. For a silicon BJT, the offset voltage is about 0.2 volts for small signal transistors, while germanium transistors have about 0.1 volts. With a 50 kHz chopping frequency, the voltage drop across the transistor switch (collector-emitter junction) prevents the signal from appearing at the output.
+
+Another disadvantage of BJTs is that for an NPN transistor to chop, the collector must remain positive relative to the emitter. If the input signal polarity changes, making the collector negative, the transistor cannot operate in that region because the collector-emitter junction becomes reverse-biased. Therefore, BJTs are never used for chopping because of the large voltage drop across the collector and emitter when used as a switch, and they can only chop in one direction.
+
+\subsection{Field Effect Transistors (FETs)}
+The next commonly used switch is the Field Effect Transistor (FET). FETs are preferred because they offer several advantages:
+\begin{enumerate}
+    \item \textbf{No Offset Voltage:} FETs pass through the origin, meaning there is no offset voltage between the drain and the source.
+    \item \textbf{High Switching Speed:} FETs have a very high switching speed, making them suitable for applications like satellite LNBs (Low-Noise Block converters) that operate at very high frequencies.
+    \item \textbf{Bidirectional Switching:} FETs can chop both positive and negative voltages due to their ability to conduct in both directions.
+    \item \textbf{Low On-Resistance:} Although not ideal, the on-resistance of FETs is approximately 25 ohms for small signal devices. There are specialized FETs manufactured specifically for use in choppers.
+\end{enumerate}
+
+\subsection{Advantages of FETs}
+FETs offer several benefits over BJTs, including no offset voltage between drain and source, high switching speeds, bidirectional operation, and low on-resistance. Even though the on-resistance is not ideal (practically, we aim for zero when closed and infinity when open), FETs provide some of the best characteristics achievable with practical devices. Additionally, they are small in size and have low power requirements for switching, which refers to the control voltage needed to operate the switch.
+
+\subsection{Disadvantages of FETs}
+Despite their advantages, FETs have non-ideal on and off characteristics. The on-resistance is about 25 ohms, and the off-resistance is around $10^{10}$ ohms. Other disadvantages include:
+\begin{itemize}
+    \item \textbf{Switching Spikes:} Due to incomplete isolation between the output terminal and the control voltage, switching spikes may appear at the output. This is caused by internal capacitances, such as $C_{GD}$ (Gate-Drain Capacitance) and $C_{GS}$ (Gate-Source Capacitance), which can generate spikes when driven by rectangular pulses.
+\end{itemize}
+These switching spikes add errors to the chopped signal. However, there are methods to mitigate these issues, which we will explore later.
+
+\subsection{MOSFETs as Switches}
+The MOSFET (Metal-Oxide-Semiconductor Field-Effect Transistor) is a modification of the FET, featuring a metal-oxide-silicon layer between the gate and the channel, which significantly increases input impedance (typically around $10^{12}$ ohms). This insulation layer ensures that the power required to drive the MOSFET on or off is almost zero, as the gate current is negligible.
+
+The drain-source characteristics of MOSFETs are identical to those of FETs, but the insulated gate allows for lower power consumption, making MOSFETs the preferred choice in most modern chopper stabilized amplifiers. MOSFETs are mass-produced and cost-effective compared to other FETs, further enhancing their suitability.
+
+\subsection{Electromechanical Switches}
+Electromechanical switches, such as relays, are not commonly used in modern applications due to their bulkiness, high power consumption, and expense. They are typically replaced by semiconductor switches like MOSFETs. However, for educational purposes, it's useful to understand the differences:
+\begin{itemize}
+    \item \textbf{Series Switches:} Utilize relays to switch in series.
+    \item \textbf{Shunt Switches:} Incorporate relays for shunting current.
+\end{itemize}
+Given their disadvantages, electromechanical switches are largely obsolete in favor of semiconductor alternatives.
+
+\subsection{AC Amplifier in Chopper Stabilized Systems}
+The next component in our chopper stabilized amplifier is the AC amplifier. It is designed to amplify only AC signals and is constructed by placing a capacitor in series with a low-noise instrumentation amplifier. Typically, this amplifier is originally a DC amplifier (operational amplifier) modified with DC blocking capacitors to prevent DC drift from passing through to the signal.
+
+The AC amplifier must have adequate bandwidth to pass all sidebands. The function of the AC amplifier is to amplify signals whose frequencies are well above the drift voltages of both the chopper switch at its input and the amplifier itself. The capacitors at the input and output act as high-pass filters, allowing only high-frequency signals to propagate to the next stage.
+
+\subsection{Operational Amplifier Characteristics}
+Operational amplifiers (op-amps) used in these systems, such as the widely-known LM741, have specific electrical characteristics that are crucial for their performance:
+\begin{itemize}
+    \item \textbf{Input Offset Voltage:} The voltage difference required at the input terminals to make the output zero, typically ranging from 1 mV to 5 mV.
+    \item \textbf{Input Resistance:} At 25°C, the input resistance ranges from 3 MΩ to about 2 MΩ, facilitating efficient voltage transfer from the source to the amplifier.
+    \item \textbf{Slew Rate:} Approximately 0.5 V/μs, indicating the maximum rate at which the output voltage can change. Signals faster than this rate will not be accurately followed by the op-amp.
+    \item \textbf{Input Offset Current:} Ranges from 3 to 30 nA, with a maximum of 170 nA. This current contributes to the voltage at the input and can affect the accuracy of the amplification.
+    \item \textbf{Temperature Drift:} The input offset current drifts by about 0.5 nA/°C, affecting the stability of the amplifier with temperature changes.
+\end{itemize}
+
+\subsection{Design Considerations}
+As engineers, designing a chopper stabilized amplifier involves simulating the circuit, often using software like Proteus. Students are encouraged to simulate these circuits to understand the interaction between different components:
+
+\begin{itemize}
+    \item \textbf{Modulator:} The first part consists of the chopper switch.
+    \item \textbf{AC Amplifier:} Uses blocking capacitors and a low-noise instrumentation amplifier to amplify the chopped signal.
+\end{itemize}
+
+\subsection{Example Circuit Analysis}
+Consider a typical chopper stabilized amplifier circuit using an LM741 op-amp:
+
+\begin{itemize}
+    \item \textbf{Power Supply:} Typically $\pm15$ V, verified against the manufacturer's recommended operating conditions.
+    \item \textbf{Biasing:} Utilizes a VBE multiplier to provide the necessary bias voltage and prevent thermal runaway in the output transistors.
+    \item \textbf{Protection:} Includes short-circuit protection mechanisms using transistors and resistors to safeguard against excessive current.
+\end{itemize}
+
+\subsection{VB Multiplier Function}
+The VB multiplier circuit ensures proper biasing of the output stage to eliminate crossover distortion and compensate for temperature variations. It adjusts the voltage between points A and B to maintain a stable operating point despite temperature changes, thus preventing thermal runaway in the output transistors.
+
+\subsection{Protection Mechanisms}
+Short-circuit protection is implemented by monitoring the voltage across specific resistors and transistors. If the voltage exceeds a threshold (e.g., 0.5 V across a 25 Ω resistor), the protection circuit limits the current to prevent damage to the amplifier components.
+
+\subsection{Conclusion}
+In summary, chopper stabilized amplifiers rely on frequency translation achieved through chopping, high-speed semiconductor switches like FETs and MOSFETs, and carefully designed AC amplifiers to minimize drift and noise. Proper biasing and protection mechanisms are essential to ensure stable and accurate amplification. Understanding these components and their interactions is crucial for designing effective chopper stabilized amplifier systems.

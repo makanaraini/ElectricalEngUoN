@@ -1,0 +1,137 @@
+\newpage
+\section{Lecture 6}
+
+In the previous class, we studied the FET as a switch and investigated how using the FET to produce Pulse Amplitude Modulation (PAM) generates errors. We began by examining the FET in the SH configuration, deriving the relevant equations. We identified that, apart from the non-ideal behavior of the switch—which introduces \textit{off} and \textit{on} errors—additional errors arise due to the internal gate capacitances.
+
+\subsection{Equivalent Circuit of the FET in Chanten Configuration}
+
+Consider a slowly varying voltage \( V_G \) and a switching voltage \( V_C \). Due to the internal capacitances \( C_{GD} \), \( C_{GS} \), and \( C_{DS} \), switching spikes are generated at the output of the system. This phenomenon occurs because a pulse drive causes the voltage to rise suddenly, introducing high-frequency components from the rectangular waveform. The same effect applies when the voltage falls rapidly.
+
+\subsection{Timing Diagram and Control Voltage}
+
+Refer to the timing diagram where the control voltage \( V_C(t) \) transitions between approximately 0 volts and -5 volts, while \( V_L \) represents the load voltage. During the intervals when the control voltage rises from -5 volts to 0 volts, part of the signal flows to the output, and part flows to the ground, depending on the values of \( R_1 \) and the generator resistance \( R_G \). This results in pulses at the output, known as feed-through spikes. The magnitude of these spikes depends on the internal capacitances \( C_{GD} \), \( C_{GS} \), \( C_{DS} \), as well as the resistances \( R_1 \), \( R_G \), and \( R_L \).
+
+\subsection{Reducing Feed-Through Spikes}
+
+To mitigate feed-through spikes caused by internal capacitances, we can implement the following strategies:
+
+\begin{enumerate}
+    \item \textbf{Reduce the Rate of Change of the Control Voltage:} Instead of using a sharp, rising rectangular waveform, employ a more gradually varying waveform. This approach minimizes high-frequency components, thereby reducing the influence of \( C_{GD} \) and decreasing the amplitude of feed-through spikes.
+    
+    \item \textbf{Decrease Load and Generator Resistance:} Lowering \( R_L \) and \( R_G \) can help reduce the magnitude of the spikes. 
+\end{enumerate}
+
+In the last class, we demonstrated how to resolve switching waveforms into their harmonics. By selecting a specific harmonic and applying linear equations, we can determine the amplitude of that frequency component. For instance, considering the drain-to-source path with \( R_{DS} \) varying between \( 10^{10} \) ohms and \( R_L \), we can simplify the equivalent circuit to:
+
+\[
+V_{\text{out}} = V_C(t) \times \frac{R_L \parallel X_{DS} \parallel (R_1 + R_G)}{X_{GD} + R}
+\]
+
+where \( R = R_1 + R_G \parallel R_L \parallel X_{DS} \).
+
+\subsection{Impact of Transducer Resistance}
+
+If the transducer has a high internal resistance \( R_G \), the output of the feed-through signal will be minimized. For example, if \( R_L = 0 \), the output will theoretically be zero, though \( R_L \) should not be zero in practical applications as it serves as the input resistance to the AC amplifier.
+
+\subsection{Drive Voltage Optimization}
+
+To minimize switching spikes, consider the following:
+
+\begin{itemize}
+    \item \textbf{Reduce the Drive Frequency:} Lowering the drive frequency decreases the reactance of the capacitances, reducing the amplitude of the spikes.
+    
+    \item \textbf{Use Minimal Control Voltage:} Utilize the smallest control voltage necessary to turn the device on and off, which diminishes the magnitude of \( V_C(t) \) and thereby reduces spike amplitudes.
+    
+    \item \textbf{Waveform Shaping:} Employ ramp or sinusoidal waveforms instead of pure rectangular pulses to limit high-frequency components.
+\end{itemize}
+
+\subsection{Experimental Validation}
+
+These theoretical results are typically validated experimentally using a sensitive oscilloscope. Manufacturers' datasheets provide the minimum voltage required to switch the device on and off. In the lab, you can adjust the signal generator's input and monitor the output spikes, reducing the voltage until the spikes become acceptable.
+
+\subsection{Series Switch Configuration}
+
+Transitioning from the SH switch, we now analyze the series switch configuration. In this setup, the FET is connected in series with the load and generator. The practical circuit for driving the FET using a small-signal transistor is straightforward. The gate drive switches the gate from ground to a negative potential, greater than the pinch-off voltage specified in the FET's datasheet (typically between -3V and -5V for an inter-channel FET).
+
+\subsection{Off-State Error Analysis}
+
+When the switch is in the off state, the error is defined as:
+
+\[
+\text{Error}_{\text{off}} = V_L - 0 = V_L
+\]
+
+Here, \( V_L \) is the voltage drop across \( R_L \), calculated as:
+
+\[
+V_L = V_G \times \frac{R_L}{R_G + R_{DS,\text{off}} + R_L}
+\]
+
+Given that \( R_{DS,\text{off}} \) is typically \( 10^{10} \) ohms, which is much greater than \( R_L \) (typically ranging from 10K to 100K ohms), we can approximate:
+
+\[
+\text{Error}_{\text{off}} \approx V_G \times \frac{R_L}{R_G + R_{DS,\text{off}}} \approx \frac{R_L}{R_G + R_{DS,\text{off}}} \times V_G
+\]
+
+For high-impedance transducers, such as condenser microphones with capacitive transducers, \( R_G \) is very large, making the error negligible at low frequencies.
+
+\subsection{On-State Error Analysis}
+
+When the switch is in the on state, the error is defined as:
+
+\[
+\text{Error}_{\text{on}} = V_L - V_G
+\]
+
+Calculating \( V_L \):
+
+\[
+V_L = V_G \times \frac{R_L}{R_G + R_{DS,\text{on}} + R_L}
+\]
+
+Given that \( R_{DS,\text{on}} \) is low (typically 25-30 ohms), and \( R_L \) is large, we approximate:
+
+\[
+\text{Error}_{\text{on}} \approx V_G \times \frac{R_L}{R_G + R_{DS,\text{on}} + R_L} \approx V_G \times \frac{R_L}{R_G + R_L}
+\]
+
+To minimize on-state error, \( R_L \) should be large relative to \( R_G \). However, this requirement conflicts with the need to minimize off-state error, where \( R_L \) should be small. Thus, a compromise must be reached to optimize the total error, potentially by minimizing the partial differential of the total error with respect to \( R_L \).
+
+\subsection{Feed-Through Spikes in Series Choppers}
+
+In series chopper configurations, feed-through spikes are influenced by the control signal and the switching action of the FET. The control voltage typically ranges between -5V and 0V. When the device switches on and off, the current paths through \( C_{GS} \), \( C_{GD} \), and \( R_G \) determine the magnitude of the spikes.
+
+Key points include:
+
+\begin{itemize}
+    \item During switching, the predominant current flows through \( C_{GS} \), generating positive and negative spikes at the output.
+    
+    \item The time constant of the spikes is mainly governed by \( C_{GS} \) and \( R_L \).
+    
+    \item Reducing \( R_L \) or \( C_{GS} \) can help minimize spike amplitude.
+\end{itemize}
+
+\subsection{Minimizing Switching Spikes}
+
+To effectively minimize switching spikes:
+
+\begin{enumerate}
+    \item \textbf{Decrease the Drive Frequency:} Lowering the frequency reduces the capacitive reactance, thereby decreasing the spike voltage.
+    
+    \item \textbf{Lower \( R_L \):} Reducing the load resistance can help minimize spike amplitudes, though it must be balanced against other design requirements.
+    
+    \item \textbf{Optimize \( R_{DS,\text{on}} \):} Ensuring \( R_{DS,\text{on}} \) is as low as possible minimizes on-state errors.
+    
+    \item \textbf{Use Minimal Control Voltage:} Applying just enough voltage to switch the device on and off reduces the magnitude of the feed-through voltage.
+    
+    \item \textbf{Waveform Shaping:} Implementing ramp or sinusoidal waveforms instead of sharp pulses can lower high-frequency components and reduce spike amplitudes.
+\end{enumerate}
+
+\subsection{Conclusion}
+
+To summarize, minimizing switching spikes involves a combination of reducing the drive frequency, optimizing load and generator resistances, utilizing minimal control voltages, and shaping the control waveform. Balancing these factors is essential to achieve optimal performance with minimal errors in both the on and off states.
+
+\subsection{Questions and Further Discussion}
+
+If there are any questions regarding this material, feel free to ask. Otherwise, we will conclude today's lecture here.
+
